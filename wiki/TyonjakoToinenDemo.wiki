@@ -1,2 +1,24 @@
 #summary Työnjako toiseen demoon
 
+(demotaan miten nämä tomivat)
+
+janne k:
+Kurssien lisäämisen/poisto/muokkaus proto 
+
+
+janne h:
+tallennuksen tapahtuminen
+
+Tatu:
+Tenttimuistutukset
+
+Juho:
+Raporttien/Lukkarin tulostus
+
+
+
+
+
+
+
+
