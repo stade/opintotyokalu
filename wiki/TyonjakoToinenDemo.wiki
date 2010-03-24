@@ -10,11 +10,9 @@ janne h:
 tallennuksen tapahtuminen
 
 Tatu:
-Tenttimuistutukset
+Tenttimuistutukset & peruskäli
 
 Juho:
 Raporttien/Lukkarin tulostus
-
-
 
 
