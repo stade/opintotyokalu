@@ -1,6 +1,6 @@
 #summary Työnjako toiseen demoon
 
-(demotaan miten nämä tomivat)
+(demotaan miten nämä tomivat ja yritetään saada mahdollisimman valmiiksi ma tapaamiseen)
 
 janne k:
 Kalvojen yhdistys & Kurssien lisäämisen/poisto/muokkaus proto 
@@ -14,5 +14,3 @@ Tenttimuistutukset & peruskäli
 
 Juho:
 Raporttien/Lukkarin tulostus
-
-
