@@ -3,6 +3,7 @@
 (demotaan miten nämä tomivat)
 
 janne k:
+Kalvojen yhdistys
 Kurssien lisäämisen/poisto/muokkaus proto 
 
 
@@ -14,8 +15,6 @@ Tenttimuistutukset
 
 Juho:
 Raporttien/Lukkarin tulostus
-
-
 
 
 
