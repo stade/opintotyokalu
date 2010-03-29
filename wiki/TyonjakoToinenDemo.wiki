@@ -3,7 +3,7 @@
 (demotaan miten nämä tomivat ja yritetään saada mahdollisimman valmiiksi ma tapaamiseen)
 
 janne k:
-Kalvojen yhdistys & Kurssien lisäämisen/poisto/muokkaus proto 
+Kurssien lisäämisen/poisto/muokkaus proto 
 
 
 janne h:
@@ -13,4 +13,4 @@ Tatu:
 Tenttimuistutukset & peruskäli
 
 Juho:
-Raporttien/Lukkarin tulostus
+Kalvojen yhdistys & Raporttien/Lukkarin tulostus
