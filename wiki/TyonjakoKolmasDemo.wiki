@@ -20,8 +20,8 @@ Exporter-luokka
 
 Tiistaina-tapaaminen kello 14 (haxxorointi-luokassa)
 
--Käyttöliittymäluokka valmis?
-
+- Käyttöliittymäluokka valmis?
+ 
 - Muut niin valmiiksi et voi alkaa kutsua käyttöliittymä luokassa
 
-
+- Käyttäkää versionhallintaa
