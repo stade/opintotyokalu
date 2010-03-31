@@ -4,9 +4,22 @@
 
 
 ===Janne K.=== 
+kerääjä
+tentti,kurssi,tapahtuma-tietorakenteet
+
 
 ===Janne H.===
+Raportti & tallennus&avaa
+
 
 ===Tatu===
+Käyttöliittymä-luokka / main
+Tenttimuistutukset-funktio/luokka
 
 ===Juho=== 
+Exporter-luokka
+
+käyttöliittymä
+raportit & tulostus
+tenttimuistutukset
+(kurssit) menot/tapahtumat
