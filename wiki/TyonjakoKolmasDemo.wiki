@@ -5,15 +5,23 @@
 ===Janne K.=== 
 kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 
+====Valmiina:====
+
 ===Janne H.===
 Raportti & tallennus&avaa
+
+====Valmiina:====
 
 ===Tatu===
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
+====Valmiina:====
+
 ===Juho=== 
 Exporter-luokka
+
+====Valmiina:====
 
 ==Aikataulu==
 
