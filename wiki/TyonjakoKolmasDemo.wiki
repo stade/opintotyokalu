@@ -15,3 +15,13 @@ Tenttimuistutukset-funktio/luokka
 
 ===Juho=== 
 Exporter-luokka
+
+==Aikataulu==
+
+Tiistaina-tapaaminen kello 14 (haxxorointi-luokassa)
+
+-Käyttöliittymäluokka valmis?
+
+- Muut niin valmiiksi et voi alkaa kutsua käyttöliittymä luokassa
+
+
