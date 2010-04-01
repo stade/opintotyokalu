@@ -17,8 +17,10 @@ Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
 ====Valmiina ~15%:====
-Käyttöliitymän perusvalikot luotu ja valikoissa liikkuminen toteutettu.
-Tenttimuistutuksen tulosteet osittain toteutettu.
+
+- Käyttöliitymän perusvalikot luotu ja valikoissa liikkuminen toteutettu.
+
+- Tenttimuistutuksen tulosteet osittain toteutettu.
 
 ===Juho=== 
 Exporter-luokka
