@@ -22,7 +22,9 @@ Tenttimuistutukset-funktio/luokka
 Exporter-luokka
 
 ====Valmiina ~40%====
+
 - html:n tulostus sujuu testidatalla (muodossa String[][])
+
 - vielä pitää keksiä miten saa toisaalla syötetyn datan haettua (lähinnä, että missä muodossa se on)
 
 ==Aikataulu==
