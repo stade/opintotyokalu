@@ -21,7 +21,7 @@ Tenttimuistutukset-funktio/luokka
 ===Juho=== 
 Exporter-luokka
 
-====Valmiina ~50%====
+====Valmiina ~40%====
 
 ==Aikataulu==
 
