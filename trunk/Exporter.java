@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.PrintWriter;
 
+/**
+ *	Class contains four functions: importCourses(), exportCourses(), importTimetable() and exportTimetable() (and main, which currently works for testing purposes, running all aforementioned functions). The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. Filenames are currently defined by static variables coursesfn and timetablefn. Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
+ */
 public class Exporter {
 
 	private static File file;
@@ -9,16 +12,19 @@ public class Exporter {
 	private static String coursesfn = "kurssit.html";	// fn for filename
 	private static String timetablefn = "lukkari.html";	// fn for filename
 
-	private static String[][] timetable;
-	private static String[][] courses;
-	private static int nCourses;	// number of courses
+	private static String[][] timetable;	// timetable data
 
+	private static int nCourses;	// number of courses (for creating courses efficiently)
+	private static String[][] courses;	// courses data
+
+	// below: a number of timetable attributes
 	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
 	private static int nDays = 5;	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
 	private static int firsthr = 8;	// 1st hour to print in timetable
 	private static int lasthr = 18;	// last hour to print in timetable
 
-	private static int i;	// multi-function variable
+	// multi-function int variable
+	private static int i;
 
 	/**
 	 *	Fetches courses (names and credits) from external class
@@ -75,6 +81,7 @@ public class Exporter {
 			out.write("\n</BODY>\n</HTML>");
 		}
 
+		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
 	}
@@ -148,6 +155,7 @@ public class Exporter {
 			out.write("\n</BODY>\n</HTML>");
 		}
 
+		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
 	}
