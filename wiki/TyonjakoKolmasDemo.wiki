@@ -16,9 +16,11 @@ Raportti & tallennus&avaa
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-====Valmiina ~15%:====
+====Valmiina ~30%:====
 
-- Käyttöliitymän perusvalikot luotu ja valikoissa liikkuminen toteutettu.
+- Käyttöliitymän perusvalikot luotu, valikoissa liikkuminen ja virheellisten syötteiden käsittely toteutettu. 
+
+- Main-luokka (opintotyokalu-luokka) luotu.
 
 - Tenttimuistutuksen tulosteet osittain toteutettu.
 
