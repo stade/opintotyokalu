@@ -27,7 +27,7 @@ Tenttimuistutukset-funktio/luokka
 ===Juho=== 
 Exporter-luokka
 
-====Valmiina ~40%====
+====Valmiina ~60%====
 
 - html:n tulostus sujuu testidatalla (muodossa `String[][]`)
 
