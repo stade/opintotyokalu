@@ -2,7 +2,8 @@ import java.io.File;
 import java.io.PrintWriter;
 
 /**
- *	Class contains four functions: importCourses(), exportCourses(), importTimetable() and exportTimetable() (and main, which currently works for testing purposes, running all aforementioned functions). The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. Filenames are currently defined by static variables coursesfn and timetablefn. Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
+ *	Class contains six functions. import-, exportCourses(), import- and exportTimetable() are private, internal functions. The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. printCourses() and -Timetable() are the ones that should be called by other classes.
+ * Created files' filenames are defined by static variables coursesfn and timetablefn. Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
  */
 public class Exporter {
 
@@ -29,10 +30,11 @@ public class Exporter {
 	/**
 	 *	Fetches courses (names and credits) from external class
 	 */
-	public static void importCourses() {
+	private static void importCourses() {
+		// for-each course get names and credits from external class ...
+
 		nCourses = 3;	// number of courses, obtained from external class ...
-		courses = new String[nCourses][2];	// courses[number of courses][0 course name, 1 credits]
-		// for-each course get names and credits ...
+		courses = new String[nCourses][2];	// courses[number of courses][0 course name, 1 credits] to print
 
 		// below: sample course data for testing purposes
 		courses[0][0] = "Ohjelmointitekniikka (Scala)";
@@ -46,7 +48,7 @@ public class Exporter {
 	/**
 	 *	Prints String[][] courses as html file (file name defined by String coursesfn)
 	 */
-	public static void exportCourses() {
+	private static void exportCourses() {
 		try {
 			file = new File(coursesfn);
 			out = new PrintWriter(file);
@@ -89,9 +91,9 @@ public class Exporter {
 	/**
 	 *	Fetches timetable data from some external class.
 	 */
-	public static void importTimetable() {
+	private static void importTimetable() {
 		timetable = new String[24][5]; // timetable[hours][days]
-		// get times from courses ...
+		// get events from external class ...
 
 		// below: sample timetable for testing purposes
 		timetable[0][0] = "Eka";
@@ -99,7 +101,10 @@ public class Exporter {
 		timetable[11][4] = "Hei";
 	}
 
-	public static void exportTimetable() {
+	/**
+	 *	Prints String[][] timetable as html file (file name defined by String timetablefn)
+	 */
+	private static void exportTimetable() {
 		try {
 			file = new File(timetablefn);
 			out = new PrintWriter(file);
@@ -114,7 +119,7 @@ public class Exporter {
 			out.write("<HTML>\n<HEAD>\n<TITLE>Suoritetut kurssit</TITLE>\n</HEAD>\n\n<BODY>\n\n");
 
 			// begin table
-			out.write("\n<TABLE BORDER=0 CELLSPACING=20>\n\n");
+			out.write("\n<TABLE BORDER=0 CELLSPACING=10>\n\n");
 
 			// print weekdays (titles)
 			out.write("<TR>\n<TD></TD>\n");
@@ -160,10 +165,18 @@ public class Exporter {
 		out.close();
 	}
 
-	public static void main(String[] args) {
+	/**
+	 *	Function imports and prints courses.
+	 */
+	public static void printCourses() {
 		importCourses();
 		exportCourses();
+	}
 
+	/**
+	 *	Function imports and prints timetable.
+	 */
+	public static void printTimetable() {
 		importTimetable();
 		exportTimetable();
 	}
