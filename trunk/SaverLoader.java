@@ -1,3 +1,13 @@
+/*
+ * SaverLoader.java 
+ * 
+ * Luokka toteuttaa Serializable rajapinnan ja kirjoittaa aksessoreilla
+ * olioita tiedostoon.
+ * 
+ * 
+ * TODO: tarkistukset ja hienosäätö
+ */
+
 import java.io.Serializable;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
