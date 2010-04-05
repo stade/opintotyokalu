@@ -5,7 +5,7 @@
 ===Janne K.=== 
 kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 
-====Valmiina:====
+====Valmiina: ~10% ====
 
 ===Janne H.===
 Raportti & tallennus&avaa
