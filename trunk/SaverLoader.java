@@ -54,7 +54,7 @@ public class SaverLoader implements Serializable {
 	 * 
 	 * TODO: objection tyypin tarkistus
 	 */
-	private boolean saveObject(Object toBeSaved, String toSaveInto) {
+	public boolean saveObject(Object toBeSaved, String toSaveInto) {
 		
 		try {
 			this.fileOut = new FileOutputStream(toSaveInto);
