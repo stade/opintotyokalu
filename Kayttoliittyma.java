@@ -8,7 +8,7 @@ import java.util.Scanner;
  *      Käyttöliittymä-luokka luo tekstipohjaiset valikot ja mahdollistaa niissä liikkumisen.
  */
 public class Kayttoliittyma {
-	DateFormat paivaysMalli; // yhteinen malli päivämäärille
+	SimpleDateFormat paivaysMalli; // yhteinen malli päivämäärille
 	
 	public Kayttoliittyma() {
 		 paivaysMalli = new SimpleDateFormat("dd.MM hh");	//Käyttäjä syöttää ajat tässä muodossa
@@ -409,7 +409,7 @@ public class Kayttoliittyma {
 		Tapahtuma lisattavaTentti = new Tapahtuma();
 		
 		System.out.println("Tentin lisääminen:");
-		System.out.println("Anna ajat muodossa" + paivaysMalli.toString() + " esim. 15/01 14");
+		System.out.println("Anna ajat muodossa " + paivaysMalli.toPattern() + " esim. 15.01 14");
 		
 		lisattavaTentti.setNimi("Käyttäjän syöttämä kurssinimi");
 		Date alkuAika = null;
