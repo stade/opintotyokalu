@@ -419,14 +419,14 @@ public class Kayttoliittyma {
 		
 	}
 	public void tulostaKurssitValikko() {
-		
-		System.out.println("t‰‰ll‰ tapahtuu suoritettujen kurssien tulostus");
-		
+		Exporter.printCourses();
+		this.raporttiValikko();
+
 	}
 	public void tulostaLukkariValikko() {
-		
-		System.out.println("t‰‰ll‰ tapahtuu lukuj‰rjestyksen tulostus");
-		
+		Exporter.printTimetable();
+		this.raporttiValikko();
+
 	}
 	public void tallennaTiedostoonValikko() {
 		
