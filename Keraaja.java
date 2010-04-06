@@ -8,14 +8,37 @@ public class Keraaja implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8333867660428826471L;
-	private ArrayList<Tapahtuma> tentit;
+	private ArrayList<Tapahtuma> tentit; // Tarviiko tenttien olla erikseen vai laitetaanko tapahtumataulukkoon
 	private ArrayList<Tapahtuma> tapahtumat;
 	private ArrayList<Kurssi> kurssit;	
 	
 	public Keraaja(){
-			
+		tentit = new ArrayList<Tapahtuma>();
+		tapahtumat = new ArrayList<Tapahtuma>();
+		kurssit = new ArrayList<Kurssi>();
 	}
 	
+	public ArrayList<Tapahtuma> getTentit() {
+		return tentit;
+	}
+
+	public ArrayList<Tapahtuma> getTapahtumat() {
+		return tapahtumat;
+	}
+
+	public ArrayList<Kurssi> getKurssit() {
+		return kurssit;
+	}
+	
+	
+	/* Tulostaa yhteenvedon kursseista, KESKENERÄINEN */
+	public void tulostaKurssit() {
+		System.out.println("Suoritetut kurssit");
+		for (int i = 0; i < kurssit.size(); i++) {
+			System.out.println(kurssit.get(i).getNimi());
+			}
+	}
+
 	public Tapahtuma etsiTentti(String nimi) {
 		for (int i = 0; i < tentit.size(); i++) {
 			if (nimi.equals(tentit.get(i).getNimi())) {
