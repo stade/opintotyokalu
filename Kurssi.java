@@ -23,7 +23,7 @@ public class Kurssi {
 		return this.laajuus;
 	}
 
-	public int getSuoritettu() {
+	public boolean getSuoritettu() {
 		return this.suoritettu;
 	}
 
