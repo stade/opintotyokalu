@@ -97,8 +97,8 @@ public class Kayttoliittyma {
 	
 		switch (valintanum) {
 	       
-	        case 1: tallennaTiedostoonValikko();     	break;
-	        case 2: avaaTiedostostaValikko();    		break;
+	        case 1: tallennaTiedostoonValikko();		break;
+	        case 2: avaaTiedostostaValikko();			break;
 	        case 0: paaValikko();						break;
 	        default : System.out.println("Virheellinen syöte");  return 1;
 
@@ -114,7 +114,7 @@ public class Kayttoliittyma {
 	public int valintaKurssiMuokkausValikko(int valintanum) {
 		
 		switch (valintanum) {
-	       
+	       	//Keskeneräinen ei toimintoja
 	        case 1: System.out.print("tästä 1. kurssin muokkaus");     	break;
 	        case 2: System.out.print("tästä 2. kurssin muokkaus");     	break;
 	        case 3: System.out.print("tästä 3. kurssin muokkaus");   	break;
@@ -126,10 +126,15 @@ public class Kayttoliittyma {
 		return 0;
 		
 	}	
+	/**
+	 *    Poistetaan kursseja tai siirrytään kurssivalikkoon kurssien poistovalikosta 
+	 *    annetun valintanumeron mukaan.
+	 *    Palauttaa 1, jos virheellinen valinta.
+	 */
 	public int valintaKurssiPoistoValikko(int valintanum) {
 		
 		switch (valintanum) {
-	       
+	        //Keskeneräinen ei toimintoja
 	        case 1: System.out.print("tästä 1. kurssin poisto");     	break;
 	        case 2: System.out.print("tästä 2. kurssin poisto");     	break;
 	        case 3: System.out.print("tästä 3. kurssin poisto");   		break;
@@ -536,7 +541,7 @@ public class Kayttoliittyma {
 	}
 	
 	/**
-	 *    Käyttöliittymän kurssin muokkausvalikko.  
+	 *    Käyttöliittymän kurssin muokkausvalikko. Keskeneräinen.
 	 *    
 	 */
 	public void muokkaaKurssiValikko() {
