@@ -37,7 +37,7 @@ Exporter-luokka
 
 ==Aikataulu==
 
-Tiistaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
+Maanantaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
 
 - Niin valmiiksi kun vaan saadaan, että päästään miettimään testaamista
  
