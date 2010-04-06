@@ -1,9 +1,20 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
  *      Käyttöliittymä-luokka luo tekstipohjaiset valikot ja mahdollistaa niissä liikkumisen.
  */
 public class Kayttoliittyma {
+	DateFormat paivaysMalli; // yhteinen malli päivämäärille
+	
+	public Kayttoliittyma() {
+		 paivaysMalli = new SimpleDateFormat("dd.MM hh");	//Käyttäjä syöttää ajat tässä muodossa
+		 
+	}
+	
 	
 	/**
 	 *    Käyttöliittymän päävalikko.
@@ -389,10 +400,29 @@ public class Kayttoliittyma {
 	
 	
 	public void lisaaTenttiValikko() {
+
 		
-		System.out.println("täällä tapahtuu tenttien lisäys");
+		/* Alla osa tarvittavat koodista tenttien tietorakenteisiin lisäämistä varten,
+		 * Ei vielä kysy käyttäjältä mitään! 
+		 *  
+		 */
+		Tapahtuma lisattavaTentti = new Tapahtuma();
 		
-	}
+		System.out.println("Tentin lisääminen:");
+		System.out.println("Anna ajat muodossa" + paivaysMalli.toString() + " esim. 15/01 14");
+		
+		lisattavaTentti.setNimi("Käyttäjän syöttämä kurssinimi");
+		Date alkuAika = null;
+		try {
+			alkuAika = paivaysMalli.parse("15.01 14");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		lisattavaTentti.setAlku(alkuAika);
+		
+		}
+	
 	public void muokkaaTenttiValikko() {
 		
 		System.out.println("täällä tapahtuu tenttien muokkaus");
