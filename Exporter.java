@@ -114,7 +114,7 @@ public class Exporter {
 			out = new PrintWriter(file);
 		}
 		catch (Exception e) {
-			return false
+			return false;
 		}
 
 		if (file != null && out != null) {
