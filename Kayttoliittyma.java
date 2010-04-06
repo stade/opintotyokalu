@@ -599,6 +599,10 @@ public class Kayttoliittyma {
 		
 		
 	}
+	/**
+	 *    Käyttöliittymän kurssin poistovalikko. Keskeneräinen.
+	 *    
+	 */
 	public void poistaKurssiValikko() {
 		
 		Scanner nappaimisto;
