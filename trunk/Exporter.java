@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * Class contains six functions. import-, exportCourses(), import- and exportTimetable() are private, internal functions. The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. printCourses() and -Timetable() are the ones that should be called by other classes.
@@ -13,33 +14,51 @@ public class Exporter {
 	private static String coursesfn = "kurssit.html";	// fn for filename
 	private static String timetablefn = "lukkari.html";	// fn for filename
 
-	private static int nCourses;	// number of courses (for creating courses efficiently)
+	// total credits for printing courses ...
+	private static int totalcr = 0;
 
-	// below: a number of timetable attributes
+	// below: a number of timetable variables
 	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
 	private static int nDays = 5;	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
 	private static int firsthr = 8;	// 1st hour to print in timetable
 	private static int lasthr = 18;	// last hour to print in timetable
+	// end timetable variables
 
 	// multi-function int variable
 	private static int i;
 
 	/**
-	 *	Fetches courses (names and credits) from external class
+	 *	Fetches names and credits of courses from external Keraaja object, parses its kurssit field into a String[][], and returns it. ?TODO? This functions functionality might as well be in exportCourses() (and then exportCourses could be renamed to printCourses())!
 	 */
 	private static String[][] importCourses() {
-		// for-each course get names and credits from external class ...
 
-		nCourses = 3;	// number of courses, obtained from external class ...
-		String[][] courses = new String[nCourses][2];	// courses[number of courses][0 course name, 1 credits] to print
+		Keraaja k = new Keraaja();	// new Keraaja() for testing, this should read getKeraaja()
 
-		// below: sample course data for testing purposes
-		courses[0][0] = "Ohjelmointitekniikka (Scala)";
-		courses[0][1] = "4";
-		courses[1][0] = "Ohjelmistotuotanto";
-		courses[1][1] = "4";
-		courses[2][0] = "Laskennan mallit";
-		courses[2][1] = "6";
+		// for testing -- REMOVE THIS
+		Kurssi a = new Kurssi("Tietorakenteet", 8);
+		Kurssi c = new Kurssi("Laskennan mallit", 6);
+		Kurssi b = new Kurssi("Ohjelmistotuotanto", 4);
+
+		k.addKurssi(a);
+		k.addKurssi(b);
+		k.addKurssi(c);
+		// end 'for testing'
+
+		ArrayList<Kurssi> coursesArray = k.getKurssit();
+		int nCourses = coursesArray.size();
+
+		// courses[number of courses][0 course name, 1 credits]
+		String[][] courses = new String[nCourses][2];
+
+		// for-each course in Keraaja object field kurssit (now in coursesArray), get name and credits to internal array courses (String[][])
+		for (i = 0; i < nCourses; i++) {
+			if ((coursesArray.get(i)).getSuoritettu()) {
+				courses[i][0] = (coursesArray.get(i)).getNimi();
+				int cr = (coursesArray.get(i).getLaajuus());	// cr == credits. Used twice (in following lines)
+				courses[i][1] = Integer.toString(cr);	// int has to be converted to String at some point! (can't print otherwise)
+				totalcr += cr;	// add credits to total credits (static variable)
+			}
+		}
 
 		return courses;
 	}
@@ -70,10 +89,13 @@ public class Exporter {
 
 			// print courses
 			i = 0;
-			while (i < nCourses) {
+			while (i < courses.length) {
 				out.write("<TR><TD>" + courses[i][0] + "</TD><TD>" + courses[i][1] + "</TD></TR>\n");
 				i++;
 			}
+
+			// print total credits
+			out.write("<TR><TD></TD><TD>yht. " + totalcr + "</TD></TR>");
 
 			// end table
 			out.write("</TABLE>\n\n");
@@ -188,6 +210,10 @@ public class Exporter {
 		if (exportTimetable(importTimetable())) {
 			System.out.println("Luotiin " + timetablefn);
 		}
+	}
+
+	public static void main(String[] args) {
+		printCourses();
 	}
 
 }
