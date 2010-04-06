@@ -76,7 +76,7 @@ public class Kayttoliittyma {
 	
 	/**
 	 *    Siirtää alavalikkoon päävalikosta annetun valintanumeron mukaan.
-	 *    Palauttaa 1, jos virheellinen valinta.
+	 *    Palauttaa 1, jos virheellinen valinta. 0 jos halutaan poistua ohjelmasta.
 	 */
 	public int valintaPaaValikko(int valintanum) {
 		
@@ -406,7 +406,7 @@ public class Kayttoliittyma {
 		 * Ei vielä kysy käyttäjältä mitään! 
 		 *  
 		 */
-		Tapahtuma lisattavaTentti = new Tapahtuma();
+		Tapahtuma lisattavaTentti = new Tapahtuma(null);
 		
 		System.out.println("Tentin lisääminen:");
 		System.out.println("Anna ajat muodossa " + paivaysMalli.toPattern() + " esim. 15.01 14");
@@ -433,9 +433,77 @@ public class Kayttoliittyma {
 		System.out.println("täällä tapahtuu tenttien poisto");
 		
 	}
+	/**
+	 *    Käyttöliittymän kurssin lisäysvalikko. Ei käytä vielä oikeita tietorakentaita. Tapahtumien lisäyksen
+	 *    toteus vajaa.
+	 */
 	public void lisaaKurssiValikko() {
 		
-		System.out.println("täällä tapahtuu kurssien lisäys");
+		
+		Scanner nappaimisto;
+		
+		//Nämä korvataan oikeilla tietotyypeillä
+		String kurssinimi;
+		int op;
+		String luento;
+		
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyökalu - Kurssin lisäys");
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Anna kurssin nimitys: ");
+	
+		nappaimisto = new Scanner(System.in);
+		kurssinimi = nappaimisto.nextLine();
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyökalu - Kurssin lisäys");
+		System.out.println("");
+		System.out.println("");
+		System.out.println(kurssinimi);
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Anna kurssin laajuus opintopisteinä: ");
+		
+		op = nappaimisto.nextInt();
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyökalu - Kurssin lisäys");
+		System.out.println("");
+		System.out.println("");
+		System.out.println(kurssinimi);
+		System.out.println(op + "op");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Anna kurssin opetusajat");
+		System.out.println("Esim. TI 10-12 Harjoitukset");
+        System.out.println("Voit syöttää useampia aikoja, mutta vain yhden kerrallaan");
+        System.out.print("Opetusajat: ");
+        
+        luento = nappaimisto.nextLine();
+        
+        tyhjennaNakyma();
+		System.out.println("Opintotyökalu - Kurssin lisäys");
+		System.out.println("");
+		System.out.println("");
+		System.out.println(kurssinimi);
+		System.out.println(op + "op");
+		System.out.println(luento);
+		System.out.println("");
+		System.out.println("");
+        System.out.print("Paina enter palataksesi kurssien hallinnointi valikkoon");
+        
+        nappaimisto.nextLine();
+        
+  
+        //Palataan kurssivalikkoon.
+        kurssiValikko();
+        
+		
+		
+		
+		
 		
 	}
 	public void muokkaaKurssiValikko() {
