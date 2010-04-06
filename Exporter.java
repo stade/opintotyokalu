@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.PrintWriter;
 
 /**
- *	Class contains six functions. import-, exportCourses(), import- and exportTimetable() are private, internal functions. The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. printCourses() and -Timetable() are the ones that should be called by other classes.
+ * Class contains six functions. import-, exportCourses(), import- and exportTimetable() are private, internal functions. The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. printCourses() and -Timetable() are the ones that should be called by other classes.
  * Created files' filenames are defined by static variables coursesfn and timetablefn. Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
  */
 public class Exporter {
@@ -13,10 +13,7 @@ public class Exporter {
 	private static String coursesfn = "kurssit.html";	// fn for filename
 	private static String timetablefn = "lukkari.html";	// fn for filename
 
-	private static String[][] timetable;	// timetable data
-
 	private static int nCourses;	// number of courses (for creating courses efficiently)
-	private static String[][] courses;	// courses data
 
 	// below: a number of timetable attributes
 	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
@@ -30,11 +27,11 @@ public class Exporter {
 	/**
 	 *	Fetches courses (names and credits) from external class
 	 */
-	private static void importCourses() {
+	private static String[][] importCourses() {
 		// for-each course get names and credits from external class ...
 
 		nCourses = 3;	// number of courses, obtained from external class ...
-		courses = new String[nCourses][2];	// courses[number of courses][0 course name, 1 credits] to print
+		String[][] courses = new String[nCourses][2];	// courses[number of courses][0 course name, 1 credits] to print
 
 		// below: sample course data for testing purposes
 		courses[0][0] = "Ohjelmointitekniikka (Scala)";
@@ -43,18 +40,20 @@ public class Exporter {
 		courses[1][1] = "4";
 		courses[2][0] = "Laskennan mallit";
 		courses[2][1] = "6";
+
+		return courses;
 	}
 
 	/**
 	 *	Prints String[][] courses as html file (file name defined by String coursesfn)
 	 */
-	private static void exportCourses() {
+	private static boolean exportCourses(String[][] courses) {
 		try {
 			file = new File(coursesfn);
 			out = new PrintWriter(file);
 		}
 		catch (Exception e) {
-			System.out.println("Error");
+			return false;
 		}
 
 		if (file != null && out != null) {
@@ -86,31 +85,36 @@ public class Exporter {
 		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
+
+		// everything went well
+		return true;
 	}
 
 	/**
 	 *	Fetches timetable data from some external class.
 	 */
-	private static void importTimetable() {
-		timetable = new String[24][5]; // timetable[hours][days]
+	private static String[][] importTimetable() {
+		String[][] timetable = new String[24][5]; // timetable[hours][days]
 		// get events from external class ...
 
 		// below: sample timetable for testing purposes
 		timetable[0][0] = "Eka";
 		timetable[10][2] = "Moi";
 		timetable[11][4] = "Hei";
+
+		return timetable;
 	}
 
 	/**
 	 *	Prints String[][] timetable as html file (file name defined by String timetablefn)
 	 */
-	private static void exportTimetable() {
+	private static boolean exportTimetable(String[][] timetable) {
 		try {
 			file = new File(timetablefn);
 			out = new PrintWriter(file);
 		}
 		catch (Exception e) {
-			System.out.println("Error");
+			return false
 		}
 
 		if (file != null && out != null) {
@@ -163,22 +167,27 @@ public class Exporter {
 		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
+
+		// everything went well
+		return true;
 	}
 
 	/**
-	 *	Function imports and prints courses.
+	 *	Function imports and prints courses. Call this.
 	 */
 	public static void printCourses() {
-		importCourses();
-		exportCourses();
+		if (exportCourses(importCourses())) {
+			System.out.println("Luotiin " + coursesfn);
+		}
 	}
 
 	/**
-	 *	Function imports and prints timetable.
+	 *	Function imports and prints timetable. Call this.
 	 */
 	public static void printTimetable() {
-		importTimetable();
-		exportTimetable();
+		if (exportTimetable(importTimetable())) {
+			System.out.println("Luotiin " + timetablefn);
+		}
 	}
 
 }
