@@ -1,3 +1,5 @@
+[http://www.exampledepot.com/egs/java.text/parsedate.html Daten parseeminen]
+
 #summary Työnjako kolmanteen demoon
 
 =Kolmannen demon työnjako=
