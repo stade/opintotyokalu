@@ -35,10 +35,10 @@ Exporter-luokka
 
 ==Aikataulu==
 
-Tiistaina-tapaaminen kello 14 (haxxorointi-luokassa)
+Tiistaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
 
-- Käyttöliittymäluokka valmis?
+- Niin valmiiksi kun vaan saadaan, että päästään miettimään testaamista
  
-- Muut niin valmiiksi et voi alkaa kutsua käyttöliittymä luokassa
+- Viikonloppuna epämääräisiä irc-kokouksia
 
 - Käyttäkää versionhallintaa
