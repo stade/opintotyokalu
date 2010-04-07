@@ -25,6 +25,9 @@ public class Kayttoliittyma {
 	/**
 	 * 	Siirt�� alavalikkoon p��valikosta annetun valintanumeron mukaan.
 	 * 	Palauttaa 1, jos virheellinen valinta. 0 jos halutaan poistua ohjelmasta.
+	 * 
+	 *	@param valintanum
+	 *	@return 
 	 */
 	public int valintaPaaValikko(int valintanum) {
 		
@@ -42,8 +45,11 @@ public class Kayttoliittyma {
 	}
 	
 	/**
-	 * 	Siirt�� alavalikkoon tai p��valikkoon kurssivalikosta annetun 
-	 * 	valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
+	 * Siirt�� alavalikkoon tai p��valikkoon kurssivalikosta annetun 
+	 * valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
+	 * 
+	 * @param valintanum
+	 * @return int
 	 */
 	public int valintaKurssiValikko(int valintanum) {
 	
@@ -61,6 +67,9 @@ public class Kayttoliittyma {
 	/**
 	 *	Siirt�� alavalikkoon tai p��valikkoon tenttivalikosta annetun 
 	 *  valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
+	 *  
+	 *  @param valintanum
+	 *  @return
 	 */
 	public int valintaTenttiValikko(int valintanum) {
 	
@@ -80,6 +89,9 @@ public class Kayttoliittyma {
 	/**
 	 *	Siirt�� alavalikkoon tai p��valikkoon raporttivalikosta annetun 
 	 * 	valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
+	 * 
+	 * @param valintanum
+	 * @return
 	 */
 	public int valintaRaporttiValikko(int valintanum) {
 	
@@ -98,6 +110,9 @@ public class Kayttoliittyma {
 	/**
 	 *	Siirt�� alavalikkoon tai p��valikkoon tallennavalikosta annetun 
 	 *  valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
+	 *  
+	 *  @param valintanum
+	 *  @return
 	 */
 	public int valintaTallennaValikko(int valintanum) {
 	
@@ -110,7 +125,6 @@ public class Kayttoliittyma {
 
 		}
 		return 0;
-		
 	}
 	
 	/**
@@ -663,8 +677,12 @@ public class Kayttoliittyma {
         nappaimisto = new Scanner(System.in);
         nappaimisto.nextLine();
         
-        //Luodaan jossain vaiheessa uusi kurssi olio lis�t��n t�ss� annetut tiedot sille ja 
-        //lis�t��n se ker��j��n
+        //lisätään kurssi kerääjään. KESKEN!!
+        Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
+        this.tiedot.addKurssi(lisattyKurssi);
+        
+        Tapahtuma tentti = new Tapahtuma(luento);
+        tentti.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
         
   
         //Palataan kurssivalikkoon.
