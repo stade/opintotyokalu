@@ -37,7 +37,11 @@ public class Exporter {
 	private static int i;
 
 	/**
-	 *	Fetches names and credits of courses from external Keraaja object, parses its kurssit field into a String[][], and returns it. ?TODO? This functions functionality might as well be in exportCourses() (and then exportCourses could be renamed to printCourses())!
+	 *	Fetches names and credits of courses from external Keraaja object,
+	 *	parses its kurssit field into a String[][], and returns it. 
+	 *
+	 *	TODO: This functions functionality might as well be in exportCourses()
+	 *	(and then exportCourses could be renamed to printCourses())!
 	 */
 	private static String[][] importCourses() {
 
@@ -74,6 +78,9 @@ public class Exporter {
 
 	/**
 	 *	Prints String[][] courses as html file (file name defined by String coursesfn)
+	 *	
+	 *	@param courses
+	 *	@return true on success, else false
 	 */
 	private static boolean exportCourses(String[][] courses) {
 		try {
@@ -123,6 +130,8 @@ public class Exporter {
 
 	/**
 	 *	Fetches timetable data from some external class.
+	 *	
+	 *	@return timetable
 	 */
 	private static String[][] importTimetable() {
 		String[][] timetable = new String[24][5]; // timetable[hours][days]
@@ -138,6 +147,9 @@ public class Exporter {
 
 	/**
 	 *	Prints String[][] timetable as html file (file name defined by String timetablefn)
+	 *
+	 *	@param timetable
+	 *	@return boolean
 	 */
 	private static boolean exportTimetable(String[][] timetable) {
 		try {

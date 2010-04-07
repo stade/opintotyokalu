@@ -19,13 +19,11 @@ public class Opintotyokalu {
 				"- Johdatus funktionaaliseen ohjelmointiin 30.3 klo: 16-19 salissa A111"
 		};
 		
-		
 		//tenttimuistutukset ennen varsinaisen ohjelman k�ynnistyst�
 		muistutus.muistuta(tentit);
 		
 		//k�ynnistet��n k�ytt�liittym�n p��valikko
 		kali.paaValikko();
-		
 		
 	}
 }
