@@ -34,20 +34,22 @@ public class SaverLoader implements Serializable {
 	 */
 	public boolean saveObject(Object toBeSaved) {
 
-		try {
-			this.fileOut = new FileOutputStream(this.DEFAULTFILE);
-			this.objectOut = new ObjectOutputStream(this.fileOut);
+		if (toBeSaved instanceof Keraaja) {
+			try {
+				this.fileOut = new FileOutputStream(this.DEFAULTFILE);
+				this.objectOut = new ObjectOutputStream(this.fileOut);
 			
-			this.objectOut.writeObject(toBeSaved);
-		} catch (Exception e) { //kiireinen poikkeuskäsittely
-			return false;
+				this.objectOut.writeObject(toBeSaved);
+			} catch (Exception e) { //kiireinen poikkeuskäsittely
+				return false;
+			}
+			return true;
 		}
-		return true;	
-	
+		else return false;
 	}
 
 	/**
-	 * Tallennetaan parametrina saatuun tiedostoon
+	 * Tallennetaan Keraaja olio parametrina saatuun tiedostoon
 	 * 
 	 * @param toBeSaved olio joka tallennetaan tiedostoon
 	 * @param toSaveInto tiedosto johon tallennetaan
@@ -57,21 +59,24 @@ public class SaverLoader implements Serializable {
 	 */
 	public boolean saveObject(Object toBeSaved, String toSaveInto) {
 		
-		try {
-			this.fileOut = new FileOutputStream(toSaveInto);
-			this.objectOut = new ObjectOutputStream(this.fileOut);
-			this.objectOut.writeObject(toBeSaved);
-		} catch (Exception e) { //kiireinen poikkeuskäsittely
-			return false;
+		if (toBeSaved instanceof Keraaja) {
+			try {
+				this.fileOut = new FileOutputStream(toSaveInto);
+				this.objectOut = new ObjectOutputStream(this.fileOut);
+				this.objectOut.writeObject(toBeSaved);
+			} catch (Exception e) { //kiireinen poikkeuskäsittely
+				return false;
+			}
+			return true;
 		}
-		return true;
+		else return false;
 	}
 	
 	/**
-	 * Ladataan objecti tiedostosta
+	 * Ladataan Keraaja olio tiedostosta
 	 * 
 	 * @param path tiedostopolku jossa tiedosto sijaitsee
-	 * @return 		tiedostosta ladattu olio tai false jos lukeminen epäonnistuu
+	 * @return 		tiedostosta ladattu Keraaja tai false jos lukeminen epäonnistuu
 	 * 
 	 * TODO: objection tyypin tarkistus
 	 */
@@ -84,13 +89,17 @@ public class SaverLoader implements Serializable {
 		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
-		return this.loadedObject;
+		
+		if (this.loadedObject instanceof Keraaja) {
+			return this.loadedObject;
+		}
+		else return false;
 	}
 	
 	/**
-	 * Ladataan objecti default -tiedostosta
+	 * Ladataan Keraaja olio default -tiedostosta
 	 * 
-	 * @return 		tiedostosta ladattu olio tai false jos lukeminen epäonnistuu
+	 * @return 		tiedostosta ladattu Keraaja tai false jos lukeminen epäonnistuu
 	 * 
 	 * TODO: objection tyypin tarkistus
 	 */
@@ -103,7 +112,11 @@ public class SaverLoader implements Serializable {
 		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
-		return this.loadedObject;
+		
+		if (this.loadedObject instanceof Keraaja) {
+			return this.loadedObject;
+		}
+		else return false;
 	}
 
 }
