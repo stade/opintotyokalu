@@ -1,4 +1,8 @@
-
+/**
+ * Luokkakuvaus tähän
+ * @author ryhmä?
+ *
+ */
 public class Kurssi {
 
 	private String nimi;

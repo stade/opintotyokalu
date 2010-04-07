@@ -1,3 +1,8 @@
+/**
+ * Luokkakuvaus tähän
+ * @author ryhmä?
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,7 +12,7 @@ public class Keraaja implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8333867660428826471L;
+	//private static final long serialVersionUID = -8333867660428826471L;
 	private ArrayList<Tapahtuma> tentit; // Tarviiko tenttien olla erikseen vai laitetaanko tapahtumataulukkoon
 	private ArrayList<Tapahtuma> tapahtumat;
 	private ArrayList<Kurssi> kurssit;	
@@ -31,7 +36,7 @@ public class Keraaja implements Serializable{
 	}
 	
 	
-	/* Tulostaa yhteenvedon kursseista, KESKENER�INEN */
+	/* Tulostaa yhteenvedon kursseista, KESKENER�INEN */
 	public void tulostaKurssit() {
 		System.out.println("Suoritetut kurssit");
 		for (int i = 0; i < kurssit.size(); i++) {

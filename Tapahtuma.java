@@ -1,3 +1,9 @@
+/**
+ * Kuvaus luokasta tähän
+ * 
+ * @author ryhmä?
+ */
+
 import java.util.*;
 
 public class Tapahtuma {
@@ -9,41 +15,82 @@ public class Tapahtuma {
 	private String sijainti;
 	private String kuuluuKurssiinNimelta;
 	
-	 public Tapahtuma(String nimi) {
+	/**
+	 * 
+	 * @param nimi
+	 */
+	public Tapahtuma(String nimi) {
 		this.nimi = nimi;	
 	}
-	 
+	
+	/**
+	 * 
+	 * @param tyyppi
+	 */
 	public void setTyyppi(String tyyppi){
 	  this.tyyppi = tyyppi;	
 	}
 	
+	/**
+	 * 
+	 * @param nimi
+	 */
 	public void setNimi(String nimi){
-		  this.nimi = nimi;	
-		}
+		this.nimi = nimi;	
+	}
 	
+	/**
+	 * 
+	 * @param sijainti
+	 */
 	public void setSijainti(String sijainti){
-		  this.sijainti = sijainti;	
-		}
+		this.sijainti = sijainti;	
+	}
+	
+	/**
+	 * 
+	 * @param toistuva
+	 */
 	public void setToistuva(boolean toistuva){
-		  this.toistuva = toistuva;	
-		}
+		this.toistuva = toistuva;	
+	}
 	
+	/**
+	 * 
+	 * @param alku
+	 */
 	public void setAlku(Date alku){
-		  this.alku = alku;	
-		}
+		this.alku = alku;	
+	}
 	
+	/**
+	 * 
+	 * @param loppu
+	 */
 	public void setLoppu(Date loppu){
-		  this.loppu = loppu;
-		}
+		this.loppu = loppu;
+	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Object getNimi() {
 		return this.nimi;
-		}
+	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getKuuluuKurssiinNimelta() {
 		return kuuluuKurssiinNimelta;
 	}
 
+	/**
+	 * 
+	 * @param kuuluuKurssiinNimelta
+	 */
 	public void setKuuluuKurssiinNimelta(String kuuluuKurssiinNimelta) {
 		this.kuuluuKurssiinNimelta = kuuluuKurssiinNimelta;
 	}
