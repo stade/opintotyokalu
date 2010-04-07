@@ -1,9 +1,18 @@
+/**
+ * Luokkakuvaus tÃ¤hÃ¤n jos jÃ¤Ã¤ aikaa
+ * 
+ * @author ryhmÃ¤?
+ */
+
 import java.util.Scanner;
 
 public class Tenttimuistutus {
 	
 
-	//Muistuttaa tulevista tenteistä
+	/**
+	 * Muistuttaa tulevista tenteistï¿½
+	 * @param tentit
+	 */
 	public void muistuta(String[] tentit) {
 		
 		Scanner nappaimisto;
@@ -56,18 +65,22 @@ public class Tenttimuistutus {
 		
 	}
 	
-	//Tulostaa tyhjän välin
+	/**
+	 * Tulostaa tyhjï¿½n vï¿½lin
+	 * @param k
+	 */
 	public void tulostaVali(int k) {
 	
-		while (0 < k) {
-			
+		while (0 < k) {	
 			System.out.print(" ");
 			k--;
 		}
-		
-		
 	}
-	//Vaihtaa rivin
+	
+	/**
+	 * Vaihtaa rivin
+	 * @param k
+	 */
 	public void rivinvaihto(int k) {
 		
 		while(0 < k) {

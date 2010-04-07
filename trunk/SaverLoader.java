@@ -1,9 +1,10 @@
-/*
+/**
  * SaverLoader.java 
  * 
  * Luokka toteuttaa Serializable rajapinnan ja kirjoittaa aksessoreilla
  * olioita tiedostoon.
  * 
+ * @author ryhmä?
  * 
  * TODO: tarkistukset ja hienosäätö
  */
@@ -23,7 +24,7 @@ public class SaverLoader implements Serializable {
 	private Object loadedObject;
 	private final String DEFAULTFILE = "opinnot.txt";
 	
-	/*
+	/**
 	 * Tallennetaan default lokaatioon
 	 * 
 	 * @param toBeSaved olio joka tallennetaan tiedostoon
@@ -38,14 +39,14 @@ public class SaverLoader implements Serializable {
 			this.objectOut = new ObjectOutputStream(this.fileOut);
 			
 			this.objectOut.writeObject(toBeSaved);
-		} catch (Exception e) { // vituiks meni tarkistaa kaikki exceptionit apista syssymmällä
+		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
 		return true;	
 	
 	}
 
-	/*
+	/**
 	 * Tallennetaan parametrina saatuun tiedostoon
 	 * 
 	 * @param toBeSaved olio joka tallennetaan tiedostoon
@@ -60,13 +61,13 @@ public class SaverLoader implements Serializable {
 			this.fileOut = new FileOutputStream(toSaveInto);
 			this.objectOut = new ObjectOutputStream(this.fileOut);
 			this.objectOut.writeObject(toBeSaved);
-		} catch (Exception e) { // vituiks meni tarkistaa kaikki exceptionit apista syssymmällä
+		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
 		return true;
 	}
 	
-	/*
+	/**
 	 * Ladataan objecti tiedostosta
 	 * 
 	 * @param path tiedostopolku jossa tiedosto sijaitsee
@@ -80,13 +81,13 @@ public class SaverLoader implements Serializable {
 			this.fileIn = new FileInputStream(path);
 			this.objectIn = new ObjectInputStream(this.fileIn);
 			this.loadedObject = this.objectIn.readObject();
-		} catch (Exception e) { // vituiks meni tarkistaa kaikki exceptionit apista syssymmällä
+		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
 		return this.loadedObject;
 	}
 	
-	/*
+	/**
 	 * Ladataan objecti default -tiedostosta
 	 * 
 	 * @return 		tiedostosta ladattu olio tai false jos lukeminen epäonnistuu
@@ -99,19 +100,10 @@ public class SaverLoader implements Serializable {
 			this.fileIn = new FileInputStream(this.DEFAULTFILE);
 			this.objectIn = new ObjectInputStream(this.fileIn);
 			this.loadedObject = this.objectIn.readObject();
-		} catch (Exception e) { // vituiks meni tarkistaa kaikki exceptionit apista syssymmällä
+		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}
 		return this.loadedObject;
-	}
-		
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

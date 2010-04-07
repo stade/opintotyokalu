@@ -1,11 +1,20 @@
+/**
+ * Class contains six functions. import-, exportCourses(), import- and exportTimetable()
+ * are private, internal functions. The import- functions (are supposed to) fetch the 
+ * required data from other classes/objects that contain the corresponding user input.
+ * The export- functions create html files based on previously (above) imported data.
+ * printCourses() and -Timetable() are the ones that should be called by other classes.
+ * 
+ * Created files' filenames are defined by static variables coursesfn and timetablefn.
+ * Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
+ * 
+ * @author ryhmä?
+ */
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/**
- * Class contains six functions. import-, exportCourses(), import- and exportTimetable() are private, internal functions. The import- functions (are supposed to) fetch the required data from other classes/objects that contain the corresponding user input. The export- functions create html files based on previously (above) imported data. printCourses() and -Timetable() are the ones that should be called by other classes.
- * Created files' filenames are defined by static variables coursesfn and timetablefn. Timetable attributes 'weekday names' and 'scale of timetable', are also defined statically.
- */
 public class Exporter {
 
 	private static File file;
@@ -212,6 +221,10 @@ public class Exporter {
 		}
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		printCourses();
 	}
