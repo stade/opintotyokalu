@@ -22,6 +22,14 @@ public class Kayttoliittyma {
 		 this.paivaysMalli = new SimpleDateFormat("dd.MM. hh");	//K�ytt�j� sy�tt�� ajat t�ss� muodossa
 		 this.tiedot = new Keraaja();
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public Keraaja getTiedot() {
+		return this.tiedot;
+	}
+	
 		
 	/**
 	 * 	Siirt�� alavalikkoon p��valikosta annetun valintanumeron mukaan.
