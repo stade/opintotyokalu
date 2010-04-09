@@ -18,13 +18,13 @@ Raportti & tallennus&avaa
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-====Valmiina ~45%:====
+====Valmiina ~70%:====
 
-- Käyttöliitymän perusvalikot ja kurssivalikkot ilman toiminnallisuuksia luotu, valikoissa liikkuminen ja virheellisten syötteiden käsittely toteutettu. 
+- Käyttöliitymän melkein kaikki valikot toteutettu nyt pitää lisätä niihin toiminnallisuus
 
 - Main-luokka (opintotyokalu-luokka) luotu.
 
-- Tenttimuistutuksen tulosteet osittain toteutettu.
+- Tenttimuistuksiin pitää vielä saada tentit sen mukaan kuinka paljon aikaa tentin alkuun on.
 
 ===Juho=== 
 Exporter-luokka
