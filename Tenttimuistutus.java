@@ -4,6 +4,7 @@
  * @author ryhmÃ¤?
  */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tenttimuistutus {
@@ -11,9 +12,15 @@ public class Tenttimuistutus {
 
 	/**
 	 * Muistuttaa tulevista tenteistï¿½
-	 * @param tentit
+	 * @param tiedot
 	 */
-	public void muistuta(String[] tentit) {
+	public void muistuta(Keraaja tiedot) {
+		
+		//Tentit
+		ArrayList<Tapahtuma> tentit;
+		
+		//Haetaan tentit kerääjästä
+		tentit = tiedot.getTentit();
 		
 		Scanner nappaimisto;
 		tulostaVali(10);
@@ -27,10 +34,12 @@ public class Tenttimuistutus {
 		tulostaVali(5);
 		rivinvaihto(2);
 		
+		
+		
 		//Tulostaa tulevat tentit
-		for (int i = 0; i < tentit.length; i++ ) {
+		for (int i = 0; i < tentit.size(); i++ ) {
 			tulostaVali(1);
-			System.out.print(tentit[i]);
+			System.out.print(tentit.get(i));
 			tulostaVali(1);
 			rivinvaihto(1);
 			
