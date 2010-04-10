@@ -8,7 +8,9 @@
 kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 
 - Kerääjä tehty mutta ei serialisoituva
+
 - tentti, kurssi, tapahtumat tehty
+
 - Kurssien&tenttien lisäys&poisto tehty
 
 ===Tekemättä===
