@@ -208,18 +208,18 @@ public class Kayttoliittyma {
 	 */
 	public int valintaTenttiPoistoValikko(int valintanum) {
 		
-		switch (valintanum) {
-	        //Keskenerï¿½inen ei toimintoja
-	        case 1: System.out.print("tï¿½stï¿½ 1. tentin poisto");     	break;
-	        case 2: System.out.print("tï¿½stï¿½ 2. tentin poisto");     	break;
-	        case 3: System.out.print("tï¿½stï¿½ 3. tentin poisto");   		break;
-	        case 4: System.out.print("tï¿½stï¿½ lisï¿½ï¿½ tenttejï¿½");			break;
-	        case 0: tenttiValikko();									break;
-	        default : System.out.println("Virheellinen syï¿½te");  return 1;
-
-		}
-		return 0;
+	// tähän parempi virheenkäsittely esim isInteger
 		
+		if (valintanum == 0) {
+			tenttiValikko();
+			return 0;
+		}
+		else if (valintanum > 0 && valintanum <= this.tiedot.getTentit().size()) {
+			this.tiedot.getTentit().remove(valintanum-1); // Tenttien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			tenttiValikko();
+			return 0;
+		}
+		else {System.out.println("Virheellinen syï¿½te");  return 1;}
 	}	
 	
 	/**
@@ -497,26 +497,63 @@ public class Kayttoliittyma {
 	 * 
 	 */
 	public void lisaaTenttiValikko() {
+	Scanner nappaimisto;
+		
+		//Nï¿½mï¿½ korvataan oikeilla tietotyypeillï¿½
+		String tenttinimi;
+		String luento;
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyï¿½kalu - Tentin lisï¿½ys");
+		System.out.println("");
+		System.out.print("Anna tentin nimi: ");
+	
+		nappaimisto = new Scanner(System.in);
+		tenttinimi = nappaimisto.nextLine();
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyï¿½kalu - Tentin lisï¿½ys");
+		System.out.println("");
+		System.out.println(tenttinimi);
+		System.out.println("");
+		System.out.println("Anna tentin ajankohta esim. 16.12. 10-12");
+		//System.out.println(paivaysMalli.toPattern() + ""); huono tapa ilmoittaa
+        System.out.print("Tentin Ajankohta: ");
+        
+        nappaimisto = new Scanner(System.in);
+        luento = nappaimisto.nextLine();
+        
+        tyhjennaNakyma();
+		System.out.println("Opintotyï¿½kalu - Tenttien lisï¿½ys");
+		System.out.println("");
+		System.out.println(tenttinimi);
+		System.out.println(luento);
+		System.out.println("");
+        System.out.print("Paina enter palataksesi takaisin");
+        
+        nappaimisto = new Scanner(System.in);
+        nappaimisto.nextLine();
+        
+        //lisÃ¤tÃ¤Ã¤n tentti kerÃ¤Ã¤jÃ¤Ã¤n.
+        Tapahtuma lisattyTapahtuma = new Tapahtuma(tenttinimi);
+        this.tiedot.addTentti(lisattyTapahtuma);
+        
+        //Ajan parseaminen käyttäjän syötteestä ja sen lisääminen tapahtumaan
+        String[] parametrit = luento.split(" ");
+        String aika1 = parametrit[0];
+        String aika2 = parametrit[0];
+        String[] tunnit = luento.split("-");
+        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
+        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
+        aika2 += " " + tunnit[1].charAt(0);
+        aika2 += tunnit[1].charAt(1);
+        
+        lisattyTapahtuma.setAlku(parseKayttajanAntamaAika(aika1));
+        lisattyTapahtuma.setLoppu(parseKayttajanAntamaAika(aika2));
+         
+        //Palataan tenttivalikkoon.
+        tenttiValikko();
 
-		/* 
-		 * Allaosa tarvittavat koodista tenttien tietorakenteisiin lisï¿½ï¿½mistï¿½ varten,
-		 * Ei vielï¿½ kysy kï¿½yttï¿½jï¿½ltï¿½ mitï¿½ï¿½n!  
-		 */
-		Tapahtuma lisattavaTentti = new Tapahtuma(null);
-		
-		System.out.println("Tentin lisï¿½ï¿½minen:");
-		System.out.println("Anna ajat muodossa " + paivaysMalli.toPattern() + " esim. 15.01 14");
-		
-		lisattavaTentti.setNimi("Kï¿½yttï¿½jï¿½n syï¿½ttï¿½mï¿½ kurssinimi");
-		Date alkuAika = null;
-		
-		try {
-			alkuAika = paivaysMalli.parse("15.01 14");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		lisattavaTentti.setAlku(alkuAika);	
 	}
 	
 	/**
@@ -581,15 +618,16 @@ public class Kayttoliittyma {
 		Scanner nappaimisto;
 		int valintanum;
 		
+		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
+		
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu ï¿½ Tenttien poisto");
 		System.out.println("");
 		System.out.println("Poista");
 		
-		System.out.println("1. Tentti 1.");
-		System.out.println("2. Tentti 2.");
-		System.out.println("3. Tentti 3.");
-		System.out.println("4. Lisï¿½ï¿½ tenttejï¿½");
+		for(int i =0;i<tentit.size();i++) {
+			  System.out.println(i+1 + ". " + tentit.get(i).getNimi()); 
+					  }		
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.print("Valinta:");
@@ -684,13 +722,15 @@ public class Kayttoliittyma {
         nappaimisto = new Scanner(System.in);
         nappaimisto.nextLine();
         
-        //lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n. KESKEN!!
+        //lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n.
         Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
         this.tiedot.addKurssi(lisattyKurssi);
         
         Tapahtuma uusiTapahtuma = new Tapahtuma(luento);
         uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
         
+        
+        //Ajan parseaminen käyttäjän syötteestä ja sen lisääminen tapahtumaan
         String[] parametrit = luento.split(" ");
         String aika1 = parametrit[0];
         String aika2 = parametrit[0];
@@ -706,8 +746,6 @@ public class Kayttoliittyma {
         this.tiedot.getTapahtumat().add(uusiTapahtuma);
      
         //Palataan kurssivalikkoon.
-        System.out.println(aika1);
-        System.out.println(aika2);
         kurssiValikko();
 
 	}
@@ -807,7 +845,6 @@ public class Kayttoliittyma {
 		for(int i =0;i<kurssit.size();i++) {
 		  System.out.println(i+1 + ". " + kurssit.get(i).getNimi()); 
 				  }		
-		//valinta poistaa kurssi.olio.kurssinro(valinta)
 
 		System.out.println(kurssit.size()+1 + ". Lisï¿½ï¿½ kursseja");
 		System.out.println("0. Palaa takaisin");
