@@ -1,6 +1,7 @@
-[http://www.exampledepot.com/egs/java.text/parsedate.html Daten parseeminen]
+#summary Työnjako + edistymisyhteenveto kolmanteen demoon
 
-#summary Työnjako kolmanteen demoon
+
+[http://www.exampledepot.com/egs/java.text/parsedate.html Daten parseeminen]
 
 =Kolmannen demon työnjako=
 
@@ -29,13 +30,19 @@ Raportti & tallennus&avaa
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-====Valmiina ~70%:====
+====Valmiina ~80%:====
 
-- Käyttöliitymän melkein kaikki valikot toteutettu nyt pitää lisätä niihin toiminnallisuus
+Käyttöliittymä lähes valmis (Nyt vaan pitää implementoida toiminnallisuudet)
 
-- Main-luokka (opintotyokalu-luokka) luotu.
+Tenttimuistutus lähes valmis
 
-- Tenttimuistuksiin pitää vielä saada tentit sen mukaan kuinka paljon aikaa tentin alkuun on.
+===Tekemättä===
+
+- Käyttöliittymästä puuttuu joitakin syöte ja virhetarkistuksia
+
+- Tenttimuistutus ei tulosta tenttejä aikajärjestyksessä
+
+- Testaaminen 
 
 ===Juho=== 
 Exporter-luokka
