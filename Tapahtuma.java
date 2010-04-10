@@ -78,7 +78,21 @@ public class Tapahtuma {
 	public Object getNimi() {
 		return this.nimi;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getAlku() {
+		return this.alku;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getSijainti() {
+		return this.sijainti;
+	}
 	/**
 	 * 
 	 * @return
