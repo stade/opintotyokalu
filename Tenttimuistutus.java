@@ -1,8 +1,12 @@
 /**
+
  * Luokkakuvaus t√§h√§n jos j√§√§ aikaa
  * 
  * @author ryhm√§?
  */
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,14 +38,31 @@ public class Tenttimuistutus {
 		tulostaVali(5);
 		rivinvaihto(2);
 		
-		
-		
+		//J‰rjestelm‰n t‰m‰n hetkinen aika.
+		Date aika = new Date();
+	
 		//Tulostaa tulevat tentit
 		for (int i = 0; i < tentit.size(); i++ ) {
-			tulostaVali(1);
-			System.out.print(tentit.get(i));
-			tulostaVali(1);
-			rivinvaihto(1);
+			
+			Tapahtuma tentti = null;
+			
+			tentti = tentit.get(i);
+			
+			//Tulostaa tentti joita ei ole viel‰ pidetty
+			if (tentti.getAlku().before(aika)) { 
+			
+				tulostaVali(1);
+				//Tulostetaan Kurssi johon tentti kuuluu
+				System.out.println(tentti.getKuuluuKurssiinNimelta());
+				tulostaVali(1);
+				//Tulostetaan tentin sijainti
+				System.out.println(tentti.getSijainti());
+				tulostaVali(1);
+				//Tulostetaan tentin alkamisaika muodossa "dd.MM. hh"
+				DateFormat dateFormat = new SimpleDateFormat("dd.MM. hh");
+				System.out.println(dateFormat.format(tentti.getAlku().toString()));
+				rivinvaihto(1);
+			}	
 			
 		}
 		
@@ -60,6 +81,7 @@ public class Tenttimuistutus {
 		
 	}
 	
+
 	/**
 	 * Tulostaa tyhjÔøΩn vÔøΩlin
 	 * @param k
