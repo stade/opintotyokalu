@@ -30,9 +30,9 @@ Raportti & tallennus&avaa
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-Käyttöliittymä lähes valmis (Nyt vaan pitää implementoida toiminnallisuudet)
+- Käyttöliittymä lähes valmis (Nyt vaan pitää implementoida toiminnallisuudet)
 
-Tenttimuistutus lähes valmis
+- Tenttimuistutus lähes valmis
 
 ===Tekemättä===
 
