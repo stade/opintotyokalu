@@ -30,8 +30,6 @@ Raportti & tallennus&avaa
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-====Valmiina ~80%:====
-
 Käyttöliittymä lähes valmis (Nyt vaan pitää implementoida toiminnallisuudet)
 
 Tenttimuistutus lähes valmis
@@ -43,6 +41,8 @@ Tenttimuistutus lähes valmis
 - Tenttimuistutus ei tulosta tenttejä aikajärjestyksessä
 
 - Testaaminen 
+
+====Valmiina ~80%:====
 
 ===Juho=== 
 Exporter-luokka
