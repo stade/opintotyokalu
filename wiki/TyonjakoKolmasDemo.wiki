@@ -11,10 +11,10 @@ Kerääjä tehty mutta ei serialisoituva
 tentti, kurssi, tapahtumat tehty
 Kurssien&tenttien lisäys&poisto tehty
 
-==TEKEMÄTTÄ==
-Tekemättä Kurssien/Tenttien muokkaus
-kerääjän serialisointi
-Testaus
+===Tekemättä===
+  * Kurssien/Tenttien muokkaus
+  * kerääjän serialisointi
+  * Testaus
 
 ====Valmiina: ~60% ====
 
