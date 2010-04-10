@@ -7,7 +7,16 @@
 ===Janne K.=== 
 kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 
-====Valmiina: ~10% ====
+Kerääjä tehty mutta ei serialisoituva
+tentti, kurssi, tapahtumat tehty
+Kurssien&tenttien lisäys&poisto tehty
+
+==TEKEMÄTTÄ==
+Tekemättä Kurssien/Tenttien muokkaus
+kerääjän serialisointi
+Testaus
+
+====Valmiina: ~60% ====
 
 ===Janne H.===
 Raportti & tallennus&avaa
