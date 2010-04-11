@@ -24,6 +24,12 @@ kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 ===Janne H.===
 Raportti & tallennus&avaa
 
+===Tehty:===
+Kerääjän tallentaminen ja lataus
+
+===Tekemättä:===
+Tenttien tallennus ja lataus
+
 ====Valmiina: ~50 % ====
 
 ===Tatu===
