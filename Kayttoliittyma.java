@@ -756,11 +756,7 @@ public class Kayttoliittyma {
 		String luento;
 		ArrayList<Tapahtuma> uudetTapahtumat = new ArrayList<Tapahtuma>();
 		Tapahtuma uusiTapahtuma;
-		
-		Date currenttime = new Date(System.currentTimeMillis());
-		DateFormat dateFormat = new SimpleDateFormat("yy");
-		
-		
+	
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Kurssin lisï¿½ys");
 		System.out.println("");
@@ -779,6 +775,9 @@ public class Kayttoliittyma {
 		nappaimisto = new Scanner(System.in);
 		op = nappaimisto.nextInt();
 		
+		
+		Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
+	    this.tiedot.addKurssi(lisattyKurssi);
 	
 		//Loopataan kunnes tyhja syöte. Näin voidaan lisätä useampia tapahtumia peräkkäin.
 		
@@ -788,9 +787,8 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println(kurssinimi);
 		System.out.println(op + "op");
-	
+        
 		//tulostetaan lisätyt tapahtumat
-		
 		for(int i=0;i<uudetTapahtumat.size();i++){ 
 			System.out.println(uudetTapahtumat.get(i).getNimi());
 		}
@@ -808,9 +806,7 @@ public class Kayttoliittyma {
         if(luento.equals("")) break;
         
         //lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n.
-        Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
-        this.tiedot.addKurssi(lisattyKurssi);
-               
+       
         uusiTapahtuma = new Tapahtuma(luento);
         uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
         
@@ -833,7 +829,9 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println(kurssinimi);
 		System.out.println(op + "op");
-		System.out.println(luento);
+		for(int i=0;i<uudetTapahtumat.size();i++){ 
+			System.out.println(uudetTapahtumat.get(i).getNimi());
+		}
 		System.out.println("");
         System.out.print("Paina enter palataksesi takaisin");
         
