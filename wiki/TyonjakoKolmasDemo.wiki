@@ -16,7 +16,6 @@ kerääjä, tentti, kurssi, tapahtuma-tietorakenteet
 
 ===Tekemättä===
   * Kurssien/Tenttien muokkaus
-  * kerääjän serialisointi
   * Testaus
 
 ====Valmiina: ~60% ====
