@@ -13,12 +13,16 @@ public class Opintotyokalu {
 		//luodaan tenttimuistutus olio
 		Tenttimuistutus muistutus = new Tenttimuistutus();
 		
+		//Käyttöliittymän aloitusvalikko
+		kali.aloitusValikko();
 		
-		//tenttimuistutukset ennen varsinaisen ohjelman kï¿½ynnistystï¿½
+		//tenttimuistutukset
 		muistutus.muistuta(kali.getTiedot());
 		
-		//kï¿½ynnistetï¿½ï¿½n kï¿½yttï¿½liittymï¿½n pï¿½ï¿½valikko
+		//Käyttöliittymän päävalikko
 		kali.paaValikko();
+		
+		
 		
 	}
 }
