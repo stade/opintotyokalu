@@ -39,6 +39,7 @@ public class Tenttimuistutus {
 		}
 		
 		Scanner nappaimisto;
+		Kayttoliittyma.tyhjennaNakyma();
 		tulostaVali(10);
 		System.out.print("Huom!");
 		
