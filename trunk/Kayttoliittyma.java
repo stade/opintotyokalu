@@ -17,6 +17,7 @@ public class Kayttoliittyma {
 	
 	private SimpleDateFormat paivaysMalli; // yhteinen malli pï¿½ivï¿½mï¿½ï¿½rille
 	private Keraaja tiedot;
+	private SaverLoader saveLoad = new SaverLoader();
 		
 	public Kayttoliittyma() {
 		 this.paivaysMalli = new SimpleDateFormat("dd.MM. hh");	//Kï¿½yttï¿½jï¿½ syï¿½ttï¿½ï¿½ ajat tï¿½ssï¿½ muodossa
@@ -150,7 +151,7 @@ public class Kayttoliittyma {
 			return 0;
 		}
 		else if (valintanum > 0 && valintanum <= this.tiedot.getKurssit().size()) {
-			tietynKurssinMuokkausValikko(valintanum-1); // Kurssien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			tietynKurssinMuokkausValikko(valintanum-1); // Kurssien numerot valikossa alkavat 1:stï¿½, ArrayListissï¿½ 0:sta, siispï¿½ vï¿½hennetï¿½ï¿½n yksi
 			kurssiValikko();
 			return 0;
 		}
@@ -166,14 +167,14 @@ public class Kayttoliittyma {
 	 */
 	public int valintaKurssiPoistoValikko(int valintanum) {
 		
-		// tähän parempi virheenkäsittely esim isInteger
+		// tï¿½hï¿½n parempi virheenkï¿½sittely esim isInteger
 		
 		if (valintanum == 0) {
 			kurssiValikko();
 			return 0;
 		}
 		else if (valintanum > 0 && valintanum <= this.tiedot.getKurssit().size()) {
-			this.tiedot.getKurssit().remove(valintanum-1); // Kurssien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			this.tiedot.getKurssit().remove(valintanum-1); // Kurssien numerot valikossa alkavat 1:stï¿½, ArrayListissï¿½ 0:sta, siispï¿½ vï¿½hennetï¿½ï¿½n yksi
 			kurssiValikko();
 			return 0;
 		}
@@ -208,14 +209,14 @@ public class Kayttoliittyma {
 	 */
 	public int valintaTenttiPoistoValikko(int valintanum) {
 		
-	// tähän parempi virheenkäsittely esim isInteger
+	// tï¿½hï¿½n parempi virheenkï¿½sittely esim isInteger
 		
 		if (valintanum == 0) {
 			tenttiValikko();
 			return 0;
 		}
 		else if (valintanum > 0 && valintanum <= this.tiedot.getTentit().size()) {
-			this.tiedot.getTentit().remove(valintanum-1); // Tenttien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			this.tiedot.getTentit().remove(valintanum-1); // Tenttien numerot valikossa alkavat 1:stï¿½, ArrayListissï¿½ 0:sta, siispï¿½ vï¿½hennetï¿½ï¿½n yksi
 			tenttiValikko();
 			return 0;
 		}
@@ -538,7 +539,7 @@ public class Kayttoliittyma {
         Tapahtuma lisattyTapahtuma = new Tapahtuma(tenttinimi);
         this.tiedot.addTentti(lisattyTapahtuma);
         
-        //Ajan parseaminen käyttäjän syötteestä ja sen lisääminen tapahtumaan
+        //Ajan parseaminen kï¿½yttï¿½jï¿½n syï¿½tteestï¿½ ja sen lisï¿½ï¿½minen tapahtumaan
         String[] parametrit = luento.split(" ");
         String aika1 = parametrit[0];
         String aika2 = parametrit[0];
@@ -730,7 +731,7 @@ public class Kayttoliittyma {
         uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
         
         
-        //Ajan parseaminen käyttäjän syötteestä ja sen lisääminen tapahtumaan
+        //Ajan parseaminen kï¿½yttï¿½jï¿½n syï¿½tteestï¿½ ja sen lisï¿½ï¿½minen tapahtumaan
         String[] parametrit = luento.split(" ");
         String aika1 = parametrit[0];
         String aika2 = parametrit[0];
@@ -751,7 +752,7 @@ public class Kayttoliittyma {
 	}
 	
 	/**
-	 *	Muuttaa käyttäjän String muodossa antaman ajan Date-olioksi ja palauttaa sen.
+	 *	Muuttaa kï¿½yttï¿½jï¿½n String muodossa antaman ajan Date-olioksi ja palauttaa sen.
 	 *  Ei toteutettu virheenhallintaa kunnolla!
 	 */
 	
@@ -918,6 +919,12 @@ public class Kayttoliittyma {
 		tallennuspolku = nappaimisto.nextLine();
 		
 		//Tï¿½ssï¿½ tallennetaan annetun tiedostonimen perusteella
+		if (this.saveLoad.saveObject(this.tiedot, tallennuspolku)) {
+			System.out.println("Tallentaminen epÃ¤onnistui!");
+		}
+		else {
+			System.out.println("Tallennettu onnistuneesti.");
+		}
 		
 	}
 	
@@ -942,6 +949,13 @@ public class Kayttoliittyma {
 		avauspolku = nappaimisto.nextLine();
 		
 		//Tï¿½ssï¿½ avataan tiedostosta annetun tiedostonimen perusteella
+		this.tiedot = (Keraaja)this.saveLoad.loadObject(avauspolku);
+		if (!(this.tiedot instanceof Keraaja)) {
+			System.out.println("Lataaminen epÃ¤onnistui!");
+		}
+		else {
+			System.out.println("Lataaminen onnistui!");
+		}
 		
 	}
 	
