@@ -27,17 +27,15 @@ public class Tenttimuistutus {
 		//Tentit
 		ArrayList<Tapahtuma> tentit;
 		
-		//Väliaikainen tietorakenne tenttien tulostamista varten
+		//Vï¿½liaikainen tietorakenne tenttien tulostamista varten
 		ArrayList<Tapahtuma> temp = new ArrayList<Tapahtuma>();
 		
-		//Haetaan tentit kerääjästä
+		//Haetaan tentit kerï¿½ï¿½jï¿½stï¿½
 		tentit = tiedot.getTentit();
 		
-		//Kopioidaan tentit väliaikaiseen tietorakenteeseen
+		//Kopioidaan tentit vï¿½liaikaiseen tietorakenteeseen
 		for (int i = 0; i < tentit.size(); i++ ) {
-			
 			temp.add(tentit.get(i));
-			
 		}
 		
 		Scanner nappaimisto;
@@ -52,62 +50,54 @@ public class Tenttimuistutus {
 		tulostaVali(5);
 		rivinvaihto(2);
 		
-		//	Järjestelmän tämän hetkinen aika.
+		//	Jï¿½rjestelmï¿½n tï¿½mï¿½n hetkinen aika.
 		Date aika = new Date();
-		
-		
-		// Poistetaan menneet tentit väliaikaisesta tietorakenteesta
+
+		// Poistetaan menneet tentit vï¿½liaikaisesta tietorakenteesta
 		for (int i = 0; i < temp.size();  i++ ) {
 			
 			tentti = temp.get(i);
 			
 			if (tentti.getAlku().after(aika)) {
-				
 				temp.remove(i);
-				
 			}
-			
 		}
 	
-		//Tulostaa tulevat tentit aikajärjestyksessä niin, että etsii lähimpänä olevan
-		//tentin poistaa sen tietorakenteesta ja tulostaa sen. Tätä jatketaan kunnes
-		//tietorakenne on tyhjä.
+		//Tulostaa tulevat tentit aikajï¿½rjestyksessï¿½ niin, ettï¿½ etsii lï¿½himpï¿½nï¿½ olevan
+		//tentin poistaa sen tietorakenteesta ja tulostaa sen. Tï¿½tï¿½ jatketaan kunnes
+		//tietorakenne on tyhjï¿½.
 		while (temp.isEmpty() == false) {
 			
 			lahinna = temp.get(0);
 			
-			//Käydään kaikki tentit läpi ja etsitään tentti johon on vähiten aikaa
+			//Kï¿½ydï¿½ï¿½n kaikki tentit lï¿½pi ja etsitï¿½ï¿½n tentti johon on vï¿½hiten aikaa
 			for (int i = 0; i < temp.size(); i++ ) {
 			
 				tentti = temp.get(i);
 				
-				//Jos löytyi tentti joka on lähempänä kuin edellinen lähin korvataan se.
+				//Jos lï¿½ytyi tentti joka on lï¿½hempï¿½nï¿½ kuin edellinen lï¿½hin korvataan se.
 				if (tentti.getAlku().before(lahinna.getAlku())) {
-						
 					lahinna = tentti;
 					indeksi = i;
-						
 				}
 			}
 			
-			//Poistetaan lähinnä oleva tentti väliaikaisesta tietorakenteesta
+			//Poistetaan lï¿½hinnï¿½ oleva tentti vï¿½liaikaisesta tietorakenteesta
 			temp.remove(indeksi);
-			
-			
 			tulostaVali(1);
+			
 			//Tulostetaan kurssi johon tentti kuuluu
 			System.out.println(lahinna.getKuuluuKurssiinNimelta());
 			tulostaVali(1);
+			
 			//Tulostetaan tentin sijainti
 			System.out.println(lahinna.getSijainti());
 			tulostaVali(1);
+			
 			//Tulostetaan tentin alkamisaika muodossa "dd.MM. hh"
 			DateFormat dateFormat = new SimpleDateFormat("dd.MM. hh");
 			System.out.println(dateFormat.format(lahinna.getAlku().toString()));
 			rivinvaihto(1);
-			
-			
-			
 		}
 	
 		rivinvaihto(1);

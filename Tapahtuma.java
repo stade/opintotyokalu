@@ -4,9 +4,10 @@
  * @author ryhmä?
  */
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Tapahtuma {
+public class Tapahtuma implements Serializable {
 
 	private Date alku, loppu;
 	private boolean toistuva;
