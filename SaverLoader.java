@@ -24,6 +24,15 @@ public class SaverLoader implements Serializable {
 	private Object loadedObject;
 	private final String DEFAULTFILE = "opinnot.txt";
 	
+/*	public SaverLoader() {
+		try {
+			this.fileOut = new FileOutputStream(this.DEFAULTFILE);
+			this.fileIn = new FileInputStream(this.DEFAULTFILE);
+		} catch (Exception e) {
+			
+		}
+	}
+	*/
 	/**
 	 * Tallennetaan default lokaatioon
 	 * 
