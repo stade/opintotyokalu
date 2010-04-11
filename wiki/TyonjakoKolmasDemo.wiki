@@ -34,19 +34,14 @@ Kerääjän tallentaminen ja lataus
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-- Käyttöliittymä lähes valmis (Nyt vaan pitää implementoida toiminnallisuudet)
-
+- Käyttöliittymä lähes valmis 
 - Tenttimuistutus lähes valmis
 
 ===Tekemättä===
 
-- Käyttöliittymästä puuttuu joitakin syöte ja virhetarkistuksia
+- Testaaminen ja pikku fiksailu
 
-- Tenttimuistutus ei tulosta tenttejä aikajärjestyksessä
-
-- Testaaminen 
-
-====Valmiina ~80%:====
+====Valmiina 90%:====
 
 ===Juho=== 
 Exporter-luokka
