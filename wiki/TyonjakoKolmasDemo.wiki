@@ -28,9 +28,8 @@ Raportti & tallennus&avaa
 Kerääjän tallentaminen ja lataus
 
 ===Tekemättä:===
-Tenttien tallennus ja lataus
 
-====Valmiina: ~50 % ====
+====Valmiina: ~100 % ====
 
 ===Tatu===
 Käyttöliittymä-luokka / main
