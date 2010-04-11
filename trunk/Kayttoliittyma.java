@@ -31,7 +31,6 @@ public class Kayttoliittyma {
 		return this.tiedot;
 	}
 	
-		
 	/**
 	 * 	Siirtï¿½ï¿½ alavalikkoon pï¿½ï¿½valikosta annetun valintanumeron mukaan.
 	 * 	Palauttaa 1, jos virheellinen valinta. 0 jos halutaan poistua ohjelmasta.
@@ -39,6 +38,20 @@ public class Kayttoliittyma {
 	 *	@param valintanum
 	 *	@return 
 	 */
+	
+	
+	
+	public int valintaAloitusValikko(int valintanum) {
+		
+		switch (valintanum) {
+	       
+	        case 1: avaaTiedostostaValikko();     		break;
+	        case 2: return 0;
+	        default : System.out.println("Virheellinen syï¿½te");  return 1;
+	        
+		}	
+		return 0;
+	}
 	public int valintaPaaValikko(int valintanum) {
 		
 		switch (valintanum) {
@@ -47,7 +60,7 @@ public class Kayttoliittyma {
 	        case 2: tenttiValikko();    			break;
 	        case 3: raporttiValikko();   			break;
 	        case 4: tallennaValikko();				break;
-	        case 0: System.out.println("nï¿½kemiin");	 return 0;
+	        case 0: lopetusValikko();	 return 0;
 	        default : System.out.println("Virheellinen syï¿½te");  return 1;
 	        
 		}	
@@ -222,7 +235,69 @@ public class Kayttoliittyma {
 		}
 		else {System.out.println("Virheellinen syï¿½te");  return 1;}
 	}	
+	public int valintaLopetusValikko(int valintanum) {
+		
+		switch (valintanum) {
+	       
+	        case 1: tallennaTiedostoonValikko();		break;
+	        case 2: System.out.println("Näkemiin!");	return 0;
+	        case 0: paaValikko();						break;
+	        default : System.out.println("Virheellinen syï¿½te");  return 1;
+
+		}
+		return 0;
+	}
 	
+	
+	
+	public void aloitusValikko() {
+		
+		int valintanum;
+		Scanner nappaimisto;
+		
+		tyhjennaNakyma();
+		System.out.println("Opintotyökalu");
+		System.out.println("");
+		System.out.println("1. Lataa tiedot");
+		System.out.println("");
+		System.out.println("2. Aloita lataamatta tietoja");
+		System.out.println("");
+		System.out.print("Valinta:");
+		
+		nappaimisto = new Scanner(System.in);
+		
+		//Kysytï¿½ï¿½n syï¿½tettï¿½ niin kauan kunnes annetaan kokonaislukusyï¿½te
+		while(nappaimisto.hasNextInt() != true) {
+			
+			System.out.println("Virheellinen syï¿½te");
+			System.out.println("");
+			System.out.print("Valinta:");
+			
+			nappaimisto = new Scanner(System.in);	
+			
+		}
+		
+		valintanum = nappaimisto.nextInt();
+		
+		//kysytï¿½ï¿½n valikkonumeroa kunnes se on oikea
+		while(valintaAloitusValikko(valintanum) == 1) {
+			  
+			System.out.print("Valinta:");
+			nappaimisto = new Scanner(System.in);
+			
+			//Kysytï¿½ï¿½n syï¿½tettï¿½ niin kauan kunnes annetaan kokonaislukusyï¿½te
+			while(nappaimisto.hasNextInt() != true) {
+					
+				System.out.println("Virheellinen syï¿½te");
+				System.out.println("");
+				System.out.print("Valinta:");
+					
+				nappaimisto = new Scanner(System.in);	
+					
+			}
+			valintanum = nappaimisto.nextInt(); 	
+		}
+	}
 	/**
 	 *	Kï¿½yttï¿½liittymï¿½n pï¿½ï¿½valikko.
 	 */
@@ -1074,7 +1149,57 @@ public class Kayttoliittyma {
 			valintanum = nappaimisto.nextInt(); 	
 		}		
 	}
-	
+	public void lopetusValikko() {
+		
+		Scanner nappaimisto;
+		int valintanum;
+		
+		
+		System.out.println("Opintotyökalu - Lopetus");
+		System.out.println("");
+		System.out.println("1. Tallenna ja lopeta");
+		System.out.println("");
+		System.out.println("2. Lopeta tallentamatta");
+		System.out.println("");
+		System.out.println("3. Palaa päävalikkoon");
+		System.out.println("");
+		System.out.print("Valinta: ");
+		
+		nappaimisto = new Scanner(System.in);
+		
+		//Kysytï¿½ï¿½n syï¿½tettï¿½ niin kauan kunnes annetaan kokonaislukusyï¿½te
+		while(nappaimisto.hasNextInt() != true) {
+			
+			System.out.println("Virheellinen syï¿½te");
+			System.out.println("");
+			System.out.print("Valinta:");
+			
+			nappaimisto = new Scanner(System.in);	
+			
+		}
+		
+		valintanum = nappaimisto.nextInt();
+		
+		//kysytï¿½ï¿½n valikkonumeroa kunnes se on oikea
+		while(valintaLopetusValikko(valintanum) == 1) {
+			  
+			System.out.print("Valinta:");
+			nappaimisto = new Scanner(System.in);
+			
+			//Kysytï¿½ï¿½n syï¿½tettï¿½ niin kauan kunnes annetaan kokonaislukusyï¿½te
+			while(nappaimisto.hasNextInt() != true) {
+					
+				System.out.println("Virheellinen syï¿½te");
+				System.out.println("");
+				System.out.print("Valinta:");
+					
+				nappaimisto = new Scanner(System.in);	
+					
+			}
+			valintanum = nappaimisto.nextInt(); 	
+		}
+		
+	}
 	
 	/**
 	 * 
