@@ -70,6 +70,22 @@ public class Tapahtuma {
 	public void setLoppu(Date loppu){
 		this.loppu = loppu;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getAlku(){
+		return this.alku;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getLoppu(){
+		return this.loppu;
+	}
 
 	/**
 	 * 
@@ -79,13 +95,6 @@ public class Tapahtuma {
 		return this.nimi;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public Date getAlku() {
-		return this.alku;
-	}
 	/**
 	 * 
 	 * @return
