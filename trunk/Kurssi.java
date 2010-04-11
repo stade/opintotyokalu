@@ -3,7 +3,9 @@
  * @author ryhmä?
  *
  */
-public class Kurssi {
+import java.io.Serializable;
+
+public class Kurssi implements Serializable {
 
 	private String nimi;
 	private int laajuus;

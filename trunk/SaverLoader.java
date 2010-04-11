@@ -24,15 +24,6 @@ public class SaverLoader implements Serializable {
 	private Object loadedObject;
 	private final String DEFAULTFILE = "opinnot.txt";
 	
-/*	public SaverLoader() {
-		try {
-			this.fileOut = new FileOutputStream(this.DEFAULTFILE);
-			this.fileIn = new FileInputStream(this.DEFAULTFILE);
-		} catch (Exception e) {
-			
-		}
-	}
-	*/
 	/**
 	 * Tallennetaan default lokaatioon
 	 * 
@@ -47,9 +38,12 @@ public class SaverLoader implements Serializable {
 			try {
 				this.fileOut = new FileOutputStream(this.DEFAULTFILE);
 				this.objectOut = new ObjectOutputStream(this.fileOut);
-			
 				this.objectOut.writeObject(toBeSaved);
+				this.objectOut.flush();
+				this.objectOut.close();
+				this.fileOut.close();
 			} catch (Exception e) { //kiireinen poikkeuskäsittely
+				e.printStackTrace();
 				return false;
 			}
 			return true;
@@ -73,7 +67,11 @@ public class SaverLoader implements Serializable {
 				this.fileOut = new FileOutputStream(toSaveInto);
 				this.objectOut = new ObjectOutputStream(this.fileOut);
 				this.objectOut.writeObject(toBeSaved);
+				this.objectOut.flush();
+				this.objectOut.close();
+				this.fileOut.close();
 			} catch (Exception e) { //kiireinen poikkeuskäsittely
+				e.printStackTrace();
 				return false;
 			}
 			return true;
@@ -95,6 +93,8 @@ public class SaverLoader implements Serializable {
 			this.fileIn = new FileInputStream(path);
 			this.objectIn = new ObjectInputStream(this.fileIn);
 			this.loadedObject = this.objectIn.readObject();
+			this.objectIn.close();
+			this.fileIn.close();
 		} catch (Exception e) { //kiireinen poikkeuskäsittely
 			return false;
 		}

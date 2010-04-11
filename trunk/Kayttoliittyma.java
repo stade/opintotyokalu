@@ -704,7 +704,7 @@ public class Kayttoliittyma {
 		op = nappaimisto.nextInt();
 		
 	
-		//Loopataan kunnes tyhja syöte. Näin voidaan lisätä useampia tapahtumia peräkkäin.
+		//Loopataan kunnes tyhja syï¿½te. Nï¿½in voidaan lisï¿½tï¿½ useampia tapahtumia perï¿½kkï¿½in.
 		
 		do {
 		tyhjennaNakyma();
@@ -713,7 +713,7 @@ public class Kayttoliittyma {
 		System.out.println(kurssinimi);
 		System.out.println(op + "op");
 	
-		//tulostetaan lisätyt tapahtumat
+		//tulostetaan lisï¿½tyt tapahtumat
 		
 		for(int i=0;i<uudetTapahtumat.size();i++){ 
 			System.out.println(uudetTapahtumat.get(i).getNimi());
@@ -723,7 +723,7 @@ public class Kayttoliittyma {
 		
 		System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
 		System.out.println("16.7. 10-12 Harjoitukset");
-        System.out.println("Voit syï¿½ttï¿½ï¿½ useampia aikoja, mutta vain yhden kerrallaan. Tyhjä syöte lopettaa.");
+        System.out.println("Voit syï¿½ttï¿½ï¿½ useampia aikoja, mutta vain yhden kerrallaan. Tyhjï¿½ syï¿½te lopettaa.");
         System.out.print("Opetusajat: ");
         
         nappaimisto = new Scanner(System.in);
@@ -743,33 +743,33 @@ public class Kayttoliittyma {
         
         //Aika1 ja Aika2:een muodostetaan stringit joista parseri sitten luo Date-oliot.
         
-        //Lisätään päivämäärä
+        //Lisï¿½tï¿½ï¿½n pï¿½ivï¿½mï¿½ï¿½rï¿½
         String aika1 = parametrit[0];
         String aika2 = parametrit[0];
         
-        //Lisätään Nykyinen vuosi
+        //Lisï¿½tï¿½ï¿½n Nykyinen vuosi
         aika1 += dateFormat.format(currenttime);
         aika2 += dateFormat.format(currenttime);
         
-        //Sitten käsitellään käyttäjän antama tuntisyöte esim. 10-12
+        //Sitten kï¿½sitellï¿½ï¿½n kï¿½yttï¿½jï¿½n antama tuntisyï¿½te esim. 10-12
         
-        //jaetaan koko käyttäjän antama syöte kahtia -merkistä
+        //jaetaan koko kï¿½yttï¿½jï¿½n antama syï¿½te kahtia -merkistï¿½
         String[] tunnit = luento.split("-");
         
-        //otetaan vasemman splitin kaksi viimeistä merkkiä ja lisätään parserille tarjottavaan stringiin
+        //otetaan vasemman splitin kaksi viimeistï¿½ merkkiï¿½ ja lisï¿½tï¿½ï¿½n parserille tarjottavaan stringiin
         aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
         aika1 += tunnit[0].charAt(tunnit[0].length()-1);
         
-        //Otetaan kaksi ensimmäistä oikealta puolelta ja lisätään ne toiseen parserille tarjottavaan stringiin
+        //Otetaan kaksi ensimmï¿½istï¿½ oikealta puolelta ja lisï¿½tï¿½ï¿½n ne toiseen parserille tarjottavaan stringiin
         aika2 += " " + tunnit[1].charAt(0);
         aika2 += tunnit[1].charAt(1);
 
-        //Lopuksi nämä stringit parsetaan ja aika talletetaan tapahtumaaan.
+        //Lopuksi nï¿½mï¿½ stringit parsetaan ja aika talletetaan tapahtumaaan.
         
         uusiTapahtuma.setAlku(parseKayttajanAntamaAika(aika1));
         uusiTapahtuma.setLoppu(parseKayttajanAntamaAika(aika2));
         
-        //Viimeinen parametri on tapahtuman nimi, jos parametrejä ei ole tarpeeksi, säilyy nimenä käyttäjän syöte.
+        //Viimeinen parametri on tapahtuman nimi, jos parametrejï¿½ ei ole tarpeeksi, sï¿½ilyy nimenï¿½ kï¿½yttï¿½jï¿½n syï¿½te.
         if(parametrit.length > 2) uusiTapahtuma.setNimi(parametrit[2]);
         
         this.tiedot.getTapahtumat().add(uusiTapahtuma);
@@ -963,11 +963,19 @@ public class Kayttoliittyma {
 		
 		//Tï¿½ssï¿½ tallennetaan annetun tiedostonimen perusteella
 		if (this.saveLoad.saveObject(this.tiedot, tallennuspolku)) {
-			System.out.println("Tallentaminen epÃ¤onnistui!");
+			System.out.println("Tallentaminen onnistui!");
 		}
 		else {
-			System.out.println("Tallennettu onnistuneesti.");
+			System.out.println("Tallentaminen epÃ¤onnistui.");
 		}
+		
+		//palataan pÃ¤Ã¤valikkoon
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		paaValikko();
 		
 	}
 	
@@ -999,6 +1007,14 @@ public class Kayttoliittyma {
 		else {
 			System.out.println("Lataaminen onnistui!");
 		}
+		
+		//palataan pÃ¤Ã¤valikkoon ja nukutaan sekunti jotta palaute nÃ¤kyy kÃ¤yttÃ¤jÃ¤lle
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		paaValikko();
 		
 	}
 	
