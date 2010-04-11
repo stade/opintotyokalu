@@ -20,7 +20,7 @@ public class Kayttoliittyma {
 	private SaverLoader saveLoad = new SaverLoader();
 		
 	public Kayttoliittyma() {
-		 this.paivaysMalli = new SimpleDateFormat("dd.MM. hh");	//Kï¿½yttï¿½jï¿½ syï¿½ttï¿½ï¿½ ajat tï¿½ssï¿½ muodossa
+		 this.paivaysMalli = new SimpleDateFormat("dd.MM.yy HH");	//Kï¿½yttï¿½jï¿½ syï¿½ttï¿½ï¿½ ajat tï¿½ssï¿½ muodossa
 		 this.tiedot = new Keraaja();
 	}
 	/**
@@ -678,6 +678,12 @@ public class Kayttoliittyma {
 		String kurssinimi;
 		int op;
 		String luento;
+		ArrayList<Tapahtuma> uudetTapahtumat = new ArrayList<Tapahtuma>();
+		Tapahtuma uusiTapahtuma;
+		
+		Date currenttime = new Date(System.currentTimeMillis());
+		DateFormat dateFormat = new SimpleDateFormat("yy");
+		
 		
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Kurssin lisï¿½ys");
@@ -697,20 +703,80 @@ public class Kayttoliittyma {
 		nappaimisto = new Scanner(System.in);
 		op = nappaimisto.nextInt();
 		
+	
+		//Loopataan kunnes tyhja syöte. Näin voidaan lisätä useampia tapahtumia peräkkäin.
+		
+		do {
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Kurssien lisï¿½ys");
 		System.out.println("");
 		System.out.println(kurssinimi);
 		System.out.println(op + "op");
+	
+		//tulostetaan lisätyt tapahtumat
+		
+		for(int i=0;i<uudetTapahtumat.size();i++){ 
+			System.out.println(uudetTapahtumat.get(i).getNimi());
+		}
+		
 		System.out.println("");
+		
 		System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
-		System.out.println(paivaysMalli.toPattern() + ",Harjoitukset");
-        System.out.println("Voit syï¿½ttï¿½ï¿½ useampia aikoja, mutta vain yhden kerrallaan");
+		System.out.println("16.7. 10-12 Harjoitukset");
+        System.out.println("Voit syï¿½ttï¿½ï¿½ useampia aikoja, mutta vain yhden kerrallaan. Tyhjä syöte lopettaa.");
         System.out.print("Opetusajat: ");
         
         nappaimisto = new Scanner(System.in);
         luento = nappaimisto.nextLine();
         
+        if(luento.equals("")) break;
+        
+        //lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n.
+        Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
+        this.tiedot.addKurssi(lisattyKurssi);
+               
+        uusiTapahtuma = new Tapahtuma(luento);
+        uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
+        
+        //Ajan parseaminen kï¿½yttï¿½jï¿½n syï¿½tteestï¿½ ja sen lisï¿½ï¿½minen tapahtumaan
+        String[] parametrit = luento.split(" ", 3);
+        
+        //Aika1 ja Aika2:een muodostetaan stringit joista parseri sitten luo Date-oliot.
+        
+        //Lisätään päivämäärä
+        String aika1 = parametrit[0];
+        String aika2 = parametrit[0];
+        
+        //Lisätään Nykyinen vuosi
+        aika1 += dateFormat.format(currenttime);
+        aika2 += dateFormat.format(currenttime);
+        
+        //Sitten käsitellään käyttäjän antama tuntisyöte esim. 10-12
+        
+        //jaetaan koko käyttäjän antama syöte kahtia -merkistä
+        String[] tunnit = luento.split("-");
+        
+        //otetaan vasemman splitin kaksi viimeistä merkkiä ja lisätään parserille tarjottavaan stringiin
+        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
+        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
+        
+        //Otetaan kaksi ensimmäistä oikealta puolelta ja lisätään ne toiseen parserille tarjottavaan stringiin
+        aika2 += " " + tunnit[1].charAt(0);
+        aika2 += tunnit[1].charAt(1);
+
+        //Lopuksi nämä stringit parsetaan ja aika talletetaan tapahtumaaan.
+        
+        uusiTapahtuma.setAlku(parseKayttajanAntamaAika(aika1));
+        uusiTapahtuma.setLoppu(parseKayttajanAntamaAika(aika2));
+        
+        //Viimeinen parametri on tapahtuman nimi, jos parametrejä ei ole tarpeeksi, säilyy nimenä käyttäjän syöte.
+        if(parametrit.length > 2) uusiTapahtuma.setNimi(parametrit[2]);
+        
+        this.tiedot.getTapahtumat().add(uusiTapahtuma);
+        uudetTapahtumat.add(uusiTapahtuma);
+      
+		} while (!luento.equals(""));
+		
         tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Kurssien lisï¿½ys");
 		System.out.println("");
@@ -723,29 +789,6 @@ public class Kayttoliittyma {
         nappaimisto = new Scanner(System.in);
         nappaimisto.nextLine();
         
-        //lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n.
-        Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
-        this.tiedot.addKurssi(lisattyKurssi);
-        
-        Tapahtuma uusiTapahtuma = new Tapahtuma(luento);
-        uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
-        
-        
-        //Ajan parseaminen kï¿½yttï¿½jï¿½n syï¿½tteestï¿½ ja sen lisï¿½ï¿½minen tapahtumaan
-        String[] parametrit = luento.split(" ");
-        String aika1 = parametrit[0];
-        String aika2 = parametrit[0];
-        String[] tunnit = luento.split("-");
-        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
-        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
-        aika2 += " " + tunnit[1].charAt(0);
-        aika2 += tunnit[1].charAt(1);
-        
-        uusiTapahtuma.setAlku(parseKayttajanAntamaAika(aika1));
-        uusiTapahtuma.setLoppu(parseKayttajanAntamaAika(aika2));
-        
-        this.tiedot.getTapahtumat().add(uusiTapahtuma);
-     
         //Palataan kurssivalikkoon.
         kurssiValikko();
 
