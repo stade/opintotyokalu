@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- *	K-ytt-liittym--luokka luo tekstipohjaiset valikot ja mahdollistaa niiss- liikkumisen.
+ *	K‰yttˆliittym‰-luokka luo tekstipohjaiset valikot ja mahdollistaa niiss- liikkumisen.
  */
 public class Kayttoliittyma {
 
@@ -66,7 +66,7 @@ public class Kayttoliittyma {
 	}
 
 	/**
-	 * Siirt-- alavalikkoon tai p--valikkoon kurssivalikosta annetun
+	 * Siirt‰‰ alavalikkoon tai p‰‰valikkoon kurssivalikosta annetun
 	 * valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
 	 *
 	 * @param valintanum
@@ -86,7 +86,7 @@ public class Kayttoliittyma {
 	}
 
 	/**
-	 *	Siirt-- alavalikkoon tai p--valikkoon tenttivalikosta annetun
+	 *	Siirt‰‰ alavalikkoon tai p‰‰valikkoon tenttivalikosta annetun
 	 *  valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
 	 *
 	 *  @param valintanum
@@ -108,7 +108,7 @@ public class Kayttoliittyma {
 	}
 
 	/**
-	 *	Siirt-- alavalikkoon tai p--valikkoon raporttivalikosta annetun
+	 *	Siirt‰‰ alavalikkoon tai p‰‰valikkoon raporttivalikosta annetun
 	 * 	valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
 	 *
 	 * @param valintanum
@@ -129,7 +129,7 @@ public class Kayttoliittyma {
 	}
 
 	/**
-	 *	Siirt-- alavalikkoon tai p--valikkoon tallennavalikosta annetun
+	 *	Siirt‰‰ alavalikkoon tai p‰‰valikkoon tallennavalikosta annetun
 	 *  valintanumeron mukaan. Palauttaa 1, jos virheellinen valinta.
 	 *
 	 *  @param valintanum
@@ -170,10 +170,10 @@ public class Kayttoliittyma {
 	}
 
 	/**
-	 *	Poistetaan kursseja tai siirryt--n kurssivalikkoon kurssien poistovalikosta
+	 *	Poistetaan kursseja tai siirryt‰‰n kurssivalikkoon kurssien poistovalikosta
 	 *  annetun valintanumeron mukaan.
 	 *
-	 *  @param valintanum k√§ytt√§j√§n valitseman toiminnon numero
+	 *  @param valintanum k‰ytt‰j‰n valitseman toiminnon numero
 	 *  @return Palauttaa 1, jos virheellinen valinta.
 	 */
 	public int valintaKurssiPoistoValikko(int valintanum) {
@@ -623,16 +623,6 @@ public class Kayttoliittyma {
         Date[] taulukkoAjoista = palautaStringDatena(luento);
 		lisattyTapahtuma.setAlku(taulukkoAjoista[0]);
 		lisattyTapahtuma.setLoppu(taulukkoAjoista[1]);
-
-        //Ajan parseaminen k‰ytt‰j‰n syˆtteest‰ ja sen lis‰‰minen tapahtumaan
-        /*String[] parametrit = luento.split(" ");
-        String aika1 = parametrit[0];
-        String aika2 = parametrit[0];
-        String[] tunnit = luento.split("-");
-        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
-        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
-        aika2 += " " + tunnit[1].charAt(0);
-        aika2 += tunnit[1].charAt(1);*/
 
         }
 
@@ -1292,12 +1282,13 @@ public void tallennaTiedostoonLopetusValikko() {
 		switch(valintanum) {
 
 		case 1:
-				kurssi.setNimi(lueString());
+			kurssi.setNimi(lueString());
 			return 0;
 		case 2:
-				kurssi.setLaajuus(lueInt());
+			kurssi.setLaajuus(lueInt());
 			return 0;
 		case 0: return 0;
+
 		default:
 			tapahtumanMuokkausValikko(valikonTapahtumat.get(valintanum-3));
 			return 0;
