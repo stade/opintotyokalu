@@ -14,6 +14,10 @@
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Date;
+
 
 public class Exporter {
 
@@ -29,8 +33,8 @@ public class Exporter {
 	// below: a number of timetable variables
 	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
 	private static int nDays = 5;	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
-	private static int firsthr = 8;	// 1st hour to print in timetable
-	private static int lasthr = 18;	// last hour to print in timetable
+	private static int firsthr = 12;	// 1st hour to print in timetable
+	private static int lasthr = 15;	// last hour to print in timetable
 	// end timetable variables
 
 	// multi-function int variable
@@ -45,25 +49,12 @@ public class Exporter {
 	 */
 	private static String[][] importCourses(Keraaja tiedot) {
 
-		//Keraaja k = new Keraaja();	// new Keraaja() for testing, this should read getKeraaja()
-		
-	/*	// for testing -- REMOVE THIS
-		Kurssi a = new Kurssi("Tietorakenteet", 8);
-		Kurssi c = new Kurssi("Laskennan mallit", 6);
-		Kurssi b = new Kurssi("Ohjelmistotuotanto", 4);
-
-		k.addKurssi(a);
-		k.addKurssi(b);
-		k.addKurssi(c);
-		// end 'for testing'
-	*/
-		Keraaja k = tiedot;
-
-		ArrayList<Kurssi> coursesArray = k.getKurssit();
+		ArrayList<Kurssi> coursesArray = tiedot.getKurssit();
 		int nCourses = coursesArray.size();
 
 		// courses[number of courses][0 course name, 1 credits]
 		String[][] courses = new String[nCourses][2];
+		totalcr = 0;
 
 		// for-each course in Keraaja object field kurssit (now in coursesArray), get name and credits to internal array courses (String[][])
 		for (i = 0; i < nCourses; i++) {
@@ -125,7 +116,7 @@ public class Exporter {
 		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
-		totalcr = 0;
+
 		// everything went well
 		return true;
 	}
@@ -135,15 +126,42 @@ public class Exporter {
 	 *	
 	 *	@return timetable
 	 */
-	private static String[][] importTimetable() {
-		String[][] timetable = new String[24][5]; // timetable[hours][days]
-		// get events from external class ...
+	private static String[][] importTimetable(Keraaja tiedot) {
+		String[][] timetable = new String[24][7]; // timetable[hours][days]
+		ArrayList<Tapahtuma> eventsArray = tiedot.getTapahtumat();
 
-	/*	// below: sample timetable for testing purposes
-		timetable[0][0] = "Eka";
-		timetable[10][2] = "Moi";
-		timetable[11][4] = "Hei";
-	*/
+		for (Tapahtuma event : eventsArray) {
+			if (event.getToistuva()) {	// only weekly events
+
+				// for getting int values (hours and day) from Date objects in Tapahtuma object
+				GregorianCalendar time = new GregorianCalendar();
+
+				// convert Date to Calendar (intuitively pointless, but Java API orders to do so)
+				time.setTime(event.getAlku());
+				int start = time.get(Calendar.HOUR_OF_DAY);
+				if (start < firsthr) { firsthr = start; }
+
+				// again, convert Date to Calendar
+				time.setTime(event.getLoppu());
+				int end = time.get(Calendar.HOUR_OF_DAY);
+				if (end > lasthr) { lasthr = end; }
+
+				// assuming that event starts and ends on same day
+				int day = time.get(Calendar.DAY_OF_WEEK);
+				System.out.println("before: " + event.getNimi() + " " + day);
+
+				// a trick to move Monday to 0
+				day += 3;
+				if (day > 6) { day -= 6; }
+				System.out.println("after: " + event.getNimi() + " " + day);
+
+				// loop through hours and alter values of timetable
+				for (i = start-1; i < end-1; i++) {
+					timetable[i][day] = event.getKuuluuKurssiinNimelta() + " (" + event.getNimi() + ") " + event.getSijainti();
+				}
+			}
+		}
+
 		return timetable;
 	}
 
@@ -174,16 +192,16 @@ public class Exporter {
 			out.write("<TR>\n<TD></TD>\n");
 			i = 0;
 			while (i < nDays) {
-				out.write("<TD><B>" + weekdays[i] + "</B></TD>\n");
+				out.write("<TD WIDTH=200><B>" + weekdays[i] + "</B></TD>\n");
 				i++;
 			}
 			out.write("</TR>\n\n");
 
 			// print hours and events
 			int j = firsthr-1;
-			while (j < lasthr) {
+			while (j < lasthr-1) {
 				// print hour
-				out.write("<TR>\n<TD><B>" + (j+1) + "</B></TD>\n");
+				out.write("<TR>\n<TD ALIGN=RIGHT HEIGHT=50><B>" + (j+1) + "</B></TD>\n");
 
 				// print events
 				i = 0;
@@ -229,18 +247,54 @@ public class Exporter {
 	/**
 	 *	Function imports and prints timetable. Call this.
 	 */
-	public static void printTimetable() {
-		if (exportTimetable(importTimetable())) {
+	public static void printTimetable(Keraaja tiedot) {
+		if (exportTimetable(importTimetable(tiedot))) {
 			System.out.println("Luotiin " + timetablefn);
 		}
 	}
 
+
+
 	/**
-	 * 
+	 * main and all values in it are for testing purposes only!
+	 *
 	 * @param args
 	 */
-/*	public static void main(String[] args) {
-		printCourses();
+
+/*
+	public static void main(String[] args) {
+		Keraaja test = new Keraaja();
+
+		Tapahtuma a = new Tapahtuma("Hei");
+		Tapahtuma b = new Tapahtuma("Harjoitukset");
+		Tapahtuma c = new Tapahtuma("Luento");
+
+		a.setToistuva(true); b.setToistuva(true); c.setToistuva(true);
+
+		a.setKuuluuKurssiinNimelta("Sulkistreenit");
+		b.setKuuluuKurssiinNimelta("Moi-kurssi");
+		c.setKuuluuKurssiinNimelta("Programming in Foo");
+
+		a.setAlku(new Date((new GregorianCalendar(2010, 4, 12, 12, 0)).getTimeInMillis()));
+		a.setLoppu(new Date((new GregorianCalendar(2010, 4, 12, 14, 0)).getTimeInMillis()));
+
+		b.setAlku(new Date((new GregorianCalendar(2010, 4, 13, 14, 0)).getTimeInMillis()));
+		b.setLoppu(new Date((new GregorianCalendar(2010, 4, 13, 16, 0)).getTimeInMillis()));
+
+		c.setAlku(new Date((new GregorianCalendar(2010, 4, 16, 10, 0)).getTimeInMillis()));
+		c.setLoppu(new Date((new GregorianCalendar(2010, 4, 16, 12, 0)).getTimeInMillis()));
+
+		a.setSijainti("Palloiluhalli p");
+		b.setSijainti("A111");
+		c.setSijainti("B123");
+
+		test.addTapahtuma(a);
+		test.addTapahtuma(b);
+		test.addTapahtuma(c);
+
+		printTimetable(test);
 	}
+
 */
+
 }
