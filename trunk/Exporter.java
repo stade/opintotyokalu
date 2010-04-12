@@ -24,27 +24,36 @@ public class Exporter {
 	private static File file;
 	private static PrintWriter out;
 
-	private static String coursesfn = "kurssit.html";	// fn for filename
-	private static String timetablefn = "lukkari.html";	// fn for filename
+	// file names of exportable courses and timetable html files
+	private static String coursesfn = "kurssit.html";
+	private static String timetablefn = "lukkari.html";
 
 	// total credits for printing courses ...
 	private static int totalcr = 0;
 
-	// below: a number of timetable variables
-	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
-	private static int nDays = 5;	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
-	private static int firsthr = 12;	// 1st hour to print in timetable (importCourses changes this if there's an event in Keraaja object that is out of bounds!)
-	private static int lasthr = 15;	// last hour to print in timetable (likewise, importCourses changes this if there's an event out of bounds)
-	// end timetable variables
+
+	// below: a number of timetable variables -->
+
+	// weekday names' abbreviations
+	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};
+
+	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
+	private static int nDays = 5;
+
+	// 1st and last hour to print in timetable (minimum). importCourses changes these if events are later or before
+	private static int firsthr = 12;
+	private static int lasthr = 15;
+
+	// --> end timetable variables
 
 	// multi-function int variable
 	private static int i;
 
 	/**
-	 *	Fetches names and credits of courses from external Keraaja object,
-	 *	parses its kurssit field into a String[][], and returns it. 
+	 *	Fetches names and credits of courses from parameter tiedot (Keraaja
+	 *	object), parses its kurssit field into a String[][], and returns it
 	 *
-	 *	TODO: This functions functionality might as well be in exportCourses()
+	 *	Note: This functions functionality might as well be in exportCourses()
 	 *	(and then exportCourses could be renamed to printCourses())!
 	 */
 	private static String[][] importCourses(Keraaja tiedot) {
@@ -122,7 +131,7 @@ public class Exporter {
 	}
 
 	/**
-	 *	Fetches timetable data from some external class.
+	 *	Imports events from Keraaja object 'tiedot' (given as parameter)
 	 *	
 	 *	@return timetable
 	 */
