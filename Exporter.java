@@ -150,8 +150,8 @@ public class Exporter {
 				int day = time.get(Calendar.DAY_OF_WEEK);
 
 				// a trick to move Monday to 0
-				day += 3;
-				if (day > 6) { day -= 6; }
+				day -= 4;
+				if (day < 0) { day += 7; }
 
 				// loop through hours and alter values of timetable
 				for (i = start-1; i < end-1; i++) {
@@ -273,13 +273,13 @@ public class Exporter {
 		b.setKuuluuKurssiinNimelta("Moi-kurssi");
 		c.setKuuluuKurssiinNimelta("Programming in Foo");
 
-		a.setAlku(new Date((new GregorianCalendar(2010, 4, 12, 12, 0)).getTimeInMillis()));
+		a.setAlku(new Date((new GregorianCalendar(2010, 4, 12, 12, 0)).getTimeInMillis()));	// Monday
 		a.setLoppu(new Date((new GregorianCalendar(2010, 4, 12, 14, 0)).getTimeInMillis()));
 
-		b.setAlku(new Date((new GregorianCalendar(2010, 4, 13, 14, 0)).getTimeInMillis()));
+		b.setAlku(new Date((new GregorianCalendar(2010, 4, 13, 14, 0)).getTimeInMillis()));	// Tuesday
 		b.setLoppu(new Date((new GregorianCalendar(2010, 4, 13, 16, 0)).getTimeInMillis()));
 
-		c.setAlku(new Date((new GregorianCalendar(2010, 4, 16, 10, 0)).getTimeInMillis()));
+		c.setAlku(new Date((new GregorianCalendar(2010, 4, 16, 10, 0)).getTimeInMillis()));	// Friday
 		c.setLoppu(new Date((new GregorianCalendar(2010, 4, 16, 12, 0)).getTimeInMillis()));
 
 		a.setSijainti("Palloiluhalli p");
@@ -292,7 +292,6 @@ public class Exporter {
 
 		printTimetable(test);
 	}
-
 */
 
 }
