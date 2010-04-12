@@ -1292,10 +1292,10 @@ public void tallennaTiedostoonLopetusValikko() {
 		switch(valintanum) {
 		
 		case 1:
-				//muokkaaKurssinNime�(kurssiIndeksi);
+				kurssi.setNimi(lueString());
 			return 0;
 		case 2: 
-				//muokkaaKurssinLaajuutta(kurssiIndeksi);
+				kurssi.setLaajuus(lueInt());
 			return 0;
 		case 0: return 0;
 		default:
@@ -1389,6 +1389,12 @@ public void tallennaTiedostoonLopetusValikko() {
 		return nappaimisto.nextLine();		
 	}
 	
+	private int lueInt() {
+		Scanner nappaimisto = new Scanner(System.in);
+		
+		System.out.println("Sy�t� luku:");
+		return nappaimisto.nextInt();		
+	}
 	
 	private int getValikkoValinta() {
 		Scanner nappaimisto = new Scanner(System.in);
