@@ -73,3 +73,5 @@ Maanantaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
 - Janne H: encoding ja komentit
 
 - Juho: Kirjataan ylos puutteet ja teknillinen velka
+
+Pieni breafinki keskiviikko (käydään läpi miten demotaan jne.) klo 13.15-> @haxxor
