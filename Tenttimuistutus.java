@@ -76,7 +76,7 @@ public class Tenttimuistutus {
 				tentti = temp.get(i);
 				
 				//Jos l�ytyi tentti joka on l�hemp�n� kuin edellinen l�hin korvataan se.
-				if (tentti.getAlku().before(lahinna.getAlku())) {
+				if (tentti.getAlku().after(lahinna.getAlku())) {
 					lahinna = tentti;
 					indeksi = i;
 				}
@@ -96,7 +96,8 @@ public class Tenttimuistutus {
 			
 			//Tulostetaan tentin alkamisaika muodossa "dd.MM. hh"
 			DateFormat dateFormat = new SimpleDateFormat("dd.MM. hh");
-			System.out.println(dateFormat.format(lahinna.getAlku().toString()));
+			System.out.println(lahinna.getAlku().toString());
+			System.out.println(dateFormat.format(lahinna.getAlku()));
 			rivinvaihto(1);
 		}
 	
