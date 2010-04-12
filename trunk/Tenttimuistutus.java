@@ -58,7 +58,7 @@ public class Tenttimuistutus {
 			
 			tentti = temp.get(i);
 			
-			if (tentti.getAlku().after(aika)) {
+			if (tentti.getAlku().before(aika)) {
 				temp.remove(i);
 			}
 		}
@@ -87,16 +87,16 @@ public class Tenttimuistutus {
 			tulostaVali(1);
 			
 			//Tulostetaan kurssi johon tentti kuuluu
-			System.out.println(lahinna.getKuuluuKurssiinNimelta());
+			System.out.print(lahinna.getKuuluuKurssiinNimelta());
 			tulostaVali(1);
 			
 			//Tulostetaan tentin sijainti
-			System.out.println(lahinna.getSijainti());
+			System.out.print(lahinna.getSijainti());
 			tulostaVali(1);
 			
 			//Tulostetaan tentin alkamisaika muodossa "dd.MM. hh"
-			DateFormat dateFormat = new SimpleDateFormat("dd.MM. hh");
-			System.out.println(dateFormat.format(lahinna.getAlku()));
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM. 'klo' hh");
+			System.out.print(dateFormat.format(lahinna.getAlku()));
 			rivinvaihto(1);
 		}
 	
