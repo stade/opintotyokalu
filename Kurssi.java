@@ -7,19 +7,12 @@ import java.io.Serializable;
 
 public class Kurssi implements Serializable {
 
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
-	}
-
-	public void setLaajuus(int laajuus) {
-		this.laajuus = laajuus;
-	}
-
 	private String nimi;
 	private int laajuus;
-	private boolean suoritettu;
-
+	private boolean suoritettu;	
+	
 	/**
+	 * Konstruktori
 	 * 
 	 * @param nimi
 	 * @param laajuus
@@ -28,6 +21,22 @@ public class Kurssi implements Serializable {
 		this.nimi = nimi;
 		this.laajuus = laajuus;
 		this.suoritettu = false;	// oletus: ei suoritettu (?)
+	}
+	
+	/**
+	 * 
+	 * @param nimi
+	 */
+	public void setNimi(String nimi) {
+		this.nimi = nimi;
+	}
+
+	/**
+	 * 
+	 * @param laajuus
+	 */
+	public void setLaajuus(int laajuus) {
+		this.laajuus = laajuus;
 	}
 
 	/**

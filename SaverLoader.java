@@ -28,9 +28,8 @@ public class SaverLoader implements Serializable {
 	 * Tallennetaan default lokaatioon
 	 * 
 	 * @param toBeSaved olio joka tallennetaan tiedostoon
-	 * @return 		true jos onnistutaan, muuten false
+	 * @return true jos onnistutaan, muuten false
 	 * 
-	 * TODO: objection tyypin tarkistus
 	 */
 	public boolean saveObject(Object toBeSaved) {
 
@@ -58,7 +57,6 @@ public class SaverLoader implements Serializable {
 	 * @param toSaveInto tiedosto johon tallennetaan
 	 * @return 		true jos onnistutaan, muutoin false
 	 * 
-	 * TODO: objection tyypin tarkistus
 	 */
 	public boolean saveObject(Object toBeSaved, String toSaveInto) {
 		
@@ -85,7 +83,6 @@ public class SaverLoader implements Serializable {
 	 * @param path tiedostopolku jossa tiedosto sijaitsee
 	 * @return 		tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
 	 * 
-	 * TODO: objection tyypin tarkistus
 	 */
 	public Object loadObject(String path) {
 		
@@ -108,9 +105,8 @@ public class SaverLoader implements Serializable {
 	/**
 	 * Ladataan Keraaja olio default -tiedostosta
 	 * 
-	 * @return 		tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
+	 * @return tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
 	 * 
-	 * TODO: objection tyypin tarkistus
 	 */
 	public Object loadObject() {
 		

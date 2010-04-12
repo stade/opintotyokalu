@@ -244,6 +244,8 @@ public class Exporter {
 
 	/**
 	 *	Function imports and prints courses. Call this.
+	 *	
+	 *	@param tiedot
 	 */
 	public static void printCourses(Keraaja tiedot) {
 		if (exportCourses(importCourses(tiedot))) {
@@ -253,6 +255,8 @@ public class Exporter {
 
 	/**
 	 *	Function imports and prints timetable. Call this.
+	 *
+	 *	@param tiedot
 	 */
 	public static void printTimetable(Keraaja tiedot) {
 		if (exportTimetable(importTimetable(tiedot))) {
@@ -267,7 +271,6 @@ public class Exporter {
 	 *
 	 * @param args
 	 */
-
 /*
 	public static void main(String[] args) {
 		Keraaja test = new Keraaja();

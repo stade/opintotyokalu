@@ -31,7 +31,7 @@ public class Tapahtuma implements Serializable {
 	 * @param tyyppi
 	 */
 	public void setTyyppi(String tyyppi){
-	  this.tyyppi = tyyppi;	
+		this.tyyppi = tyyppi;	
 	}
 	
 	/**
@@ -98,7 +98,6 @@ public class Tapahtuma implements Serializable {
 		return this.nimi;
 	}
 
-
 	/**
 	 * 
 	 * @return
@@ -114,6 +113,7 @@ public class Tapahtuma implements Serializable {
 	public String getSijainti() {
 		return this.sijainti;
 	}
+	
 	/**
 	 * 
 	 * @return
