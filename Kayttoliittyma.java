@@ -586,7 +586,7 @@ public class Kayttoliittyma {
 	
 		nappaimisto = new Scanner(System.in);
 		tenttinimi = nappaimisto.nextLine();
-		
+				
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Tentin lisï¿½ys");
 		System.out.println("");
@@ -598,6 +598,10 @@ public class Kayttoliittyma {
         
         nappaimisto = new Scanner(System.in);
         luento = nappaimisto.nextLine();
+        
+        
+        // Ei lisätä mitään jos käyttäjä ei syötä ajankohtaa.
+        if(!luento.equals("")) {
         
         tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu - Tenttien lisï¿½ys");
@@ -614,19 +618,22 @@ public class Kayttoliittyma {
         Tapahtuma lisattyTapahtuma = new Tapahtuma(tenttinimi);
         this.tiedot.addTentti(lisattyTapahtuma);
         
+        Date[] taulukkoAjoista = palautaStringDatena(luento);        
+		lisattyTapahtuma.setAlku(taulukkoAjoista[0]);
+		lisattyTapahtuma.setLoppu(taulukkoAjoista[1]);
+		
         //Ajan parseaminen kï¿½yttï¿½jï¿½n syï¿½tteestï¿½ ja sen lisï¿½ï¿½minen tapahtumaan
-        String[] parametrit = luento.split(" ");
+        /*String[] parametrit = luento.split(" ");
         String aika1 = parametrit[0];
         String aika2 = parametrit[0];
         String[] tunnit = luento.split("-");
         aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
         aika1 += tunnit[0].charAt(tunnit[0].length()-1);
         aika2 += " " + tunnit[1].charAt(0);
-        aika2 += tunnit[1].charAt(1);
+        aika2 += tunnit[1].charAt(1);*/
         
-        lisattyTapahtuma.setAlku(parseKayttajanAntamaAika(aika1));
-        lisattyTapahtuma.setLoppu(parseKayttajanAntamaAika(aika2));
-         
+        }
+        
         //Palataan tenttivalikkoon.
         tenttiValikko();
 
@@ -796,7 +803,8 @@ public class Kayttoliittyma {
 		
 			System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
 			System.out.println("16.7. 10-12 Harjoitukset");
-			System.out.println("Voit syï¿½ttï¿½ï¿½ useampia aikoja, mutta vain yhden kerrallaan. Tyhjï¿½ syï¿½te lopettaa.");
+			System.out.println("HUOM: Anna TENTIT muodossa 16.7. 10-12 tentti");
+			System.out.println("Voit syï¿½ttï¿½ï¿½ useampia tapahtumia, aina yhden kerrallaan. Pelkkä tyhjä syöte lopettaa lisäämisen.");
 			System.out.print("Opetusajat: ");
         
 			nappaimisto = new Scanner(System.in);
@@ -816,11 +824,22 @@ public class Kayttoliittyma {
 			String[] parametrit = luento.split(" ", 3);
         
 			//Viimeinen parametri on tapahtuman nimi, jos parametrejï¿½ ei ole tarpeeksi, sï¿½ilyy nimenï¿½ kï¿½yttï¿½jï¿½n syï¿½te.
-			if(parametrit.length > 2) uusiTapahtuma.setNimi(parametrit[2]);
-        
-			this.tiedot.getTapahtumat().add(uusiTapahtuma);
+			if(parametrit.length > 2) {
+				uusiTapahtuma.setNimi(parametrit[2]);
+				if(parametrit[2].equalsIgnoreCase("Tentti")) {
+					this.tiedot.getTentit().add(uusiTapahtuma);
+				}
+				else {
+					this.tiedot.getTapahtumat().add(uusiTapahtuma);
+				}
+				
+			}
+			else {
+				this.tiedot.getTapahtumat().add(uusiTapahtuma);
+			}     
+			
 			uudetTapahtumat.add(uusiTapahtuma);
-      
+			
 		} while (!luento.equals(""));
 		
         tyhjennaNakyma();
@@ -871,13 +890,7 @@ public class Kayttoliittyma {
 		int valintanum;
 		
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
-		
-		tyhjennaNakyma();
-		System.out.println("Opintotyï¿½kalu ï¿½ Kurssien poisto");
-		System.out.println("");
-		System.out.println("Poista");
-
-		
+	
 		tyhjennaNakyma();
 		System.out.println("Opintotyï¿½kalu ï¿½ Kurssien muokkaus");
 		System.out.println("");
