@@ -49,7 +49,9 @@ Exporter-luokka
 ====Valmiina 90-95%====
 
 - Keraaja-olio annetaan parametrina, voisi olla oliometodi mutta kaipa toimii näin staattisenakin
+
 - vielä voi hienosäätää outputia
+
 - custom tiedostonimet tulosteille? ei tärkeää?
 
 ==Aikataulu==
