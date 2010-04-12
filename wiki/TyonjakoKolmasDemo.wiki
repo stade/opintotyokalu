@@ -72,6 +72,4 @@ Maanantaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
 
 - Janne H: encoding ja komentit
 
-- Juno: Kirjataan ylos puutteet ja teknillinen velka
-
-- 
+- Juho: Kirjataan ylos puutteet ja teknillinen velka
