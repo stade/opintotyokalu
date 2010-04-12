@@ -43,11 +43,11 @@ public class Exporter {
 	 *	TODO: This functions functionality might as well be in exportCourses()
 	 *	(and then exportCourses could be renamed to printCourses())!
 	 */
-	private static String[][] importCourses() {
+	private static String[][] importCourses(Keraaja tiedot) {
 
-		Keraaja k = new Keraaja();	// new Keraaja() for testing, this should read getKeraaja()
-
-		// for testing -- REMOVE THIS
+		//Keraaja k = new Keraaja();	// new Keraaja() for testing, this should read getKeraaja()
+		
+	/*	// for testing -- REMOVE THIS
 		Kurssi a = new Kurssi("Tietorakenteet", 8);
 		Kurssi c = new Kurssi("Laskennan mallit", 6);
 		Kurssi b = new Kurssi("Ohjelmistotuotanto", 4);
@@ -56,6 +56,8 @@ public class Exporter {
 		k.addKurssi(b);
 		k.addKurssi(c);
 		// end 'for testing'
+	*/
+		Keraaja k = tiedot;
 
 		ArrayList<Kurssi> coursesArray = k.getKurssit();
 		int nCourses = coursesArray.size();
@@ -123,7 +125,7 @@ public class Exporter {
 		// don't forget to close PrintStream!
 		out.flush();
 		out.close();
-
+		totalcr = 0;
 		// everything went well
 		return true;
 	}
@@ -137,11 +139,11 @@ public class Exporter {
 		String[][] timetable = new String[24][5]; // timetable[hours][days]
 		// get events from external class ...
 
-		// below: sample timetable for testing purposes
+	/*	// below: sample timetable for testing purposes
 		timetable[0][0] = "Eka";
 		timetable[10][2] = "Moi";
 		timetable[11][4] = "Hei";
-
+	*/
 		return timetable;
 	}
 
@@ -163,7 +165,7 @@ public class Exporter {
 		if (file != null && out != null) {
 
 			// print head
-			out.write("<HTML>\n<HEAD>\n<TITLE>Suoritetut kurssit</TITLE>\n</HEAD>\n\n<BODY>\n\n");
+			out.write("<HTML>\n<HEAD>\n<TITLE>Lukujärjestys</TITLE>\n</HEAD>\n\n<BODY>\n\n");
 
 			// begin table
 			out.write("\n<TABLE BORDER=0 CELLSPACING=10>\n\n");
@@ -218,8 +220,8 @@ public class Exporter {
 	/**
 	 *	Function imports and prints courses. Call this.
 	 */
-	public static void printCourses() {
-		if (exportCourses(importCourses())) {
+	public static void printCourses(Keraaja tiedot) {
+		if (exportCourses(importCourses(tiedot))) {
 			System.out.println("Luotiin " + coursesfn);
 		}
 	}
@@ -237,8 +239,8 @@ public class Exporter {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		printCourses();
 	}
-
+*/
 }

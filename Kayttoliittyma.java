@@ -848,11 +848,7 @@ public class Kayttoliittyma {
 	 *  
 	 *  @param str merkkijono josta aika parsetaan
 	 *  @return Date olio jos onnistutaan ja null jos catchataan poikkeus
-	 *  
-	 *  
-	 *  DEPRECATED
 	 */
-	
 	public Date parseKayttajanAntamaAika(String str){
 		Date aika = null;
 		
@@ -983,7 +979,7 @@ public class Kayttoliittyma {
 	 * 
 	 */
 	public void tulostaKurssitValikko() {
-		Exporter.printCourses();
+		Exporter.printCourses(this.tiedot);
 		this.raporttiValikko();
 	}
 	
@@ -1058,6 +1054,7 @@ public class Kayttoliittyma {
 			this.tiedot = (Keraaja)this.saveLoad.loadObject(avauspolku);
 			if (!(this.tiedot instanceof Keraaja)) {
 				System.out.println("Lataaminen epäonnistui!");
+				this.tiedot = new Keraaja();
 			}
 			else {
 				System.out.println("Lataaminen onnistui!");
