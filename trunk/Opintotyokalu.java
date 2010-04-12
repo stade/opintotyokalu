@@ -1,28 +1,26 @@
 /**
- * Luokakuvaus tähän
+ * Luokakuvaus tÃ¤hÃ¤n
  *
- * @author Ryhmä
+ * @author RyhmÃ¤
  *
  */
 public class Opintotyokalu {
 	public static void main(String[] args) {
 
-		//luodaan käyttöliittymä olio
+		//luodaan kÃ¤yttÃ¶liittymÃ¤ olio
 		Kayttoliittyma kali = new Kayttoliittyma();
 
 		//luodaan tenttimuistutus olio
 		Tenttimuistutus muistutus = new Tenttimuistutus();
 
-		//Käyttöliittymän aloitusvalikko
+		//KÃ¤yttÃ¶liittymÃ¤n aloitusvalikko
 		kali.aloitusValikko();
 
 		//tenttimuistutukset
 		muistutus.muistuta(kali.getTiedot());
 
-		//Käyttöliittymän päävalikko
+		//KÃ¤yttÃ¶liittymÃ¤n pÃ¤Ã¤valikko
 		kali.paaValikko();
-
-
 
 	}
 }

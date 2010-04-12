@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Tenttimuistutus {
 
 	/**
-	 * Muistuttaa tulevista tenteist�
+	 * Muistuttaa tulevista tenteistä
 	 * @param tiedot
 	 */
 	public void muistuta(Keraaja tiedot) {
@@ -60,17 +60,17 @@ public class Tenttimuistutus {
 		rivinvaihto(2);
 
 
-		//Tulostaa tulevat tentit aikajärjestyksessä niin, että etsii lähimpänä olevan
-		//tentin poistaa sen tietorakenteesta ja tulostaa sen. Tätä jatketaan kunnes
-		//tietorakenne on tyhjä.
+		/*
+		 *	Tulostaa tulevat tentit aikajärjestyksessä niin, että etsii lähimpänä olevan
+		 *	tentin poistaa sen tietorakenteesta ja tulostaa sen. Tätä jatketaan kunnes
+		 *	tietorakenne on tyhjä.
+		 */
 		while (temp.isEmpty() == false) {
 
 			lahinna = temp.get(0);
 
 			if (indeksi >= temp.size()) {
-
 				break;
-
 			}
 
 			//Käydään kaikki tentit läpi ja etsitään tentti johon on vähiten aikaa
@@ -117,7 +117,6 @@ public class Tenttimuistutus {
 		Kayttoliittyma.tyhjennaNakyma();
 
 	}
-
 
 	/**
 	 * Tulostaa tyhjän välin

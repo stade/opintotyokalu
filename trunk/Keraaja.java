@@ -47,7 +47,7 @@ public class Keraaja implements Serializable {
 
 
 	/**
-	 * Tulostaa yhteenvedon kursseista, KESKENER�INEN
+	 * Tulostaa yhteenvedon kursseista, KESKENERÄINEN
 	 *
 	 */
 	public void tulostaKurssit() {
