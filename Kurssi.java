@@ -7,6 +7,14 @@ import java.io.Serializable;
 
 public class Kurssi implements Serializable {
 
+	public void setNimi(String nimi) {
+		this.nimi = nimi;
+	}
+
+	public void setLaajuus(int laajuus) {
+		this.laajuus = laajuus;
+	}
+
 	private String nimi;
 	private int laajuus;
 	private boolean suoritettu;
