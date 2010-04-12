@@ -63,3 +63,15 @@ Maanantaina-tapaaminen 12.4 kello n. 16 (haxxorointi-luokassa)
 - Viikonloppuna epämääräisiä irc-kokouksia
 
 - Käyttäkää versionhallintaa
+
+==Testaaminen==
+
+- Janne K: testaa hienon scenaarion/scenaariot joka antaa mahdollisimman 100% Selvitä mitä 100% tarkoittaa
+
+- Tatu: Tulevat tentit metodin lisääminen tenttien hallinnointiin
+
+- Janne H: encoding ja komentit
+
+- Juno: Kirjataan ylos puutteet ja teknillinen velka
+
+- 
