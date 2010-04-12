@@ -32,9 +32,18 @@ public class Tenttimuistutus {
 		//Haetaan tentit ker��j�st�
 		tentit = tiedot.getTentit();
 		
+		//J�rjestelm�n t�m�n hetkinen aika.
+		Date aika = new Date();
+		
 		//Kopioidaan tentit v�liaikaiseen tietorakenteeseen
 		for (int i = 0; i < tentit.size(); i++ ) {
-			temp.add(tentit.get(i));
+			
+			//Kopioidaan vain tulevat tentit.
+			if (tentit.get(i).getAlku().after(aika)) {
+				temp.add(tentit.get(i));
+			}
+			
+			
 		}
 		
 		Scanner nappaimisto;
@@ -50,18 +59,6 @@ public class Tenttimuistutus {
 		tulostaVali(5);
 		rivinvaihto(2);
 		
-		//	J�rjestelm�n t�m�n hetkinen aika.
-		Date aika = new Date();
-
-		// Poistetaan menneet tentit v�liaikaisesta tietorakenteesta
-		for (int i = 0; i < temp.size();  i++ ) {
-			
-			tentti = temp.get(i);
-			
-			if (tentti.getAlku().before(aika)) {
-				temp.remove(i);
-			}
-		}
 	
 		//Tulostaa tulevat tentit aikaj�rjestyksess� niin, ett� etsii l�himp�n� olevan
 		//tentin poistaa sen tietorakenteesta ja tulostaa sen. T�t� jatketaan kunnes
@@ -69,6 +66,12 @@ public class Tenttimuistutus {
 		while (temp.isEmpty() == false) {
 			
 			lahinna = temp.get(0);
+			
+			if (indeksi >= temp.size()) {
+				
+				break;
+				
+			}
 			
 			//K�yd��n kaikki tentit l�pi ja etsit��n tentti johon on v�hiten aikaa
 			for (int i = 0; i < temp.size(); i++ ) {
