@@ -43,7 +43,7 @@ public class Kayttoliittyma {
 		
 		switch (valintanum) {
 	       
-	        case 1: avaaTiedostostaValikko();     		break;
+	        case 1: avaaTiedostostaAlussaValikko();	break;
 	        case 2: return 0;
 	        default : System.out.println("Virheellinen sy�te");  return 1;
 	        
@@ -237,7 +237,7 @@ public class Kayttoliittyma {
 		
 		switch (valintanum) {
 	       
-	        case 1: tallennaTiedostoonValikko();		break;
+	        case 1: tallennaTiedostoonLopetusValikko();		break;
 	        case 2: System.out.println("N�kemiin!");	return 0;
 	        case 0: paaValikko();						break;
 	        default : System.out.println("Virheellinen sy�te");  return 1;
@@ -1026,6 +1026,76 @@ public class Kayttoliittyma {
 			e.printStackTrace();
 		}
 		paaValikko();
+		
+	}
+public void tallennaTiedostoonLopetusValikko() {
+		
+		Scanner nappaimisto;
+		
+		//N�m� korvataan oikeilla tietotyypeill�
+		String tallennuspolku;
+		
+		tyhjennaNakyma();
+		System.out.println("Opintoty�kalu - Tallennus tiedostoon");
+		System.out.println("");
+		System.out.println("Sy�t� tiedostonimi ja paina enter.");
+		System.out.println("");
+		System.out.print("Tiedostonimi: ");
+	
+		nappaimisto = new Scanner(System.in);
+		tallennuspolku = nappaimisto.nextLine();
+		
+		//T�ss� tallennetaan annetun tiedostonimen perusteella
+		if (this.saveLoad.saveObject(this.tiedot, tallennuspolku)) {
+			System.out.println("Tallentaminen onnistui!");
+		}
+		else {
+			System.out.println("Tallentaminen epäonnistui.");
+		}
+		
+		//Lopetetaan
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("N�kemiin");
+		
+	}
+	/**
+	 *	Avaa tiedoston annetun tiedostopolun mukaan.   
+	 */
+	public void avaaTiedostostaAlussaValikko() {
+		
+		Scanner nappaimisto;
+		
+		//N�m� korvataan oikeilla tietotyypeill�
+		String avauspolku;
+		
+		tyhjennaNakyma();
+		System.out.println("Opintoty�kalu - Tiedostosta avaaminen");
+		System.out.println("");
+		System.out.println("Sy�t� tiedostonimi ja paina enter.");
+		System.out.println("");
+		System.out.print("Tiedostonimi: ");
+	
+		nappaimisto = new Scanner(System.in);
+		avauspolku = nappaimisto.nextLine();
+		
+		try {
+			//T�ss� avataan tiedostosta annetun tiedostonimen perusteella
+			this.tiedot = (Keraaja)this.saveLoad.loadObject(avauspolku);
+			if (!(this.tiedot instanceof Keraaja)) {
+				System.out.println("Lataaminen epäonnistui!");
+				this.tiedot = new Keraaja();
+			}
+			else {
+				System.out.println("Lataaminen onnistui!");
+			}
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
