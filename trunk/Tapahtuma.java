@@ -95,7 +95,16 @@ public class Tapahtuma implements Serializable {
 	public Object getNimi() {
 		return this.nimi;
 	}
-	
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean getToistuva() {
+		return this.toistuva;
+	}
+
 	/**
 	 * 
 	 * @return
