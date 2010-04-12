@@ -33,8 +33,8 @@ public class Exporter {
 	// below: a number of timetable variables
 	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};	// weekday names (abbreviations) for timetable exporting
 	private static int nDays = 5;	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
-	private static int firsthr = 12;	// 1st hour to print in timetable
-	private static int lasthr = 15;	// last hour to print in timetable
+	private static int firsthr = 12;	// 1st hour to print in timetable (importCourses changes this if there's an event in Keraaja object that is out of bounds!)
+	private static int lasthr = 15;	// last hour to print in timetable (likewise, importCourses changes this if there's an event out of bounds)
 	// end timetable variables
 
 	// multi-function int variable
@@ -127,7 +127,7 @@ public class Exporter {
 	 *	@return timetable
 	 */
 	private static String[][] importTimetable(Keraaja tiedot) {
-		String[][] timetable = new String[24][7]; // timetable[hours][days]
+		String[][] timetable = new String[24][7]; // timetable[hours][days] (maximum values)
 		ArrayList<Tapahtuma> eventsArray = tiedot.getTapahtumat();
 
 		for (Tapahtuma event : eventsArray) {
@@ -148,12 +148,10 @@ public class Exporter {
 
 				// assuming that event starts and ends on same day
 				int day = time.get(Calendar.DAY_OF_WEEK);
-				System.out.println("before: " + event.getNimi() + " " + day);
 
 				// a trick to move Monday to 0
 				day += 3;
 				if (day > 6) { day -= 6; }
-				System.out.println("after: " + event.getNimi() + " " + day);
 
 				// loop through hours and alter values of timetable
 				for (i = start-1; i < end-1; i++) {
