@@ -96,7 +96,6 @@ public class Tenttimuistutus {
 			
 			//Tulostetaan tentin alkamisaika muodossa "dd.MM. hh"
 			DateFormat dateFormat = new SimpleDateFormat("dd.MM. hh");
-			System.out.println(lahinna.getAlku().toString());
 			System.out.println(dateFormat.format(lahinna.getAlku()));
 			rivinvaihto(1);
 		}
