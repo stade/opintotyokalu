@@ -760,6 +760,7 @@ public class Kayttoliittyma {
 		String kurssinimi;
 		int op;
 		String luento;
+		String sijainti;
 		ArrayList<Tapahtuma> uudetTapahtumat = new ArrayList<Tapahtuma>();
 		Tapahtuma uusiTapahtuma;
 	
@@ -811,6 +812,11 @@ public class Kayttoliittyma {
 			luento = nappaimisto.nextLine();
         
 			if(luento.equals("")) break;
+			
+			System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
+	        
+			nappaimisto = new Scanner(System.in);
+			sijainti = nappaimisto.nextLine();
         
 			//lisÃ¤tÃ¤Ã¤n kurssi kerÃ¤Ã¤jÃ¤Ã¤n.
        
@@ -820,7 +826,9 @@ public class Kayttoliittyma {
 			Date[] taulukkoAjoista = palautaStringDatena(luento);        
 			uusiTapahtuma.setAlku(taulukkoAjoista[0]);
 			uusiTapahtuma.setLoppu(taulukkoAjoista[1]);
-        
+			uusiTapahtuma.setToistuva(true);
+			uusiTapahtuma.setSijainti(sijainti);
+			
 			String[] parametrit = luento.split(" ", 3);
         
 			//Viimeinen parametri on tapahtuman nimi, jos parametrejï¿½ ei ole tarpeeksi, sï¿½ilyy nimenï¿½ kï¿½yttï¿½jï¿½n syï¿½te.
@@ -828,6 +836,7 @@ public class Kayttoliittyma {
 				uusiTapahtuma.setNimi(parametrit[2]);
 				if(parametrit[2].equalsIgnoreCase("Tentti")) {
 					this.tiedot.getTentit().add(uusiTapahtuma);
+					uusiTapahtuma.setToistuva(false);
 				}
 				else {
 					this.tiedot.getTapahtumat().add(uusiTapahtuma);
@@ -1000,7 +1009,7 @@ public class Kayttoliittyma {
 	 * 
 	 */
 	public void tulostaLukkariValikko() {
-		Exporter.printTimetable();
+		Exporter.printTimetable(this.tiedot);
 		this.raporttiValikko();
 	}
 	
