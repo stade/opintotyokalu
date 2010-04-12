@@ -8,30 +8,29 @@ import java.util.ArrayList;
 
 public class Keraaja implements Serializable {
 
-	//private static final long serialVersionUID = -8333867660428826471L;
 	private ArrayList<Tapahtuma> tentit; // Tarviiko tenttien olla erikseen vai laitetaanko tapahtumataulukkoon
 	private ArrayList<Tapahtuma> tapahtumat;
-	private ArrayList<Kurssi> kurssit;	
-	
+	private ArrayList<Kurssi> kurssit;
+
 	/**
-	 * 
+	 *
 	 */
 	public Keraaja(){
 		this.tentit = new ArrayList<Tapahtuma>();
 		this.tapahtumat = new ArrayList<Tapahtuma>();
 		this.kurssit = new ArrayList<Kurssi>();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public ArrayList<Tapahtuma> getTentit() {
 		return this.tentit;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public ArrayList<Tapahtuma> getTapahtumat() {
@@ -39,17 +38,17 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public ArrayList<Kurssi> getKurssit() {
 		return this.kurssit;
 	}
-	
-	
-	/** 
+
+
+	/**
 	 * Tulostaa yhteenvedon kursseista, KESKENER�INEN
-	 * 
+	 *
 	 */
 	public void tulostaKurssit() {
 		System.out.println("Suoritetut kurssit");
@@ -59,7 +58,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param nimi
 	 * @return
 	 */
@@ -68,12 +67,12 @@ public class Keraaja implements Serializable {
 			if (nimi.equals(tentit.get(i).getNimi())) {
 				return tentit.get(i);
 			}
-		}	
+		}
 		return null;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param nimi
 	 * @return
 	 */
@@ -82,12 +81,12 @@ public class Keraaja implements Serializable {
 			if (nimi.equals(kurssit.get(i).getNimi())) {
 				return kurssit.get(i);
 			}
-		}	
+		}
 		return null;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param nimi
 	 * @return
 	 */
@@ -96,12 +95,12 @@ public class Keraaja implements Serializable {
 			if (nimi.equals(tapahtumat.get(i).getNimi())) {
 				return tapahtumat.get(i);
 			}
-		}	
+		}
 		return null;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param e
 	 * @return
 	 */
@@ -110,7 +109,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param o
 	 * @return
 	 */
@@ -119,7 +118,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param e
 	 * @return
 	 */
@@ -128,7 +127,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param o
 	 * @return
 	 */
@@ -137,7 +136,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param e
 	 * @return
 	 */
@@ -146,7 +145,7 @@ public class Keraaja implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param o
 	 * @return
 	 */
