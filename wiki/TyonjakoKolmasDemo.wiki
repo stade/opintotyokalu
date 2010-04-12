@@ -46,11 +46,11 @@ Tenttimuistutukset-funktio/luokka
 ===Juho=== 
 Exporter-luokka
 
-====Valmiina ~60%====
+====Valmiina ~90%====
 
-- html:n tulostus sujuu testidatalla (muodossa `String[][]`)
-
-- vielä pitää keksiä miten saa toisaalla syötetyn datan haettua (lähinnä, että missä muodossa se on)
+- Keraaja-olio annetaan parametrina, voisi olla oliometodi mutta kaipa toimii näin staattisenakin
+- vielä voi hienosäätää outputia
+- custom tiedostonimet tulosteille? ei tärkeää?
 
 ==Aikataulu==
 
