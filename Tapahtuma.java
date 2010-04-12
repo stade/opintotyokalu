@@ -16,6 +16,8 @@ public class Tapahtuma implements Serializable {
 	private String sijainti;
 	private String kuuluuKurssiinNimelta;
 	
+	
+	
 	/**
 	 * 
 	 * @param nimi
