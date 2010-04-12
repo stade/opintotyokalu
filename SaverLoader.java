@@ -83,7 +83,7 @@ public class SaverLoader implements Serializable {
 	 * Ladataan Keraaja olio tiedostosta
 	 * 
 	 * @param path tiedostopolku jossa tiedosto sijaitsee
-	 * @return 		tiedostosta ladattu Keraaja tai false jos lukeminen epäonnistuu
+	 * @return 		tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
 	 * 
 	 * TODO: objection tyypin tarkistus
 	 */
@@ -96,19 +96,19 @@ public class SaverLoader implements Serializable {
 			this.objectIn.close();
 			this.fileIn.close();
 		} catch (Exception e) { //kiireinen poikkeuskäsittely
-			return false;
+			return null;
 		}
 		
 		if (this.loadedObject instanceof Keraaja) {
 			return this.loadedObject;
 		}
-		else return false;
+		else return null;
 	}
 	
 	/**
 	 * Ladataan Keraaja olio default -tiedostosta
 	 * 
-	 * @return 		tiedostosta ladattu Keraaja tai false jos lukeminen epäonnistuu
+	 * @return 		tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
 	 * 
 	 * TODO: objection tyypin tarkistus
 	 */
@@ -119,13 +119,13 @@ public class SaverLoader implements Serializable {
 			this.objectIn = new ObjectInputStream(this.fileIn);
 			this.loadedObject = this.objectIn.readObject();
 		} catch (Exception e) { //kiireinen poikkeuskäsittely
-			return false;
+			return null;
 		}
 		
 		if (this.loadedObject instanceof Keraaja) {
 			return this.loadedObject;
 		}
-		else return false;
+		else return null;
 	}
 
 }

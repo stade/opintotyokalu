@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 
 public class Tenttimuistutus {
-	
 
 	/**
 	 * Muistuttaa tulevista tenteist�
