@@ -1447,7 +1447,7 @@ public class Kayttoliittyma {
 	public static void tyhjennaNakyma() {
 		int i = 0;
 
-		for(i=0;i<300;i++) {
+		for(i=0;i<100;i++) {
 			System.out.println("\n");
 		}
 	}
