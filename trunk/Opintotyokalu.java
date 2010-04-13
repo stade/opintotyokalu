@@ -9,15 +9,13 @@ public class Opintotyokalu {
 
 		//luodaan käyttöliittymä olio
 		Kayttoliittyma kali = new Kayttoliittyma();
-
-		//luodaan tenttimuistutus olio
-		Tenttimuistutus muistutus = new Tenttimuistutus();
+		
 
 		//Käyttöliittymän aloitusvalikko
 		kali.aloitusValikko();
 
 		//tenttimuistutukset
-		muistutus.muistuta(kali.getTiedot());
+		Tenttimuistutus.muistuta(kali.getTiedot());
 
 		//Käyttöliittymän päävalikko
 		kali.paaValikko();
