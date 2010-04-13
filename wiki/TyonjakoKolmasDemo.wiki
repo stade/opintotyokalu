@@ -34,14 +34,14 @@ Kerääjän tallentaminen ja lataus
 Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
-- Käyttöliittymä lähes valmis 
-- Tenttimuistutus lähes valmis (ei kuitenkaan toimi vielä kunnolla)
+- Käyttöliittymä valmis 
+- Tenttimuistutus valmis
 
 ===Tekemättä===
 
-- Testaaminen ja pikku fiksailu
+- Testaaminen
 
-====Valmiina 90%:====
+====Valmiina ~95%:====
 
 ===Juho=== 
 Exporter-luokka
