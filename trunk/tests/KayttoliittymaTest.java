@@ -1,7 +1,6 @@
 package tests;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.*;
 
 import opintotyokalu.*;
 
@@ -9,6 +8,7 @@ import opintotyokalu.Exporter;
 import opintotyokalu.Keraaja;
 import opintotyokalu.Kurssi;
 import opintotyokalu.Tapahtuma;
+
 import junit.framework.TestCase;
 
 public class KayttoliittymaTest extends TestCase {
