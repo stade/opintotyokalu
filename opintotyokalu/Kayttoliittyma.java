@@ -832,7 +832,7 @@ public class Kayttoliittyma {
 
 			if(luento.equals("")) break;
 
-			System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
+			System.out.print("Anna vielä sijainti(voit jättää tyhjäksi): ");
 
 			nappaimisto = new Scanner(System.in);
 			sijainti = nappaimisto.nextLine();
