@@ -35,6 +35,7 @@ Käyttöliittymä-luokka / main
 Tenttimuistutukset-funktio/luokka
 
 - Käyttöliittymä valmis 
+
 - Tenttimuistutus valmis
 
 ===Tekemättä===
