@@ -105,6 +105,7 @@ public class Kayttoliittyma {
 	        case 1: lisaaTenttiValikko();   				  	break;
 	        case 2: muokkaaTenttiValikko();    					break;
 	        case 3: poistaTenttiValikko();   					break;
+	        case 4: tulevatTentitValikko();						break;
 	        case 0: paaValikko();								break;
 	        default : System.out.println("Virheellinen syöte"); return 1;
 
@@ -448,6 +449,8 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("3. Poista tenttejä");
 		System.out.println("");
+		System.out.println("4. Tulevat tentit");
+		System.out.println("");
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
@@ -750,7 +753,20 @@ public class Kayttoliittyma {
 			valintanum = nappaimisto.nextInt();
 		}
 	}
+	
+	public void tulevatTentitValikko() {
 
+		tyhjennaNakyma();
+		System.out.println("Opintotyökalu - Tulevat tentit");
+		System.out.println("");
+		
+
+		Tenttimuistutus.muistuta(tiedot);
+		
+		tenttiValikko();
+	}
+	
+	
 	/**
 	 *	Käyttöliittymän kurssin lisäysvalikko. Ei käytä vielä oikeita tietorakenteita.
 	 *  Tapahtumien lisäyksen toteutus vajaa. Ei virheellisten syötteiden käsittelyä.
