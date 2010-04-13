@@ -34,8 +34,8 @@ public class Exporter {
 
 	// below: a number of timetable variables -->
 
-	// weekday names' abbreviations
-	private static String[] weekdays = {"Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};
+	// weekday names
+	private static String[] weekdays = {"Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
 
 	// number of days to print in timetable (defaults to 5, but changing this value will allow implementation of mon-d timetables, where d is mon, tue, ..., or sun)
 	private static int nDays = 5;
@@ -63,15 +63,19 @@ public class Exporter {
 
 		// courses[number of courses][0 course name, 1 credits]
 		String[][] courses = new String[nCourses][2];
+
+		// reset total credits (counted below)
 		totalcr = 0;
 
 		// for-each course in Keraaja object field kurssit (now in coursesArray), get name and credits to internal array courses (String[][])
 		for (i = 0; i < nCourses; i++) {
 			if ((coursesArray.get(i)).getSuoritettu()) {
 				courses[i][0] = (coursesArray.get(i)).getNimi();
-				int cr = (coursesArray.get(i).getLaajuus());	// cr == credits. Used twice (in following lines)
-				courses[i][1] = Integer.toString(cr);	// int has to be converted to String at some point! (can't print otherwise)
-				totalcr += cr;	// add credits to total credits (static variable)
+
+				// get credit count, add it to total credits and convert to String (for printing purposes). Finally, insert it into courses[][1]
+				int cr = (coursesArray.get(i).getLaajuus());
+				totalcr += cr;
+				courses[i][1] = Integer.toString(cr);
 			}
 		}
 
@@ -136,11 +140,14 @@ public class Exporter {
 	 *	@return timetable
 	 */
 	private static String[][] importTimetable(Keraaja tiedot) {
-		String[][] timetable = new String[24][7]; // timetable[hours][days] (maximum values)
+
+		// timetable[hours][days] (maximum values)
+		String[][] timetable = new String[24][7];
 		ArrayList<Tapahtuma> eventsArray = tiedot.getTapahtumat();
 
+		// loop through events, add weekly events to String[][] timetable
 		for (Tapahtuma event : eventsArray) {
-			if (event.getToistuva()) {	// only weekly events
+			if (event.getToistuva()) {
 
 				// for getting int values (hours and day) from Date objects in Tapahtuma object
 				GregorianCalendar time = new GregorianCalendar();
@@ -148,11 +155,15 @@ public class Exporter {
 				// convert Date to Calendar (intuitively pointless, but Java API orders to do so)
 				time.setTime(event.getAlku());
 				int start = time.get(Calendar.HOUR_OF_DAY);
+
+				// if event starts before scope of timetable, alter scope
 				if (start < firsthr) { firsthr = start; }
 
 				// again, convert Date to Calendar
 				time.setTime(event.getLoppu());
 				int end = time.get(Calendar.HOUR_OF_DAY);
+
+				// if event ends after scope of timetable, alter scope
 				if (end > lasthr) { lasthr = end; }
 
 				// assuming that event starts and ends on same day
@@ -164,7 +175,15 @@ public class Exporter {
 
 				// loop through hours and alter values of timetable
 				for (i = start-1; i < end-1; i++) {
-					timetable[i][day] = event.getKuuluuKurssiinNimelta() + " (" + event.getNimi() + ") " + event.getSijainti();
+
+					// two events in same slot, concatenate by adding a line break
+					if (timetable[i][day] != null) {
+						timetable[i][day] += "<BR />\n" + event.getKuuluuKurssiinNimelta() + "<BR />\n(" + event.getNimi() + ") " + event.getSijainti();
+					}
+					// nothing in slot, just change the value directly
+					else {
+						timetable[i][day] = event.getKuuluuKurssiinNimelta() + "<BR />(" + event.getNimi() + ") " + event.getSijainti();
+					}
 				}
 			}
 		}
@@ -199,7 +218,7 @@ public class Exporter {
 			out.write("<TR>\n<TD></TD>\n");
 			i = 0;
 			while (i < nDays) {
-				out.write("<TD WIDTH=200><B>" + weekdays[i] + "</B></TD>\n");
+				out.write("<TD WIDTH=160 ALIGN=CENTER><B>" + weekdays[i] + "</B></TD>\n");
 				i++;
 			}
 			out.write("</TR>\n\n");
@@ -208,7 +227,7 @@ public class Exporter {
 			int j = firsthr-1;
 			while (j < lasthr-1) {
 				// print hour
-				out.write("<TR>\n<TD ALIGN=RIGHT HEIGHT=50><B>" + (j+1) + "</B></TD>\n");
+				out.write("<TR>\n<TD ALIGN=RIGHT><B>" + (j+1) + "</B></TD>\n");
 
 				// print events
 				i = 0;
@@ -278,12 +297,14 @@ public class Exporter {
 		Tapahtuma a = new Tapahtuma("Hei");
 		Tapahtuma b = new Tapahtuma("Harjoitukset");
 		Tapahtuma c = new Tapahtuma("Luento");
+		Tapahtuma d = new Tapahtuma("Tapaaminen");
 
-		a.setToistuva(true); b.setToistuva(true); c.setToistuva(true);
+		a.setToistuva(true); b.setToistuva(true); c.setToistuva(true); d.setToistuva(true);
 
 		a.setKuuluuKurssiinNimelta("Sulkistreenit");
 		b.setKuuluuKurssiinNimelta("Moi-kurssi");
 		c.setKuuluuKurssiinNimelta("Programming in Foo");
+		d.setKuuluuKurssiinNimelta("Introduction to Bar");
 
 		a.setAlku(new Date((new GregorianCalendar(2010, 4, 12, 12, 0)).getTimeInMillis()));	// Monday
 		a.setLoppu(new Date((new GregorianCalendar(2010, 4, 12, 14, 0)).getTimeInMillis()));
@@ -294,16 +315,21 @@ public class Exporter {
 		c.setAlku(new Date((new GregorianCalendar(2010, 4, 16, 10, 0)).getTimeInMillis()));	// Friday
 		c.setLoppu(new Date((new GregorianCalendar(2010, 4, 16, 12, 0)).getTimeInMillis()));
 
+		d.setAlku(new Date((new GregorianCalendar(2010, 4, 13, 14, 0)).getTimeInMillis()));	// Tuesday, (overlapping b on purpose)
+		d.setLoppu(new Date((new GregorianCalendar(2010, 4, 13, 16, 0)).getTimeInMillis()));
+
 		a.setSijainti("Palloiluhalli p");
 		b.setSijainti("A111");
 		c.setSijainti("B123");
+		d.setSijainti("CK112");
 
 		test.addTapahtuma(a);
 		test.addTapahtuma(b);
 		test.addTapahtuma(c);
+		test.addTapahtuma(d);
 
 		printTimetable(test);
 	}
-*/
 
+*/
 }
