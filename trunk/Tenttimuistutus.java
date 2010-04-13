@@ -17,7 +17,7 @@ public class Tenttimuistutus {
 	 * Muistuttaa tulevista tenteistä
 	 * @param tiedot
 	 */
-	public void muistuta(Keraaja tiedot) {
+	public static void muistuta(Keraaja tiedot) {
 
 		int indeksi = 0;
 		Tapahtuma lahinna = null;
@@ -122,7 +122,7 @@ public class Tenttimuistutus {
 	 * Tulostaa tyhjän välin
 	 * @param k
 	 */
-	public void tulostaVali(int k) {
+	public static void tulostaVali(int k) {
 		while (0 < k) {
 			System.out.print(" ");
 			k--;
@@ -133,7 +133,7 @@ public class Tenttimuistutus {
 	 * Vaihtaa rivin
 	 * @param k
 	 */
-	public void rivinvaihto(int k) {
+	public static void rivinvaihto(int k) {
 		while(0 < k) {
 			System.out.println("");
 			k--;
