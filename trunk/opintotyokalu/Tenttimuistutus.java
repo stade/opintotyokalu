@@ -59,7 +59,6 @@ public class Tenttimuistutus {
 			tulostaVali(5);
 		}
 		else {
-
 			
 			Kayttoliittyma.tyhjennaNakyma();
 			tulostaVali(10);
@@ -72,7 +71,6 @@ public class Tenttimuistutus {
 			System.out.print("Tulevat tentit:");
 			tulostaVali(5);
 			rivinvaihto(2);
-
 
 			/*
 			 *	Tulostaa tulevat tentit aikajärjestyksessä niin, että etsii lähimpänä olevan
