@@ -1,0 +1,21 @@
+#summary työnjako neljänteen demoon
+
+Tärkeät:
+ 
+- Virhetarkistukset kuntoon (Juho)
+
+- tenttien muokkaus valmiiksi (Janne k)
+
+- metodeja uusiksi/paremmiksi  (kellon aika to iso H) (Janne h)  
+
+- kurssisuunnitelma & tenttimuistutus kuntoon (Tatu) 
+
+
+
+Jos jää aikaa:
+
+- JAR
+
+muut huom:
+
+- kysytään asiakkaalta haluaako testauksen!
