@@ -69,14 +69,14 @@ public class Exporter {
 
 		// for-each course in Keraaja object field kurssit (now in coursesArray), get name and credits to internal array courses (String[][])
 		for (i = 0; i < nCourses; i++) {
-			if ((coursesArray.get(i)).getSuoritettu()) {
+//			if ((coursesArray.get(i)).getSuoritettu()) {
 				courses[i][0] = (coursesArray.get(i)).getNimi();
 
 				// get credit count, add it to total credits and convert to String (for printing purposes). Finally, insert it into courses[][1]
 				int cr = (coursesArray.get(i).getLaajuus());
 				totalcr += cr;
 				courses[i][1] = Integer.toString(cr);
-			}
+//			}
 		}
 
 		return courses;
