@@ -1,6 +1,7 @@
 #summary työnjako neljänteen demoon
 
-Tärkeät:
+==Tärkeät==
+
  
 - Virhetarkistukset kuntoon (Juho)
 
@@ -12,7 +13,7 @@ Tärkeät:
 
 
 
-Jos jää aikaa:
+===Jos jää aikaa:===
 
 - JAR
 
