@@ -20,3 +20,7 @@
 muut huom:
 
 - kysytään asiakkaalta haluaako testauksen!
+
+===HUOM!===
+
+irc-tapaaminen klo 17
