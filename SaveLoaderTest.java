@@ -1,7 +1,4 @@
-package tests;
 
-import opintotyokalu.SaverLoader;
-import opintotyokalu.*;
 import junit.framework.TestCase;
 
 
@@ -32,7 +29,7 @@ public class SaveLoaderTest extends TestCase {
 	public void testSavingKeraajaWithPath() {
 		SaverLoader test = new SaverLoader();
 		Keraaja testikeraaja = new Keraaja();
-		assertTrue(test.saveObject(testikeraaja, "/home/haaja/joku"));
+		assertTrue(test.saveObject(testikeraaja, "../joku"));
 	}
 	
 	public void testSavingObjectWithoutPath() {
@@ -44,7 +41,7 @@ public class SaveLoaderTest extends TestCase {
 	public void testSavingObjectWithPath() {
 		SaverLoader test = new SaverLoader();
 		Object testiobject = new Object();
-		assertFalse(test.saveObject(testiobject, "/home/haaja/joku"));
+		assertFalse(test.saveObject(testiobject, "../joku"));
 	}
 	
 	public void testSavingObjectWithPathWithoutRights() {
@@ -55,7 +52,7 @@ public class SaveLoaderTest extends TestCase {
 	
 	public void testSavingNullWithPath() {
 		SaverLoader test = new SaverLoader();
-		assertFalse(test.saveObject(null, "/home/haaja/joku"));
+		assertFalse(test.saveObject(null, "../joku"));
 	}
 	
 	public void testSavingNullWithPathWithoutRights() {
