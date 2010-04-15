@@ -16,11 +16,13 @@ import java.util.Scanner;
 public class Kayttoliittyma {
 
 	private SimpleDateFormat paivaysMalli; // yhteinen malli päivänmäärille
+	private SimpleDateFormat formatteriTapahtumanNimenPerässäOlevalleAjalle;
 	private Keraaja tiedot;
 	private SaverLoader saveLoad = new SaverLoader();
 
 	public Kayttoliittyma() {
 		 this.paivaysMalli = new SimpleDateFormat("dd.MM.yy HH");	//Käyttäjän syötettävä ajat tässä muodossa
+		 this.formatteriTapahtumanNimenPerässäOlevalleAjalle = new SimpleDateFormat("dd.MM. 'klo' HH");
 		 this.tiedot = new Keraaja();
 	}
 	/**
@@ -170,7 +172,7 @@ public class Kayttoliittyma {
 		}
 		else if (valintanum > 0 && valintanum <= this.tiedot.getKurssit().size()) {
 			// Kurssien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
-			tietynKurssinMuokkausValikko(valintanum-1);
+			tietynKurssinMuokkausValikko(this.tiedot.getKurssit().get(valintanum-1));
 			kurssiValikko();
 			return 0;
 		}
@@ -853,7 +855,6 @@ public class Kayttoliittyma {
 		String luento;
 		String sijainti;
 		Tapahtuma uusiTapahtuma;
-		SimpleDateFormat formatteriTapahtumanNimenPerässäOlevalleAjalle = new SimpleDateFormat("dd.MM. 'klo' HH");
 		
 		nappaimisto = new Scanner(System.in);
 		
@@ -890,7 +891,7 @@ public class Kayttoliittyma {
 
 		//Viimeinen parametri on tapahtuman nimi, jos parametreja ei ole tarpeeksi, säilyy nimenä käyttäjän syöte.
 		if(parametrit.length > 2) {
-			uusiTapahtuma.setNimi(parametrit[2] + " " + formatteriTapahtumanNimenPerässäOlevalleAjalle.format(uusiTapahtuma.getAlku()));
+			uusiTapahtuma.setNimi(parametrit[2]);
 			if(parametrit[2].equalsIgnoreCase("Tentti")) {
 				this.tiedot.getTentit().add(uusiTapahtuma);
 				uusiTapahtuma.setToistuva(false);
@@ -1195,9 +1196,8 @@ public class Kayttoliittyma {
 	 * 
 	 * @param kurssiIndeksi
 	 */
-	public void tietynKurssinMuokkausValikko(int kurssiIndeksi) {
+	public void tietynKurssinMuokkausValikko(Kurssi kurssi) {
 		
-		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
 		ArrayList<Tapahtuma> tapahtumat = this.tiedot.getTapahtumat();
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
@@ -1210,10 +1210,10 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("Muokkaa");
 
-		System.out.println("1." + kurssit.get(kurssiIndeksi).getNimi());
-		System.out.println("2." + kurssit.get(kurssiIndeksi).getLaajuus());
+		System.out.println("1." + kurssi.getNimi());
+		System.out.println("2." + kurssi.getLaajuus());
 
-		String kurssinNimi = kurssit.get(kurssiIndeksi).getNimi();
+		String kurssinNimi = kurssi.getNimi();
 		
 		for(int i = 0; i < tapahtumat.size(); i++) {
 			if(kurssinNimi.equals(tapahtumat.get(i).getKuuluuKurssiinNimelta())) {
@@ -1229,7 +1229,7 @@ public class Kayttoliittyma {
 
 		//Tulostetaan valittavissa olevat tapahtumat
 		for(int i = 0; i < valikonTapahtumat.size(); i++){
-			System.out.println(3+i + ". " + valikonTapahtumat.get(i).getNimi());
+			System.out.println(3+i + ". " + valikonTapahtumat.get(i).getNimi() + " " + formatteriTapahtumanNimenPerässäOlevalleAjalle.format(valikonTapahtumat.get(i).getAlku()));
 		}
 
 		System.out.println("0. Palaa takaisin");
@@ -1251,7 +1251,7 @@ public class Kayttoliittyma {
 		valintanum = nappaimisto.nextInt();
 
 		//Kysytään valikkonumeroa kunnes se on oikea
-		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssit.get(kurssiIndeksi),valikonTapahtumat) == 1) {
+		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssi,valikonTapahtumat) == 1) {
 			System.out.print("Valinta:");
 			nappaimisto = new Scanner(System.in);
 
@@ -1330,14 +1330,17 @@ public class Kayttoliittyma {
 
 			case 1:
 				kurssi.setNimi(lueString());
+				tietynKurssinMuokkausValikko(kurssi);
 				return 0;
 			case 2:
 				kurssi.setLaajuus(lueInt());
+				tietynKurssinMuokkausValikko(kurssi);
 				return 0;
 			case 0:
 				return 0;
 			default:
 				tapahtumanMuokkausValikko(valikonTapahtumat.get(valintanum-3));
+				tietynKurssinMuokkausValikko(kurssi);
 				return 0;
 		}
 	}
@@ -1412,23 +1415,46 @@ public class Kayttoliittyma {
         //Käsitellään käyttäjän antama tuntisyöte esim. 10-12
 
         //Jaetaan koko käyttäjän antama syöte kahtia "-" merkistä
-        String[] tunnit = str.split("-");
+        String[] tunnit = parametrit[1].split("-");
+        
+        
+        //kaksi aikaa esim 10-12
+        if(tunnit.length > 1) {
 
-        //Otetaan vasemman splitin kaksi viimeistä merkkiä ja lisätään parserille tarjottavaan stringiin
-        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
-        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
+        	//Otetaan vasemman splitin kaksi viimeistä merkkiä ja lisätään parserille tarjottavaan stringiin
+	        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
+	        aika1 += tunnit[0].charAt(tunnit[0].length()-1);
+	
+	        //Otetaan kaksi ensimmäistä oikealta puolelta ja lisätään ne toiseen parserille tarjottavaan stringiin
+	        aika2 += " " + tunnit[1].charAt(0);
+	        aika2 += tunnit[1].charAt(1);
+	
+	        //Lopuksi nämä stringit parsetaan ja aika talletetaan tapahtumaaan.
+	
+	        Date[] ret = new Date[2];
+	        ret[0] = parseKayttajanAntamaAika(aika1);        
+	        ret[1] = parseKayttajanAntamaAika(aika2);
+	        return ret;
+        }
+        //yksi aika esim 10
+        else {
+        	//annettu kaksi merkkiä esim 09
+        	if(tunnit[0].length() > 1) {
+        	aika1 += " " + tunnit[0].charAt(0);
+        	aika1 += tunnit[0].charAt(1);
+        	}
+        	//annettu yksi merkki esim 9, lisätään 0 eteen. 9 muuttuu 09
+        	else {
+        		aika1 += " " + "0" + tunnit[0].charAt(0);
+        	}
+        	
+        	Date[] ret = new Date[2];
+ 	        ret[0] = parseKayttajanAntamaAika(aika1);        
+ 	        ret[1] = parseKayttajanAntamaAika(aika1);
+ 	        return ret;
+        }
+        
 
-        //Otetaan kaksi ensimmäistä oikealta puolelta ja lisätään ne toiseen parserille tarjottavaan stringiin
-        aika2 += " " + tunnit[1].charAt(0);
-        aika2 += tunnit[1].charAt(1);
-
-        //Lopuksi nämä stringit parsetaan ja aika talletetaan tapahtumaaan.
-
-        Date[] ret = new Date[2];
-        ret[0] = parseKayttajanAntamaAika(aika1);
-        ret[1] = parseKayttajanAntamaAika(aika2);
-
-        return ret;
 	}
 
 	private String lueString() {
