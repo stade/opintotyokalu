@@ -884,14 +884,42 @@ public class Kayttoliittyma {
 		nappaimisto = new Scanner(System.in);
 		luento = nappaimisto.nextLine();
 
-		// p tunnistaa "(0-99).(0-99). (0-99)-(0-99) (mitä tahansa)"
+		// p tunnistaa "(1-31).(1-12). (0-24)-(0-24) (mitä tahansa)"
 		// tai tyhjän syötteen (return null, ks. alla)
-		Pattern p = Pattern.compile("(\\d{1,2}\\.\\d{1,2}\\.\\s\\d{1,2}-\\d{1,2}\\s.*)|()");
+
+		// päivämääräpattern
+		String pvmp = "([1-9]|[1-2][0-9]|3[0-1])\\.([1-9]|1[0-2])\\.";
+
+		// aikapattern
+		String aikap = "([0-9]|1[0-9]|2[0-4])";
+
+		Pattern p = Pattern.compile(pvmp + "\\s" + aikap + "-" + aikap + "\\s.*" + "|()");
 		Matcher m = p.matcher(luento);
 
-		// niin kauan kuin m ei tunnista syotetta, syote on väärässä muodossa
-		while (!m.matches()) {
-			System.out.print("Virheellinen syöte: '" + luento + "' (katso ohjeet).\nOpetusajat: ");
+		// kysellään niin kauan kuin m ei tunnista syotetta tai kellonaika on väärässä muodossa
+		while (true) {
+
+			// syöte oikein...
+			if (m.matches()) {
+
+				// ... ja kellonaika oikein! Lopetetaan.
+				// (m.group(3) on aloitusaika ja m.group(4) lopetusaika)
+				if ((Integer.parseInt(m.group(3)) < Integer.parseInt(m.group(4)))) {
+					break;
+				}
+				// ... mutta kellonaika väärin. :(
+				else {
+					System.out.println("Virheellinen kellonaika: '" + m.group(3) + "-" + m.group(4) + "' (tarkoititko " + m.group(4) + "-" + m.group(3) + "?).");
+				}
+			}
+
+			// syöte väärässä muodossa (ja/tai väärä kellonaika)
+			else {
+				System.out.println("Virheellinen syöte: '" + luento + "' (katso ohjeet).");
+			}
+
+			// luetaan seuraava syöte
+			System.out.print("Opetusajat: ");
 			luento = nappaimisto.nextLine();
 			m = p.matcher(luento);
 		}
