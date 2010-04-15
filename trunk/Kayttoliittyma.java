@@ -213,17 +213,23 @@ public class Kayttoliittyma {
 	 */
 	public int valintaTenttiMuokkausValikko(int valintanum) {
 
-		switch (valintanum) {
-	        //Keskeneräinen ei toimintoja
-	        case 1: System.out.print("tästä 1. tentin muokkaus");   break;
-	        case 2: System.out.print("tästä 2. tentin muokkaus");   break;
-	        case 3: System.out.print("tästä 3. tentin muokkaus");   break;
-	        case 4: System.out.print("tästä lisää tenttejä");		break;
-	        case 0: tenttiValikko();								break;
-	        default : System.out.println("Virheellinen syöte");  	return 1;
+		//listaa tentit
+		//kutsu tapahtumanmuokkausvalikkoa
+		if(valintanum == 0) {
+				tenttiValikko();
+				return 0;
+			}
 
+		else if (valintanum > 0 && valintanum <= this.tiedot.getTentit().size()) {
+			// Tenttien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			tapahtumanMuokkausValikko(this.tiedot.getTentit().get(valintanum-1));
+			tenttiValikko();
+			return 0;
 		}
-		return 0;
+		else {
+			System.out.println("Virheellinen syöte");
+			return 1;
+		}
 	}
 
 	/**
@@ -651,19 +657,21 @@ public class Kayttoliittyma {
 	 */
 	public void muokkaaTenttiValikko() {
 
-
 		Scanner nappaimisto;
 		int valintanum;
+
+		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tenttien muokkaus");
 		System.out.println("");
 		System.out.println("Muokkaa");
 
-		System.out.println("1. Tentti 1.");
-		System.out.println("2. Tentti 2.");
-		System.out.println("3. Tentti 3.");
-		System.out.println("4. Lisää tenttejä");
+
+		for(int i =0; i<tentit.size(); i++) {
+			System.out.println(i+1 + ". " + tentit.get(i).getNimi());
+		}
+
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.print("Valinta:");
@@ -778,10 +786,8 @@ public class Kayttoliittyma {
 		//nämä korvataan oikeilla tietotyypeillä
 		String kurssinimi;
 		int op;
-		String luento;
-		String sijainti;
 		ArrayList<Tapahtuma> uudetTapahtumat = new ArrayList<Tapahtuma>();
-		Tapahtuma uusiTapahtuma;
+		Tapahtuma lisattyTapahtuma;
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Kurssin lisäys");
@@ -810,64 +816,18 @@ public class Kayttoliittyma {
 			tyhjennaNakyma();
 			System.out.println("Opintotyökalu - Kurssien lisäys");
 			System.out.println("");
-			System.out.println(kurssinimi);
-			System.out.println(op + "op");
-
+			System.out.println(lisattyKurssi.getNimi());
+			System.out.println(lisattyKurssi.getLaajuus() + "op");
+			
 			//tulostetaan lisätyt tapahtumat
 			for(int i=0; i<uudetTapahtumat.size(); i++){
 				System.out.println(uudetTapahtumat.get(i).getNimi());
 			}
+			
+			lisattyTapahtuma = lisaaTapahtumaKurssiin(lisattyKurssi);
+			if (lisattyTapahtuma != null) uudetTapahtumat.add(lisattyTapahtuma);
 
-			System.out.println("");
-
-			System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
-			System.out.println("16.7. 10-12 Harjoitukset");
-			System.out.println("HUOM: Anna TENTIT muodossa 16.7. 10-12 tentti");
-			System.out.println("Voit syöttää useampia tapahtumia, aina yhden kerrallaan. Pelkkä tyhjä syöte lopettaa lisäämisen.");
-			System.out.print("Opetusajat: ");
-
-			nappaimisto = new Scanner(System.in);
-			luento = nappaimisto.nextLine();
-
-			if(luento.equals("")) break;
-
-			System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
-
-			nappaimisto = new Scanner(System.in);
-			sijainti = nappaimisto.nextLine();
-
-			//lisätään kurssi kerääjään.
-
-			uusiTapahtuma = new Tapahtuma(luento);
-			uusiTapahtuma.setKuuluuKurssiinNimelta(lisattyKurssi.getNimi());
-
-			Date[] taulukkoAjoista = palautaStringDatena(luento);
-			uusiTapahtuma.setAlku(taulukkoAjoista[0]);
-			uusiTapahtuma.setLoppu(taulukkoAjoista[1]);
-			uusiTapahtuma.setToistuva(true);
-			uusiTapahtuma.setSijainti(sijainti);
-
-			String[] parametrit = luento.split(" ", 3);
-
-			//Viimeinen parametri on tapahtuman nimi, jos parametreja ei ole tarpeeksi, säilyy nimenä käyttäjän syöte.
-			if(parametrit.length > 2) {
-				uusiTapahtuma.setNimi(parametrit[2]);
-				if(parametrit[2].equalsIgnoreCase("Tentti")) {
-					this.tiedot.getTentit().add(uusiTapahtuma);
-					uusiTapahtuma.setToistuva(false);
-				}
-				else {
-					this.tiedot.getTapahtumat().add(uusiTapahtuma);
-				}
-
-			}
-			else {
-				this.tiedot.getTapahtumat().add(uusiTapahtuma);
-			}
-
-			uudetTapahtumat.add(uusiTapahtuma);
-
-		} while (!luento.equals(""));
+		} while (lisattyTapahtuma != null);
 
         tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Kurssien lisäys");
@@ -887,6 +847,65 @@ public class Kayttoliittyma {
         kurssiValikko();
 	}
 
+	private Tapahtuma lisaaTapahtumaKurssiin(Kurssi kurssi) {
+		Scanner nappaimisto;
+
+		String luento;
+		String sijainti;
+		Tapahtuma uusiTapahtuma;
+		SimpleDateFormat formatteriTapahtumanNimenPerässäOlevalleAjalle = new SimpleDateFormat("dd.MM. 'klo' HH");
+		
+		nappaimisto = new Scanner(System.in);
+		
+		System.out.println("");
+
+		System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
+		System.out.println("16.7. 10-12 Harjoitukset");
+		System.out.println("HUOM: Anna TENTIT muodossa 16.7. 10-12 tentti");
+		System.out.println("Voit syöttää useampia tapahtumia, aina yhden kerrallaan. Pelkkä tyhjä syöte lopettaa lisäämisen.");
+		System.out.print("Opetusajat: ");
+
+		nappaimisto = new Scanner(System.in);
+		luento = nappaimisto.nextLine();
+
+		if(luento.equals("")) return null;
+
+		System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
+
+		nappaimisto = new Scanner(System.in);
+		sijainti = nappaimisto.nextLine();
+
+		//lisätään kurssi kerääjään.
+
+		uusiTapahtuma = new Tapahtuma(luento);
+		uusiTapahtuma.setKuuluuKurssiinNimelta(kurssi.getNimi());
+
+		Date[] taulukkoAjoista = palautaStringDatena(luento);
+		uusiTapahtuma.setAlku(taulukkoAjoista[0]);
+		uusiTapahtuma.setLoppu(taulukkoAjoista[1]);
+		uusiTapahtuma.setToistuva(true);
+		uusiTapahtuma.setSijainti(sijainti);
+
+		String[] parametrit = luento.split(" ", 3);
+
+		//Viimeinen parametri on tapahtuman nimi, jos parametreja ei ole tarpeeksi, säilyy nimenä käyttäjän syöte.
+		if(parametrit.length > 2) {
+			uusiTapahtuma.setNimi(parametrit[2] + " " + formatteriTapahtumanNimenPerässäOlevalleAjalle.format(uusiTapahtuma.getAlku()));
+			if(parametrit[2].equalsIgnoreCase("Tentti")) {
+				this.tiedot.getTentit().add(uusiTapahtuma);
+				uusiTapahtuma.setToistuva(false);
+			}
+			else {
+				this.tiedot.getTapahtumat().add(uusiTapahtuma);
+			}
+
+		}
+		else {
+			this.tiedot.getTapahtumat().add(uusiTapahtuma);
+		}
+		
+		return uusiTapahtuma;
+	}
 	/**
 	 *	Muuttaa käyttäjän String muodossa antaman ajan Date-olioksi ja palauttaa sen.
 	 *  Ei toteutettu virheenhallintaa kunnolla!
