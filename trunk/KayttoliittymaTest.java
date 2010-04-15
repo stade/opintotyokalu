@@ -1,13 +1,6 @@
-package tests;
+
 
 import java.util.*;
-
-import opintotyokalu.*;
-
-import opintotyokalu.Exporter;
-import opintotyokalu.Keraaja;
-import opintotyokalu.Kurssi;
-import opintotyokalu.Tapahtuma;
 
 import junit.framework.TestCase;
 

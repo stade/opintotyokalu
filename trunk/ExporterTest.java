@@ -1,7 +1,4 @@
-package tests;
 
-import opintotyokalu.Exporter;
-import opintotyokalu.Keraaja;
 import junit.framework.TestCase;
 
 public class ExporterTest extends TestCase {
