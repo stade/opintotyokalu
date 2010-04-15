@@ -608,7 +608,7 @@ public class Kayttoliittyma {
 
 		//nämä korvataan oikeilla tietotyypeillä
 		String tenttinimi;
-		String luento;
+		String tentti;
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tentin lisäys");
@@ -624,19 +624,61 @@ public class Kayttoliittyma {
 		System.out.println(tenttinimi);
 		System.out.println("");
 		System.out.println("Anna tentin ajankohta esim. 16.12. 10-12");
-        System.out.print("Tentin Ajankohta: ");
+        System.out.print("Tentin ajankohta: ");
 
         nappaimisto = new Scanner(System.in);
-        luento = nappaimisto.nextLine();
+        tentti = nappaimisto.nextLine();
+
+		// p tunnistaa "(1-31).(1-12). (0-24)-(0-24)"
+		// tai tyhjän syötteen (return null, ks. alla)
+
+		// päivämääräpattern
+		String pvmp = "([1-9]|[1-2][0-9]|3[0-1])\\.([1-9]|1[0-2])\\.";
+
+		// aikapattern
+		String aikap = "([0-9]|1[0-9]|2[0-4])";
+
+		Pattern p = Pattern.compile(pvmp + "\\s" + aikap + "-" + aikap +  "|()");
+		Matcher m = p.matcher(tentti);
+
+		// kysellään niin kauan kuin m ei tunnista tenttia tai kellonaika on väärässä muodossa
+		while (true) {
+
+			// syöte oikein...
+			if (m.matches()) {
+
+				// ... ja kellonaika oikein! Lopetetaan.
+				// (m.group(3) on aloitusaika ja m.group(4) lopetusaika)
+				if (tentti.equals("") || (Integer.parseInt(m.group(3)) < Integer.parseInt(m.group(4)))) {
+					break;
+				}
+				// ... mutta kellonaika väärin. :(
+				else {
+					System.out.println("Virheellinen kellonaika: '" + m.group(3) + "-" + m.group(4) + "' (tarkoititko " + m.group(4) + "-" + m.group(3) + "?).");
+				}
+			}
+
+			// syöte väärässä muodossa (ja/tai väärä kellonaika)
+			else {
+				System.out.println("Virheellinen syöte: '" + tentti + "' (katso ohjeet).");
+			}
+
+			// luetaan seuraava syöte
+			System.out.print("Tentin ajankohta: ");
+			tentti = nappaimisto.nextLine();
+			m = p.matcher(tentti);
+		}
+
+		// syöte on oikeanlainen, jatketaan
 
         // Ei lisätä mitään jos käyttäjä ei syötä ajankohtaa.
-        if(!luento.equals("")) {
+        if(!tentti.equals("")) {
 
         	tyhjennaNakyma();
         	System.out.println("Opintotyökalu - Tenttien lisäys");
         	System.out.println("");
         	System.out.println(tenttinimi);
-        	System.out.println(luento);
+        	System.out.println(tentti);
         	System.out.println("");
         	System.out.print("Paina enter palataksesi takaisin");
 
@@ -647,7 +689,7 @@ public class Kayttoliittyma {
         	Tapahtuma lisattyTapahtuma = new Tapahtuma(tenttinimi);
         	this.tiedot.addTentti(lisattyTapahtuma);
 
-        	Date[] taulukkoAjoista = palautaStringDatena(luento);
+        	Date[] taulukkoAjoista = palautaStringDatena(tentti);
         	lisattyTapahtuma.setAlku(taulukkoAjoista[0]);
         	lisattyTapahtuma.setLoppu(taulukkoAjoista[1]);
         }
