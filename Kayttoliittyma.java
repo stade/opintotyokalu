@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  *	Käyttöliittymä -luokka luo tekstipohjaiset valikot ja mahdollistaa niissä liikkumisen.
@@ -807,13 +809,28 @@ public class Kayttoliittyma {
 		System.out.print("Anna kurssin laajuus opintopisteinä: ");
 
 		nappaimisto = new Scanner(System.in);
-		op = nappaimisto.nextInt();
 
+		// luetaan syöte, poistetaan whitespacet
+		String syote = nappaimisto.nextLine().trim();
+
+		// p tunnistaa luvut 0-99, m katsoo onko syote oikea
+		Pattern p = Pattern.compile("\\d{1,2}");
+		Matcher m = p.matcher(syote);
+
+		// niin kauan kuin m ei tunnista syotetta, syote ei ole luku väliltä 0-99
+		while (!m.matches()) {
+			System.out.print("Virheellinen syöte: '" + syote + "'. Anna luku väliltä 0-99: ");
+			syote = nappaimisto.nextLine().trim();
+			m = p.matcher(syote);
+		}
+
+		// syote on oikeanlainen, muunnetaan se kokonaisluvuksi (tämän voisi kenties tehdä elegantimmin?)
+		op = Integer.parseInt(syote);
 
 		Kurssi lisattyKurssi = new Kurssi(kurssinimi, op);
 	    this.tiedot.addKurssi(lisattyKurssi);
 
-		//Loopataan kunnes tyhja syöte. Niihin voidaan lisätään useampia tapahtumia peräkkäin.
+		// Loopataan kunnes tyhja syöte. Niihin voidaan lisätään useampia tapahtumia peräkkäin.
 		do {
 			tyhjennaNakyma();
 			System.out.println("Opintotyökalu - Kurssien lisäys");
@@ -855,9 +872,7 @@ public class Kayttoliittyma {
 		String luento;
 		String sijainti;
 		Tapahtuma uusiTapahtuma;
-		
-		nappaimisto = new Scanner(System.in);
-		
+
 		System.out.println("");
 
 		System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
@@ -869,7 +884,21 @@ public class Kayttoliittyma {
 		nappaimisto = new Scanner(System.in);
 		luento = nappaimisto.nextLine();
 
+		// p tunnistaa "(0-99).(0-99). (0-99)-(0-99) (mitä tahansa)"
+		// tai tyhjän syötteen (return null, ks. alla)
+		Pattern p = Pattern.compile("(\\d{1,2}\\.\\d{1,2}\\.\\s\\d{1,2}-\\d{1,2}\\s.*)|()");
+		Matcher m = p.matcher(luento);
+
+		// niin kauan kuin m ei tunnista syotetta, syote on väärässä muodossa
+		while (!m.matches()) {
+			System.out.print("Virheellinen syöte: '" + luento + "' (katso ohjeet).\nOpetusajat: ");
+			luento = nappaimisto.nextLine();
+			m = p.matcher(luento);
+		}
+
 		if(luento.equals("")) return null;
+
+		// syöte on oikeanlainen, jatketaan
 
 		System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
 
@@ -1467,7 +1496,7 @@ public class Kayttoliittyma {
 	private int lueInt() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.println("Sy�t� luku:");
+		System.out.println("Syötä luku:");
 		return nappaimisto.nextInt();
 	}
 
