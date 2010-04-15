@@ -904,7 +904,7 @@ public class Kayttoliittyma {
 
 				// ... ja kellonaika oikein! Lopetetaan.
 				// (m.group(3) on aloitusaika ja m.group(4) lopetusaika)
-				if ((Integer.parseInt(m.group(3)) < Integer.parseInt(m.group(4)))) {
+				if (luento.equals("") || (Integer.parseInt(m.group(3)) < Integer.parseInt(m.group(4)))) {
 					break;
 				}
 				// ... mutta kellonaika väärin. :(
