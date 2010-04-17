@@ -100,7 +100,7 @@ public class Exporter {
 		if (file != null && out != null) {
 
 			// print head
-			out.write("<HTML>\n<HEAD>\n<TITLE>Suoritetut kurssit</TITLE>\n</HEAD>\n\n<BODY>\n\n");
+			out.write("<HTML>\n<HEAD>\n<TITLE>Suunnitellut kurssit</TITLE>\n</HEAD>\n\n<BODY>\n\n");
 
 			// begin table
 			out.write("\n<TABLE BORDER=0 CELLSPACING=20>\n");
@@ -267,8 +267,14 @@ public class Exporter {
 	 *	@param tiedot
 	 */
 	public static void printCourses(Keraaja tiedot) {
-		if (exportCourses(importCourses(tiedot))) {
-			System.out.println("Luotiin " + coursesfn);
+		try {
+			if (exportCourses(importCourses(tiedot))) {
+				System.out.println("Luotiin " + coursesfn + " tiedosto.");
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace(); 
+			System.out.println("Kurssitulosteen tekeminen epäonnistui.");
 		}
 	}
 
@@ -278,8 +284,14 @@ public class Exporter {
 	 *	@param tiedot
 	 */
 	public static void printTimetable(Keraaja tiedot) {
-		if (exportTimetable(importTimetable(tiedot))) {
-			System.out.println("Luotiin " + timetablefn);
+		try {
+			if (exportTimetable(importTimetable(tiedot))) {
+				System.out.println("Luotiin " + timetablefn + " tiedosto.");
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Lukujärjestyksen tekeminen epäonnistui.");
 		}
 	}
 
