@@ -27,6 +27,7 @@ public class Kayttoliittyma {
 		 this.formatteriTapahtumanNimenPerässäOlevalleAjalle = new SimpleDateFormat("dd.MM. 'klo' HH");
 		 this.tiedot = new Keraaja();
 	}
+	
 	/**
 	 *
 	 * @return
@@ -200,6 +201,24 @@ public class Kayttoliittyma {
 		}
 		else if (valintanum > 0 && valintanum <= this.tiedot.getKurssit().size()) {
 			//Kurssien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
+			
+			//poistetaan kurssiin liittyvät tapahtumat ja tentit
+			ArrayList<Tapahtuma> tentitArray = this.tiedot.getTentit();
+			ArrayList<Tapahtuma> tapahtumatArray = this.tiedot.getTapahtumat(); 
+			
+			for (int i= 0; i< tentitArray.size(); i++) {
+				if (this.tiedot.getKurssit().get(valintanum-1).getNimi().equals(tentitArray.get(i).getKuuluuKurssiinNimelta())) {
+					this.tiedot.removeTentti(tentitArray.get(i));
+				}
+			}
+
+			for (int i= 0; i< tapahtumatArray.size(); i++) {
+				if (this.tiedot.getKurssit().get(valintanum-1).getNimi().equals(tapahtumatArray.get(i).getKuuluuKurssiinNimelta())) {
+					this.tiedot.removeTapahtuma(tapahtumatArray.get(i));
+				}
+			}
+			
+			//poistetaan itse kurssi
 			this.tiedot.getKurssit().remove(valintanum-1);
 			kurssiValikko();
 			return 0;
@@ -289,7 +308,7 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("2. Aloita lataamatta tietoja");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -314,7 +333,7 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("0. Poistu sovelluksesta");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -340,7 +359,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -369,7 +388,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -391,7 +410,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -414,7 +433,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 	
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -540,7 +559,7 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -565,7 +584,7 @@ public class Kayttoliittyma {
 		
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -1078,9 +1097,12 @@ public class Kayttoliittyma {
 			valintanum = nappaimisto.nextInt();
 		}
 	}
+	
+	/**
+	 * 
+	 */
 	public void lopetusValikko() {
 
-	
 		System.out.println("Opintotyökalu - Lopetus");
 		System.out.println("");
 		System.out.println("1. Tallenna ja lopeta");
@@ -1090,8 +1112,6 @@ public class Kayttoliittyma {
 		System.out.println("3. Palaa päävalikkoon");
 		System.out.println("");
 		System.out.print("Valinta: ");
-
-		
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.

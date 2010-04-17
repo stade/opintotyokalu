@@ -34,6 +34,10 @@ public class Tapahtuma implements Serializable {
 		this.tyyppi = tyyppi;	
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTyyppi(){
 		return this.tyyppi;	
 	}
