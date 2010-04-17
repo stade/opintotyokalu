@@ -917,7 +917,7 @@ public class Kayttoliittyma {
 
 		System.out.println("");
 
-		System.out.println("Anna kurssin opetustiedot pilkulla erottaen esim.");
+		System.out.println("Anna kurssin opetustiedot seuraavalla tavalla:");
 		System.out.println("16.7. 10-12 Harjoitukset");
 		System.out.println("HUOM: Anna TENTIT muodossa 16.7. 10-12 tentti");
 		System.out.println("Voit syöttää useampia tapahtumia, aina yhden kerrallaan. Pelkkä tyhjä syöte lopettaa lisäämisen.");
@@ -969,8 +969,8 @@ public class Kayttoliittyma {
 		if(luento.equals("")) return null;
 
 		// syöte on oikeanlainen, jatketaan
-
-		System.out.println("Anna vielä sijainti(voit jättää tyhjäksi): ");
+		
+		System.out.print("Anna vielä sijainti(voit jättää tyhjäksi): ");
 
 		nappaimisto = new Scanner(System.in);
 		sijainti = nappaimisto.nextLine();
@@ -1006,6 +1006,7 @@ public class Kayttoliittyma {
 		
 		return uusiTapahtuma;
 	}
+	
 	/**
 	 *	Muuttaa käyttäjän String muodossa antaman ajan Date-olioksi ja palauttaa sen.
 	 *  Ei toteutettu virheenhallintaa kunnolla!
@@ -1047,7 +1048,7 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		nappaimisto = new Scanner(System.in);
 
@@ -1055,7 +1056,7 @@ public class Kayttoliittyma {
 		while(nappaimisto.hasNextInt() != true) {
 			System.out.println("Virheellinen syöte");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 
 			nappaimisto = new Scanner(System.in);
 		}
@@ -1064,14 +1065,14 @@ public class Kayttoliittyma {
 
 		//Kysytään valikkonumeroa kunnes se on oikea
 		while(valintaKurssiMuokkausValikko(valintanum) == 1) {
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 			nappaimisto = new Scanner(System.in);
 
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
 			while(nappaimisto.hasNextInt() != true) {
 				System.out.println("Virheellinen syöte");
 				System.out.println("");
-				System.out.print("Valinta:");
+				System.out.print("Valinta: ");
 
 				nappaimisto = new Scanner(System.in);
 			}
@@ -1102,7 +1103,7 @@ public class Kayttoliittyma {
 		System.out.println(kurssit.size()+1 + ". Lisää kursseja");
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		nappaimisto = new Scanner(System.in);
 
@@ -1110,7 +1111,7 @@ public class Kayttoliittyma {
 		while(nappaimisto.hasNextInt() != true) {
 			System.out.println("Virheellinen syöte");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 
 			nappaimisto = new Scanner(System.in);
 		}
@@ -1119,14 +1120,14 @@ public class Kayttoliittyma {
 
 		//Kysytään valikkonumeroa kunnes se on oikea
 		while(valintaKurssiPoistoValikko(valintanum) == 1) {
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 			nappaimisto = new Scanner(System.in);
 
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
 			while(nappaimisto.hasNextInt() != true) {
 				System.out.println("Virheellinen syöte");
 				System.out.println("");
-				System.out.print("Valinta:");
+				System.out.print("Valinta: ");
 
 				nappaimisto = new Scanner(System.in);
 			}
@@ -1333,7 +1334,7 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta:");
+		System.out.print("Valinta: ");
 
 		nappaimisto = new Scanner(System.in);
 
@@ -1342,7 +1343,7 @@ public class Kayttoliittyma {
 
 			System.out.println("Virheellinen syöte");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 
 			nappaimisto = new Scanner(System.in);
 		}
@@ -1351,14 +1352,14 @@ public class Kayttoliittyma {
 
 		//Kysytään valikkonumeroa kunnes se on oikea
 		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssi,valikonTapahtumat) == 1) {
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 			nappaimisto = new Scanner(System.in);
 
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
 			while(nappaimisto.hasNextInt() != true) {
 				System.out.println("Virheellinen syöte");
 				System.out.println("");
-				System.out.print("Valinta:");
+				System.out.print("Valinta: ");
 
 				nappaimisto = new Scanner(System.in);
 			}
@@ -1388,7 +1389,7 @@ public class Kayttoliittyma {
 
 			System.out.println("Virheellinen syöte");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 
 			nappaimisto = new Scanner(System.in);
 		}
@@ -1398,7 +1399,7 @@ public class Kayttoliittyma {
 		//Kysytään valikkonumeroa kunnes se on oikea
 		while(valintaLopetusValikko(valintanum) == 1) {
 
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 			nappaimisto = new Scanner(System.in);
 
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
@@ -1406,7 +1407,7 @@ public class Kayttoliittyma {
 
 				System.out.println("Virheellinen syöte");
 				System.out.println("");
-				System.out.print("Valinta:");
+				System.out.print("Valinta: ");
 
 				nappaimisto = new Scanner(System.in);
 			}
@@ -1462,15 +1463,15 @@ public class Kayttoliittyma {
 		while (valinta < 0 && valinta > 5) {
 			System.out.println("Virheellinen sy�te");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 			valinta = getValikkoValinta();
 		}
 
 		switch(valinta) {
 			case 1:tapahtuma.setNimi(lueString()); 		break;
 			case 2:tapahtuma.setSijainti(lueString()); 	break;
-			case 3:tapahtuma.setAlku(lueYksiPVM());
-			case 4:tapahtuma.setLoppu(lueYksiPVM());
+			case 3:tapahtuma.setAlku(lueAloitusAika());
+			case 4:tapahtuma.setLoppu(lueLopetusAika());
 			case 0:break;
 			default:break;
 		}
@@ -1478,22 +1479,39 @@ public class Kayttoliittyma {
 	}
 	
 	/**
+	 * parseKayttajanAntamaAika
+	 * @return
+	 */
+	private Date lueAloitusAika() {
+		Scanner nappaimisto = new Scanner(System.in);
+
+		System.out.println("Anna tapahtuman aloitusaika seuraavassa muodossa: ");
+		System.out.println("16.7.10 10");
+		System.out.print("Syöte: ");
+		//return palautaStringDatena(nappaimisto.nextLine())[0];
+		return parseKayttajanAntamaAika(nappaimisto.nextLine());
+	}
+
+	/**
 	 * 
 	 * @return
 	 */
-	private Date lueYksiPVM() {
+	private Date lueLopetusAika() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.println("Anna aika:");
-		return palautaStringDatena(nappaimisto.nextLine())[0];
-	}
+		System.out.println("Anna tapahtuman lopetusaika seuraavassa muodossa: ");
+		System.out.println("16.7.10 12");
+		System.out.print("Syöte: ");
+		//return palautaStringDatena(nappaimisto.nextLine())[0];
+		return parseKayttajanAntamaAika(nappaimisto.nextLine());
+	}	
 
 	/**
 	 * 
 	 * @param str
 	 * @return
 	 */
-	private Date[] palautaStringDatena(String str){
+	private Date[] palautaStringDatena(String str) {
 
 		Date currenttime = new Date(System.currentTimeMillis());
 		DateFormat dateFormat = new SimpleDateFormat("yy");
@@ -1518,7 +1536,7 @@ public class Kayttoliittyma {
         
         
         //kaksi aikaa esim 10-12
-        if(tunnit.length > 1) {
+        if(tunnit[0].length() > 1) {
 
         	//Otetaan vasemman splitin kaksi viimeistä merkkiä ja lisätään parserille tarjottavaan stringiin
 	        aika1 += " " + tunnit[0].charAt(tunnit[0].length()-2);
@@ -1529,7 +1547,6 @@ public class Kayttoliittyma {
 	        aika2 += tunnit[1].charAt(1);
 	
 	        //Lopuksi nämä stringit parsetaan ja aika talletetaan tapahtumaaan.
-	
 	        Date[] ret = new Date[2];
 	        ret[0] = parseKayttajanAntamaAika(aika1);        
 	        ret[1] = parseKayttajanAntamaAika(aika2);
@@ -1552,7 +1569,6 @@ public class Kayttoliittyma {
  	        ret[1] = parseKayttajanAntamaAika(aika1);
  	        return ret;
         }
-        
 
 	}
 
@@ -1578,7 +1594,7 @@ public class Kayttoliittyma {
 
 			System.out.println("Virheellinen syöte");
 			System.out.println("");
-			System.out.print("Valinta:");
+			System.out.print("Valinta: ");
 
 			nappaimisto = new Scanner(System.in);
 		}
