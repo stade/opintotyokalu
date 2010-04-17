@@ -19,7 +19,7 @@
 
 muut huom:
 
-- kysytään asiakkaalta haluaako testauksen!
+- Testaus:  http://en.wikipedia.org/wiki/Refactoring overview kohdan mukaisesti
 
 ===HUOM!===
 
