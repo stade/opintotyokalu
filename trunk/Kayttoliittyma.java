@@ -526,8 +526,7 @@ public class Kayttoliittyma {
 	 */
 	public void muokkaaTenttiValikko() {
 
-		Scanner nappaimisto;
-		int valintanum;
+		
 
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
@@ -545,44 +544,15 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.print("Valinta:");
 
-		nappaimisto = new Scanner(System.in);
-
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta:");
-
-			nappaimisto = new Scanner(System.in);
-		}
-
-		valintanum = nappaimisto.nextInt();
-
-		//Kysytään valikkonumeroa kunnes se on oikea
-		while(valintaTenttiMuokkausValikko(valintanum) == 1) {
-			System.out.print("Valinta:");
-			nappaimisto = new Scanner(System.in);
-
-			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-			while(nappaimisto.hasNextInt() != true) {
-				System.out.println("Virheellinen syöte");
-				System.out.println("");
-				System.out.print("Valinta:");
-
-				nappaimisto = new Scanner(System.in);
-			}
-			valintanum = nappaimisto.nextInt();
-		}
+		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
+		//numeroita.
+		tarkistaSyote("tenttiMuokkausValikko");
 	}
 
 	/**
 	 *
 	 */
 	public void poistaTenttiValikko() {
-
-		Scanner nappaimisto;
-		int valintanum;
 
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
@@ -599,36 +569,11 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.print("Valinta:");
 
-		nappaimisto = new Scanner(System.in);
+		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
+		//numeroita.
+		tarkistaSyote("tenttiPoistoValikko");
 
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-			
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta:");
-
-			nappaimisto = new Scanner(System.in);
-		}
-
-		valintanum = nappaimisto.nextInt();
-
-		//Kysytään valikkonumeroa kunnes se on oikea
-		while(valintaTenttiPoistoValikko(valintanum) == 1) {
-			System.out.print("Valinta:");
-			nappaimisto = new Scanner(System.in);
-
-			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-			while(nappaimisto.hasNextInt() != true) {
-				System.out.println("Virheellinen syöte");
-				System.out.println("");
-				System.out.print("Valinta:");
-
-				nappaimisto = new Scanner(System.in);
-
-			}
-			valintanum = nappaimisto.nextInt();
-		}
+	
 	}
 	
 	public void tulevatTentitValikko() {
@@ -856,8 +801,6 @@ public class Kayttoliittyma {
 	 */
 	public void muokkaaKurssiValikko() {
 
-		Scanner nappaimisto;
-		int valintanum;
 
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
 
@@ -874,44 +817,16 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.print("Valinta: ");
 
-		nappaimisto = new Scanner(System.in);
-
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta: ");
-
-			nappaimisto = new Scanner(System.in);
-		}
-
-		valintanum = nappaimisto.nextInt();
-
-		//Kysytään valikkonumeroa kunnes se on oikea
-		while(valintaKurssiMuokkausValikko(valintanum) == 1) {
-			System.out.print("Valinta: ");
-			nappaimisto = new Scanner(System.in);
-
-			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-			while(nappaimisto.hasNextInt() != true) {
-				System.out.println("Virheellinen syöte");
-				System.out.println("");
-				System.out.print("Valinta: ");
-
-				nappaimisto = new Scanner(System.in);
-			}
-			valintanum = nappaimisto.nextInt();
-		}
+		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
+		//numeroita.
+		tarkistaSyote("kurssiMuokkausValikko");
+		
 	}
 
 	/**
 	 *	Käyttöliittymän kurssin poistovalikko. Keskeneräinen.
 	 */
 	public void poistaKurssiValikko() {
-
-		Scanner nappaimisto;
-		int valintanum;
-
 
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
 
@@ -928,34 +843,10 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.print("Valinta: ");
 
-		nappaimisto = new Scanner(System.in);
-
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta: ");
-
-			nappaimisto = new Scanner(System.in);
-		}
-
-		valintanum = nappaimisto.nextInt();
-
-		//Kysytään valikkonumeroa kunnes se on oikea
-		while(valintaKurssiPoistoValikko(valintanum) == 1) {
-			System.out.print("Valinta: ");
-			nappaimisto = new Scanner(System.in);
-
-			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-			while(nappaimisto.hasNextInt() != true) {
-				System.out.println("Virheellinen syöte");
-				System.out.println("");
-				System.out.print("Valinta: ");
-
-				nappaimisto = new Scanner(System.in);
-			}
-			valintanum = nappaimisto.nextInt();
-		}
+		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
+		//numeroita.
+		tarkistaSyote("kurssiPoistoValikko");
+		
 	}
 
 	/**
@@ -1474,8 +1365,62 @@ public class Kayttoliittyma {
 				
 			}
 		}
-		
-		
+		else if (valikko.contentEquals("tenttiMuokkausValikko")) {
+			
+			//Kysytään valikkonumeroa kunnes se on oikea
+			while(valintaTenttiMuokkausValikko(valintanum) == 1) {
+
+				System.out.print("Valinta: ");
+				nappaimisto = new Scanner(System.in);
+
+				//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
+				valintanum = tarkistaLuku(nappaimisto).nextInt();
+				
+				
+			}
+		}
+		else if (valikko.contentEquals("kurssiMuokkausValikko")) {
+			
+			//Kysytään valikkonumeroa kunnes se on oikea
+			while(valintaKurssiMuokkausValikko(valintanum) == 1) {
+
+				System.out.print("Valinta: ");
+				nappaimisto = new Scanner(System.in);
+
+				//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
+				valintanum = tarkistaLuku(nappaimisto).nextInt();
+				
+				
+			}
+		}
+		else if (valikko.contentEquals("kurssiPoistoValikko")) {
+			
+			//Kysytään valikkonumeroa kunnes se on oikea
+			while(valintaKurssiPoistoValikko(valintanum) == 1) {
+
+				System.out.print("Valinta: ");
+				nappaimisto = new Scanner(System.in);
+
+				//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
+				valintanum = tarkistaLuku(nappaimisto).nextInt();
+				
+				
+			}
+		}
+		else if (valikko.contentEquals("tenttiPoistoValikko")) {
+			
+			//Kysytään valikkonumeroa kunnes se on oikea
+			while(valintaTenttiPoistoValikko(valintanum) == 1) {
+
+				System.out.print("Valinta: ");
+				nappaimisto = new Scanner(System.in);
+
+				//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
+				valintanum = tarkistaLuku(nappaimisto).nextInt();
+				
+				
+			}
+		}
 		
 	}
 	public Scanner tarkistaLuku(Scanner nappaimisto) {
