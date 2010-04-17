@@ -80,17 +80,17 @@ public class Tenttimuistutus {
 			 *	tietorakenne on tyhjä.
 			 */
 			while (!temp.isEmpty()) {
-
+				
+				lahinDate = temp.get(0).getAlku();
+				lahinna = temp.get(0);
+				
 				for(int i=0;i<temp.size();i++) {
-					if (i== 0) {
-						lahinDate = temp.get(i).getAlku();
-						lahinna = temp.get(i);
-					}
 					
 					if(temp.get(i).getAlku().before(lahinDate)) {
 						
 						lahinDate = temp.get(i).getAlku();
 						lahinna = temp.get(i);
+						
 					}
 				}
 				
