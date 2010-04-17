@@ -282,8 +282,6 @@ public class Kayttoliittyma {
 	 */
 	public void aloitusValikko() {
 
-		
-
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu");
 		System.out.println("");
@@ -927,7 +925,6 @@ public class Kayttoliittyma {
 			System.out.println(i+1 + ". " + kurssit.get(i).getNimi());
 		}
 
-		System.out.println(kurssit.size()+1 + ". Lisää kursseja");
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.print("Valinta: ");
