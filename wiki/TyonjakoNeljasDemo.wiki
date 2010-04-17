@@ -9,7 +9,7 @@
 
 - metodeja uusiksi/paremmiksi  (kellon aika to iso H) (Janne h)  
 
-- kurssisuunnitelma & tenttimuistutus kuntoon (Tatu) 
+- kurssisuunnitelma & tenttimuistutus kunnossa? -testattava  Käyttöliittymän refaktorointi kesken (Tatu) 
 
 
 
