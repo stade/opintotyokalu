@@ -170,7 +170,8 @@ public class Exporter {
 				int day = time.get(Calendar.DAY_OF_WEEK);
 
 				// a trick to move Monday to 0
-				day -= 4;
+				//day -= 4;
+				day -= 2;
 				if (day < 0) { day += 7; }
 
 				// loop through hours and alter values of timetable
@@ -198,6 +199,7 @@ public class Exporter {
 	 *	@return boolean
 	 */
 	private static boolean exportTimetable(String[][] timetable) {
+		
 		try {
 			file = new File(timetablefn);
 			out = new PrintWriter(file);
