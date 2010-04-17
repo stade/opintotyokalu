@@ -308,7 +308,6 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("2. Aloita lataamatta tietoja");
 		System.out.println("");
-		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -333,8 +332,7 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("0. Poistu sovelluksesta");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("paaValikko");
@@ -359,8 +357,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("kurssiValikko");
@@ -388,8 +385,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("tenttiValikko");
@@ -410,8 +406,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+	
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("raporttiValikko");
@@ -433,8 +428,7 @@ public class Kayttoliittyma {
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
 		System.out.println("");
-		System.out.print("Valinta: ");
-	
+			
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("tallennaValikko");
@@ -559,7 +553,6 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -584,7 +577,6 @@ public class Kayttoliittyma {
 		
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta: ");
 
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
@@ -832,8 +824,7 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("kurssiMuokkausValikko");
@@ -858,8 +849,7 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("kurssiPoistoValikko");
@@ -1111,8 +1101,7 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("3. Palaa päävalikkoon");
 		System.out.println("");
-		System.out.print("Valinta: ");
-
+		
 		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte, joka vastaa valikossa olevia
 		//numeroita.
 		tarkistaSyote("lopetusValikko");
