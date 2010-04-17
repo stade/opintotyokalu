@@ -1092,7 +1092,7 @@ public class Kayttoliittyma {
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
 
 		tyhjennaNakyma();
-		System.out.println("Opintoty�kalu - Kurssien poisto");
+		System.out.println("Opintotyökalu - Kurssien poisto");
 		System.out.println("");
 		System.out.println("Poista");
 		
@@ -1306,7 +1306,7 @@ public class Kayttoliittyma {
 		ArrayList<Tapahtuma> valikonTapahtumat = new ArrayList<Tapahtuma>();
 
 		tyhjennaNakyma();
-		System.out.println("Opintoty�kalu -  Kurssin muokkaus");
+		System.out.println("Opintotyökalu -  Kurssin muokkaus");
 		System.out.println("");
 		System.out.println("Muokkaa");
 
