@@ -526,8 +526,6 @@ public class Kayttoliittyma {
 	 */
 	public void muokkaaTenttiValikko() {
 
-		
-
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
 		tyhjennaNakyma();
@@ -537,7 +535,7 @@ public class Kayttoliittyma {
 
 
 		for(int i =0; i<tentit.size(); i++) {
-			System.out.println(i+1 + ". " + tentit.get(i).getNimi());
+			System.out.println(i+1 + ". " + tentit.get(i).getKuuluuKurssiinNimelta()+" - "+ tentit.get(i).getNimi());
 		}
 
 		System.out.println("0. Palaa takaisin");
@@ -562,7 +560,7 @@ public class Kayttoliittyma {
 		System.out.println("Poista");
 
 		for(int i =0; i<tentit.size(); i++) {
-			System.out.println(i+1 + ". " + tentit.get(i).getNimi());
+			System.out.println(i+1 + ". " + tentit.get(i).getKuuluuKurssiinNimelta()+" - "+ tentit.get(i).getNimi());
 		}
 		
 		System.out.println("0. Palaa takaisin");
