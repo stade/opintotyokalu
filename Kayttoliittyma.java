@@ -49,7 +49,7 @@ public class Kayttoliittyma {
 
 	        case 1: avaaTiedostostaAlussaValikko();	break;
 	        case 2: return 0;
-	        default : System.out.println("Virheellinen sy�te");  return 1;
+	        default : System.out.println("Virheellinen syöte");  return 1;
 
 		}
 		return 0;
@@ -243,7 +243,7 @@ public class Kayttoliittyma {
 	 */
 	public int valintaTenttiPoistoValikko(int valintanum) {
 
-		//tähän parempi virheenk�sittely esim isInteger
+		//tähän parempi virheenkäsittely esim isInteger
 		if (valintanum == 0) {
 			tenttiValikko();
 			return 0;
@@ -403,8 +403,6 @@ public class Kayttoliittyma {
 	 *	Käyttöliittymän tallennusvalikko.
 	 */
 	public void tallennaValikko() {
-
-		
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tallenna tai lataa");
@@ -639,7 +637,6 @@ public class Kayttoliittyma {
 		System.out.println("Opintotyökalu - Tulevat tentit");
 		System.out.println("");
 		
-
 		Tenttimuistutus.muistuta(tiedot);
 		
 		tenttiValikko();
@@ -720,9 +717,11 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println(kurssinimi);
 		System.out.println(op + "op");
+		
 		for(int i=0; i<uudetTapahtumat.size(); i++){
 			System.out.println(uudetTapahtumat.get(i).getNimi());
 		}
+		
 		System.out.println("");
         System.out.print("Paina enter palataksesi takaisin");
 
@@ -1256,7 +1255,7 @@ public class Kayttoliittyma {
 
 		int valinta = getValikkoValinta();
 		while (valinta < 0 && valinta > 5) {
-			System.out.println("Virheellinen sy�te");
+			System.out.println("Virheellinen syöte");
 			System.out.println("");
 			System.out.print("Valinta: ");
 			valinta = getValikkoValinta();
