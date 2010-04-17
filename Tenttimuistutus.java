@@ -21,6 +21,7 @@ public class Tenttimuistutus {
 
 		int indeksi = 0;
 		Tapahtuma lahinna = null;
+		Date lahinDate = null;
 		Tapahtuma tentti = null;
 
 		//Tentit
@@ -78,28 +79,22 @@ public class Tenttimuistutus {
 			 *	tentin poistaa sen tietorakenteesta ja tulostaa sen. Tätä jatketaan kunnes
 			 *	tietorakenne on tyhjä.
 			 */
-			while (temp.isEmpty() == false) {
+			while (!temp.isEmpty()) {
 
-				lahinna = temp.get(0);
-
-				if (indeksi >= temp.size()) {
-					break;
-				}
-
-				//Käydään kaikki tentit läpi ja etsitään tentti johon on vähiten aikaa
-				for (int i = 0; i < temp.size(); i++ ) {
-
-					tentti = temp.get(i);
-
-					//Jos löytyi tentti joka on lähempänä kuin edellinen lähin korvataan se.
-					if (tentti.getAlku().after(lahinna.getAlku())) {
-						lahinna = tentti;
-						indeksi = i;
+				for(int i=0;i<temp.size();i++) {
+					if (i== 0) {
+						lahinDate = temp.get(i).getAlku();
+						lahinna = temp.get(i);
+					}
+					
+					if(temp.get(i).getAlku().before(lahinDate)) {
+						
+						lahinDate = temp.get(i).getAlku();
+						lahinna = temp.get(i);
 					}
 				}
-
+				
 				//Poistetaan lähinnä oleva tentti väliaikaisesta tietorakenteesta
-				temp.remove(indeksi);
 				tulostaVali(1);
 
 				//Tulostetaan kurssi johon tentti kuuluu
@@ -114,6 +109,7 @@ public class Tenttimuistutus {
 				DateFormat dateFormat = new SimpleDateFormat("dd.MM. 'klo' HH");
 				System.out.print(dateFormat.format(lahinna.getAlku()));
 				rivinvaihto(1);
+				temp.remove(lahinna);
 			}
 		}
 		rivinvaihto(1);
