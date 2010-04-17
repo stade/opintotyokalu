@@ -100,7 +100,7 @@ public class Exporter {
 		if (file != null && out != null) {
 
 			// print head
-			out.write("<HTML>\n<HEAD>\n<TITLE>Suunnitellut kurssit</TITLE>\n</HEAD>\n\n<BODY>\n\n");
+			out.write("<HTML>\n<HEAD>\n<TITLE>Kurssisuunnitelma</TITLE>\n</HEAD>\n\n<BODY>\n\n");
 
 			// begin table
 			out.write("\n<TABLE BORDER=0 CELLSPACING=20>\n");
