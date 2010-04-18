@@ -1406,21 +1406,42 @@ public class Kayttoliittyma {
 		}
 		
 		return nappaimisto;
-		
 	}
 
+	/**
+	 * Lukee String syötteen käyttäjältä
+	 * 
+	 * @return
+	 */
 	private String lueString() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.println("Syötä teksti:");
-		return nappaimisto.nextLine();
+		System.out.print("Syötä teksti:");
+		if (nappaimisto.hasNextLine()) {
+			return nappaimisto.nextLine().trim();
+		}
+		else {
+			System.out.println("Virheellinen syöte!");
+			return this.lueString();
+		}
 	}
 
+	/**
+	 * Lukee kokonaislukusyötteen käyttäjältä.
+	 * 
+	 * @return
+	 */
 	private int lueInt() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.println("Syötä luku:");
-		return nappaimisto.nextInt();
+		System.out.print("Syötä luku:");
+		if (nappaimisto.hasNextInt()) {
+			return nappaimisto.nextInt();
+		}
+		else {
+			System.out.println("Virheellinen syöte! Syötteen on oltava kokonaisluku.");
+			return this.lueInt();
+		}
 	}
 
 	private int getValikkoValinta() {
