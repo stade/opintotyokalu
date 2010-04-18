@@ -1,5 +1,6 @@
 /**
- * Luokkakuvaus tähän
+ * Kurssia kuvaava luokka
+ * 
  * @author ryhmä?
  *
  */

@@ -1,5 +1,5 @@
 /**
- * Kuvaus luokasta tähän
+ * Tapahtumia kuvaava luokka.
  * 
  * @author ryhmä?
  */
