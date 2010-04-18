@@ -1,5 +1,8 @@
 /**
- * Luokkakuvaus tähän
+ * Ohjelman käyttävä tietorakenne, joka kokoaa kurssit, tapahtumat ja
+ * tentit yhteen. Kerääjä oliota käytetään myös tiedostoon tallentamisessa
+ * ja raporttien luomisessa.
+ * 
  * @author ryhmä?
  */
 

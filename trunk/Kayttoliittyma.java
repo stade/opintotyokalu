@@ -618,6 +618,11 @@ public class Kayttoliittyma {
 
 		nappaimisto = new Scanner(System.in);
 		kurssinimi = nappaimisto.nextLine();
+		while (kurssinimi.length() <= 0) {
+			System.out.println("Kurssille on annettava nimi!");
+			System.out.print("Anna kurssin nimi: ");
+			kurssinimi = nappaimisto.nextLine();
+		}
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Kurssin lisäys");
@@ -686,6 +691,11 @@ public class Kayttoliittyma {
         kurssiValikko();
 	}
 
+	/**
+	 * 
+	 * @param kurssi
+	 * @return
+	 */
 	private Tapahtuma lisaaTapahtumaKurssiin(Kurssi kurssi) {
 		Scanner nappaimisto;
 

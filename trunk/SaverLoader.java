@@ -6,7 +6,6 @@
  * 
  * @author ryhmä?
  * 
- * TODO: tarkistukset ja hienosäätö
  */
 
 import java.io.Serializable;
@@ -22,7 +21,7 @@ public class SaverLoader implements Serializable {
 	private FileInputStream fileIn;
 	private ObjectInputStream objectIn;
 	private Object loadedObject;
-	private final String DEFAULTFILE = "opinnot.txt";
+	private final String DEFAULTFILE = "opinnot.txt"; //default tiedosto jos ei määritellä erikseen
 	
 	/**
 	 * Tallennetaan default lokaatioon
@@ -55,7 +54,7 @@ public class SaverLoader implements Serializable {
 	 * 
 	 * @param toBeSaved olio joka tallennetaan tiedostoon
 	 * @param toSaveInto tiedosto johon tallennetaan
-	 * @return 		true jos onnistutaan, muutoin false
+	 * @return true jos onnistutaan, muutoin false
 	 * 
 	 */
 	public boolean saveObject(Object toBeSaved, String toSaveInto) {
@@ -81,7 +80,7 @@ public class SaverLoader implements Serializable {
 	 * Ladataan Keraaja olio tiedostosta
 	 * 
 	 * @param path tiedostopolku jossa tiedosto sijaitsee
-	 * @return 		tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
+	 * @return tiedostosta ladattu Keraaja tai null jos lukeminen epäonnistuu
 	 * 
 	 */
 	public Object loadObject(String path) {
