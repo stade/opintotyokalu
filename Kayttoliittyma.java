@@ -1425,16 +1425,13 @@ public class Kayttoliittyma {
 		System.out.print("Valinta: ");
 		nappaimisto = new Scanner(System.in);
 		
-		while(nappaimisto.hasNextInt() != true) {
-
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta: ");
-
-			nappaimisto = new Scanner(System.in);
+		if (nappaimisto.hasNextInt()) {
+			return nappaimisto;
 		}
-		
-		return nappaimisto;
+		else {
+			System.out.println("Virheellinen syöte");
+			return this.tarkistaLuku(nappaimisto);
+		}
 	}
 
 	/**
@@ -1473,19 +1470,19 @@ public class Kayttoliittyma {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private int getValikkoValinta() {
 		Scanner nappaimisto = new Scanner(System.in);
-
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta: ");
-
-			nappaimisto = new Scanner(System.in);
+		System.out.print("Valinta: ");
+		if (nappaimisto.hasNextInt()) {
+			return nappaimisto.nextInt();
 		}
-		return nappaimisto.nextInt();
+		else {
+			System.out.println("Virheellinen syöte");
+			return this.getValikkoValinta();
+		}
 	}
 	
 	/**
