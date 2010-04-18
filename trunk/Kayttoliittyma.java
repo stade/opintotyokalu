@@ -1021,9 +1021,6 @@ public class Kayttoliittyma {
 		
 		ArrayList<Tapahtuma> tapahtumat = this.tiedot.getTapahtumat();
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
-
-		Scanner nappaimisto;
-		int valintanum;
 		ArrayList<Tapahtuma> valikonTapahtumat = new ArrayList<Tapahtuma>();
 
 		tyhjennaNakyma();
@@ -1057,36 +1054,23 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.print("Valinta: ");
 
+		Scanner nappaimisto;
+		int valintanum;
+		
+		
 		nappaimisto = new Scanner(System.in);
+		valintanum = tarkistaLuku(nappaimisto).nextInt();
 
-		//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-		while(nappaimisto.hasNextInt() != true) {
-
-			System.out.println("Virheellinen syöte");
-			System.out.println("");
-			System.out.print("Valinta: ");
-
-			nappaimisto = new Scanner(System.in);
-		}
-
-		valintanum = nappaimisto.nextInt();
-
+		
 		//Kysytään valikkonumeroa kunnes se on oikea
 		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssi,valikonTapahtumat) == 1) {
-			System.out.print("Valinta: ");
-			nappaimisto = new Scanner(System.in);
-
+			
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
-			while(nappaimisto.hasNextInt() != true) {
-				System.out.println("Virheellinen syöte");
-				System.out.println("");
-				System.out.print("Valinta: ");
-
-				nappaimisto = new Scanner(System.in);
-			}
-			valintanum = nappaimisto.nextInt();
+			valintanum = tarkistaLuku(nappaimisto).nextInt();
+			
 		}
 	}
+		
 	
 	/**
 	 * 
@@ -1263,6 +1247,12 @@ public class Kayttoliittyma {
         }
 
 	}
+	/**
+	 *  Tarkistaa onko annettu syöte kokonaisluku ja vastaako se valikossa olevia 
+	 *  numeroita. 
+	 * 
+	 * @param String kutsuttavan valikon nimi
+	 */
 	private void tarkistaSyote (String valikko) {
 		
 		Scanner nappaimisto;
