@@ -1373,6 +1373,14 @@ public class Kayttoliittyma {
 		}
 		
 	}
+	
+	/**
+	 *  Tarkistaa onko annettu syöte kokonaisluku ja vastaako se valikossa olevia 
+	 *  numeroita. 
+	 * 
+	 * @param Scanner näppäimistöltä luettu käyttäjän antama syöte
+	 * @return Scanner nappimistöltä luettu luku jos se on kokonaisluku
+	 */
 	public Scanner tarkistaLuku(Scanner nappaimisto) {
 		
 		System.out.print("Valinta: ");
@@ -1388,7 +1396,6 @@ public class Kayttoliittyma {
 		}
 		
 		return nappaimisto;
-		
 		
 	}
 
