@@ -44,7 +44,7 @@ public class Kayttoliittyma {
 	 *	@param valintanum
 	 *	@return
 	 */
-	public int valintaAloitusValikko(int valintanum) {
+	private int valintaAloitusValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -61,7 +61,7 @@ public class Kayttoliittyma {
 	 * @param valintanum
 	 * @return
 	 */
-	public int valintaPaaValikko(int valintanum) {
+	private int valintaPaaValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -83,7 +83,7 @@ public class Kayttoliittyma {
 	 * @param valintanum
 	 * @return int
 	 */
-	public int valintaKurssiValikko(int valintanum) {
+	private int valintaKurssiValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -103,7 +103,7 @@ public class Kayttoliittyma {
 	 *  @param valintanum
 	 *  @return
 	 */
-	public int valintaTenttiValikko(int valintanum) {
+	private int valintaTenttiValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -126,7 +126,7 @@ public class Kayttoliittyma {
 	 * @param valintanum
 	 * @return
 	 */
-	public int valintaRaporttiValikko(int valintanum) {
+	private int valintaRaporttiValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -147,7 +147,7 @@ public class Kayttoliittyma {
 	 *  @param valintanum
 	 *  @return
 	 */
-	public int valintaTallennaValikko(int valintanum) {
+	private int valintaTallennaValikko(int valintanum) {
 
 		switch (valintanum) {
 
@@ -167,7 +167,7 @@ public class Kayttoliittyma {
 	 *  @param valintanum käyttäjän valitseman toiminnon numero
 	 *  @return Palauttaa 1, jos virheellinen valinta.
 	 */
-	public int valintaKurssiMuokkausValikko(int valintanum) {
+	private int valintaKurssiMuokkausValikko(int valintanum) {
 
 			if (valintanum == 0) {
 			kurssiValikko();
@@ -192,7 +192,7 @@ public class Kayttoliittyma {
 	 *  @param valintanum käyttäjän valitseman toiminnon numero
 	 *  @return Palauttaa 1, jos virheellinen valinta.
 	 */
-	public int valintaKurssiPoistoValikko(int valintanum) {
+	private int valintaKurssiPoistoValikko(int valintanum) {
 
 		//tähän parempi virheenkäsittely esim isInteger
 		if (valintanum == 0) {
@@ -234,7 +234,7 @@ public class Kayttoliittyma {
 	 * @param valintanum
 	 * @return
 	 */
-	public int valintaTenttiMuokkausValikko(int valintanum) {
+	private int valintaTenttiMuokkausValikko(int valintanum) {
 
 		//listaa tentit
 		//kutsu tapahtumanmuokkausvalikkoa
@@ -260,7 +260,7 @@ public class Kayttoliittyma {
 	 * @param valintanum
 	 * @return
 	 */
-	public int valintaTenttiPoistoValikko(int valintanum) {
+	private int valintaTenttiPoistoValikko(int valintanum) {
 
 		//tähän parempi virheenkäsittely esim isInteger
 		if (valintanum == 0) {
@@ -282,7 +282,7 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public int valintaLopetusValikko(int valintanum) {
+	private int valintaLopetusValikko(int valintanum) {
 
 		switch (valintanum) {
 		
@@ -343,7 +343,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän kurssivalikko.
 	 */
-	public void kurssiValikko() {
+	private void kurssiValikko() {
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Hallinoi kursseja");
@@ -368,7 +368,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän tenttivalikko.
 	 */
-	public void tenttiValikko() {
+	private void tenttiValikko() {
 
 
 		tyhjennaNakyma();
@@ -394,7 +394,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän raporttivalikko.
 	 */
-	public void raporttiValikko() {
+	private void raporttiValikko() {
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tulosta raportteja");
@@ -416,7 +416,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän tallennusvalikko.
 	 */
-	public void tallennaValikko() {
+	private void tallennaValikko() {
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tallenna tai lataa");
@@ -438,13 +438,15 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public void lisaaTenttiValikko() {
+	private void lisaaTenttiValikko() {
 		
 		Scanner nappaimisto;
 
 		//nämä korvataan oikeilla tietotyypeillä
 		String tenttinimi;
 		String tentti;
+		String kuuluuKurssiin;
+		String tentinSijainti;
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tentin lisäys");
@@ -504,7 +506,13 @@ public class Kayttoliittyma {
 			tentti = nappaimisto.nextLine();
 			m = p.matcher(tentti);
 		}
+		
+		System.out.println("Mihin kurssiin tentti kuuluu?");
+		kuuluuKurssiin = this.lueString();
 
+		System.out.println("Tentin sijainti?");
+		tentinSijainti = this.lueString();
+		
 		// syöte on oikeanlainen, jatketaan
 
         // Ei lisätä mitään jos käyttäjä ei syötä ajankohtaa.
@@ -523,6 +531,9 @@ public class Kayttoliittyma {
 
         	//lisätään tentti kerääjään.
         	Tapahtuma lisattyTapahtuma = new Tapahtuma(tenttinimi);
+        	lisattyTapahtuma.setKuuluuKurssiinNimelta(kuuluuKurssiin);
+        	lisattyTapahtuma.setSijainti(tentinSijainti);
+        	lisattyTapahtuma.setToistuva(false);
         	this.tiedot.addTentti(lisattyTapahtuma);
 
         	Date[] taulukkoAjoista = palautaStringDatena(tentti);
@@ -537,7 +548,7 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public void muokkaaTenttiValikko() {
+	private void muokkaaTenttiValikko() {
 
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
@@ -562,7 +573,7 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public void poistaTenttiValikko() {
+	private void poistaTenttiValikko() {
 
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
 
@@ -585,7 +596,7 @@ public class Kayttoliittyma {
 	
 	}
 	
-	public void tulevatTentitValikko() {
+	private void tulevatTentitValikko() {
 
 		tyhjennaNakyma();
 		System.out.println("Opintotyökalu - Tulevat tentit");
@@ -601,7 +612,7 @@ public class Kayttoliittyma {
 	 *	Käyttöliittymän kurssin lisäysvalikko. Ei käytä vielä oikeita tietorakenteita.
 	 *  Tapahtumien lisäyksen toteutus vajaa. Ei virheellisten syötteiden käsittelyä.
 	 */
-	public void lisaaKurssiValikko() {
+	private void lisaaKurssiValikko() {
 
 		Scanner nappaimisto;
 
@@ -802,7 +813,7 @@ public class Kayttoliittyma {
 	 *  @param str merkkijono josta aika parsetaan
 	 *  @return Date olio jos onnistutaan ja null jos catchataan poikkeus
 	 */
-	public Date parseKayttajanAntamaAika(String str){
+	private Date parseKayttajanAntamaAika(String str){
 		Date aika = null;
 
 		try {
@@ -818,7 +829,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän kurssin muokkausvalikko. Keskeneräinen.
 	 */
-	public void muokkaaKurssiValikko() {
+	private void muokkaaKurssiValikko() {
 
 
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
@@ -844,7 +855,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Käyttöliittymän kurssin poistovalikko. Keskeneräinen.
 	 */
-	public void poistaKurssiValikko() {
+	private void poistaKurssiValikko() {
 
 		ArrayList<Kurssi> kurssit = this.tiedot.getKurssit();
 
@@ -869,7 +880,7 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public void tulostaKurssitValikko() {
+	private void tulostaKurssitValikko() {
 		Exporter.printCourses(this.tiedot);
 		this.raporttiValikko();
 	}
@@ -877,7 +888,7 @@ public class Kayttoliittyma {
 	/**
 	 *
 	 */
-	public void tulostaLukkariValikko() {
+	private void tulostaLukkariValikko() {
 		Exporter.printTimetable(this.tiedot);
 		this.raporttiValikko();
 	}
@@ -885,7 +896,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Tallentaan tiedostoon annetun tiedostopolun mukaan.
 	 */
-	public void tallennaTiedostoonValikko() {
+	private void tallennaTiedostoonValikko() {
 
 		Scanner nappaimisto;
 		String tallennuspolku;
@@ -918,7 +929,7 @@ public class Kayttoliittyma {
 
 	}
 
-	public void tallennaTiedostoonLopetusValikko() {
+	private void tallennaTiedostoonLopetusValikko() {
 
 		Scanner nappaimisto;
 		String tallennuspolku;
@@ -953,7 +964,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Avaa tiedoston annetun tiedostopolun mukaan.
 	 */
-	public void avaaTiedostostaAlussaValikko() {
+	private void avaaTiedostostaAlussaValikko() {
 
 		Scanner nappaimisto;
 		String avauspolku;
@@ -988,7 +999,7 @@ public class Kayttoliittyma {
 	/**
 	 *	Avaa tiedoston annetun tiedostopolun mukaan.
 	 */
-	public void avaaTiedostostaValikko() {
+	private void avaaTiedostostaValikko() {
 
 		Scanner nappaimisto;
 		String avauspolku;
@@ -1027,7 +1038,7 @@ public class Kayttoliittyma {
 	 * 
 	 * @param kurssiIndeksi
 	 */
-	public void tietynKurssinMuokkausValikko(Kurssi kurssi) {
+	private void tietynKurssinMuokkausValikko(Kurssi kurssi) {
 		
 		ArrayList<Tapahtuma> tapahtumat = this.tiedot.getTapahtumat();
 		ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
@@ -1082,7 +1093,7 @@ public class Kayttoliittyma {
 	/**
 	 * 
 	 */
-	public void lopetusValikko() {
+	private void lopetusValikko() {
 
 		System.out.println("Opintotyökalu - Lopetus");
 		System.out.println("");
@@ -1205,6 +1216,7 @@ public class Kayttoliittyma {
 		System.out.println("Anna tapahtuman lopetusaika seuraavassa muodossa: ");
 		System.out.println("16.7.10 12");
 		System.out.print("Syöte: ");
+		
 		//return palautaStringDatena(nappaimisto.nextLine())[0];
 		return parseKayttajanAntamaAika(nappaimisto.nextLine());
 	}	
@@ -1274,6 +1286,7 @@ public class Kayttoliittyma {
         }
 
 	}
+	
 	/**
 	 *  Tarkistaa onko annettu syöte kokonaisluku ja vastaako se valikossa olevia 
 	 *  numeroita. 
@@ -1395,10 +1408,9 @@ public class Kayttoliittyma {
 				
 				//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
 				valintanum = tarkistaLuku(nappaimisto).nextInt();
-				
+			
 			}
 		}
-		
 	}
 	
 	/**
@@ -1408,7 +1420,7 @@ public class Kayttoliittyma {
 	 * @param Scanner näppäimistöltä luettu käyttäjän antama syöte
 	 * @return Scanner nappimistöltä luettu luku jos se on kokonaisluku
 	 */
-	public Scanner tarkistaLuku(Scanner nappaimisto) {
+	private Scanner tarkistaLuku(Scanner nappaimisto) {
 		
 		System.out.print("Valinta: ");
 		nappaimisto = new Scanner(System.in);
@@ -1433,7 +1445,7 @@ public class Kayttoliittyma {
 	private String lueString() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.print("Syötä teksti:");
+		System.out.print("Syötä teksti: ");
 		if (nappaimisto.hasNextLine()) {
 			return nappaimisto.nextLine().trim();
 		}
@@ -1451,7 +1463,7 @@ public class Kayttoliittyma {
 	private int lueInt() {
 		Scanner nappaimisto = new Scanner(System.in);
 
-		System.out.print("Syötä luku:");
+		System.out.print("Syötä luku: ");
 		if (nappaimisto.hasNextInt()) {
 			return nappaimisto.nextInt();
 		}
