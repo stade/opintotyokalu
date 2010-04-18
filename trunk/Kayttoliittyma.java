@@ -1062,7 +1062,6 @@ public class Kayttoliittyma {
 
 		System.out.println("0. Palaa takaisin");
 		System.out.println("");
-		System.out.print("Valinta: ");
 
 		Scanner nappaimisto;
 		int valintanum;
