@@ -1038,8 +1038,8 @@ public class Kayttoliittyma {
 		System.out.println("");
 		System.out.println("Muokkaa");
 
-		System.out.println("1." + kurssi.getNimi());
-		System.out.println("2." + kurssi.getLaajuus());
+		System.out.println("1. " + kurssi.getNimi());
+		System.out.println("2. " + kurssi.getLaajuus());
 
 		String kurssinNimi = kurssi.getNimi();
 		
@@ -1067,13 +1067,11 @@ public class Kayttoliittyma {
 		Scanner nappaimisto;
 		int valintanum;
 		
-		
 		nappaimisto = new Scanner(System.in);
 		valintanum = tarkistaLuku(nappaimisto).nextInt();
-
 		
 		//Kysytään valikkonumeroa kunnes se on oikea
-		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssi,valikonTapahtumat) == 1) {
+		while(kasitteleAnnettuValintaKurssinmuokkausvalikossa(valintanum, kurssi,valikonTapahtumat, kurssinNimi) == 1) {
 			
 			//Kysytään syötettä niin kauan kunnes annetaan kokonaislukusyöte
 			valintanum = tarkistaLuku(nappaimisto).nextInt();
@@ -1110,12 +1108,32 @@ public class Kayttoliittyma {
 	 * @return
 	 */
 	private int kasitteleAnnettuValintaKurssinmuokkausvalikossa(int valintanum, 
-		Kurssi kurssi, ArrayList<Tapahtuma> valikonTapahtumat) {
+		Kurssi kurssi, ArrayList<Tapahtuma> valikonTapahtumat, String kurssinVanhaNimi) {
 
 		switch(valintanum) {
 
 			case 1:
-				kurssi.setNimi(lueString());
+				String uusiNimi = this.lueString();
+				kurssi.setNimi(uusiNimi);
+				
+				//muokataan vanhaan nimeen liitetyt tapahtumat viittaamaan uuteen nimeen
+				ArrayList<Tapahtuma> tapahtumat = this.tiedot.getTapahtumat();
+				for (Tapahtuma event : tapahtumat) {
+					if (kurssinVanhaNimi.equalsIgnoreCase(event.getKuuluuKurssiinNimelta())) {
+						event.setKuuluuKurssiinNimelta(kurssi.getNimi());
+						event.setKuuluuKurssiinNimelta(uusiNimi);
+					}
+				}
+				
+				//muokataan vanhaan nimeen liitetyt tentit viittaamaan uutteen nimeen
+				ArrayList<Tapahtuma> tentit = this.tiedot.getTentit();
+				for (Tapahtuma event : tentit) {
+					if (kurssinVanhaNimi.equalsIgnoreCase(event.getKuuluuKurssiinNimelta())) {
+						event.setKuuluuKurssiinNimelta(kurssi.getNimi());
+						event.setKuuluuKurssiinNimelta(uusiNimi);
+					}
+				}
+				
 				tietynKurssinMuokkausValikko(kurssi);
 				return 0;
 			case 2:
