@@ -239,9 +239,9 @@ public class Kayttoliittyma {
 		//listaa tentit
 		//kutsu tapahtumanmuokkausvalikkoa
 		if(valintanum == 0) {
-				tenttiValikko();
-				return 0;
-			}
+			tenttiValikko();
+			return 0;
+		}
 
 		else if (valintanum > 0 && valintanum <= this.tiedot.getTentit().size()) {
 			// Tenttien numerot valikossa alkavat 1:stä, ArrayListissä 0:sta, siispä vähennetään yksi
@@ -1167,10 +1167,10 @@ public class Kayttoliittyma {
 
 		tyhjennaNakyma();
 		System.out.println("Muokkaa tapahtumaa " + tapahtuma.getNimi());
-		System.out.println("1. Nimi:" + tapahtuma.getNimi());
-		System.out.println("2. Sijainti:" + tapahtuma.getSijainti());
-		System.out.println("3. Alku:" + tapahtuma.getAlku().toString());
-		System.out.println("4. Loppu:" + tapahtuma.getLoppu().toString());
+		System.out.println("1. Nimi: " + tapahtuma.getNimi());
+		System.out.println("2. Sijainti: " + tapahtuma.getSijainti());
+		System.out.println("3. Alku: " + tapahtuma.getAlku().toString());
+		System.out.println("4. Loppu: " + tapahtuma.getLoppu().toString());
 		System.out.println("0. Palaa takaisin");
 
 		int valinta = getValikkoValinta();
@@ -1219,6 +1219,7 @@ public class Kayttoliittyma {
 		
 		//return palautaStringDatena(nappaimisto.nextLine())[0];
 		return parseKayttajanAntamaAika(nappaimisto.nextLine());
+		
 	}	
 
 	/**
