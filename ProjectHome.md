@@ -1,0 +1,1 @@
+Opiskelijan opintotyökalu toteutetaan osana Helsingin yliopiston [tietojenkäsittelytieteen laitoksen](http://cs.helsinki.fi) [Ohjelmistotuontanto](http://www.cs.helsinki.fi/u/salmenki/ohtu_k10/ohtu-k2010.htm) -kurssia.
